@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+{% from 'MeeduleDesignBundle::flash.html.twig' import flash %}
+
+{% block stylesheets %}
+    {% stylesheets
+        'bundles/meeduledesign/bootstrap/bootstrap.less'
+        'bundles/meeduledesign/css/application.less'
+    %}
+<link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+        'bundles/meeduledesign/bootstrap/js/bootstrap-alert.js'
+        'bundles/meeduledesign/bootstrap/js/bootstrap-button.js'
+        'bundles/meeduledesign/bootstrap/js/bootstrap-dropdown.js'
+        'bundles/meeduledesign/bootstrap/js/bootstrap-tooltip.js'
+        'bundles/meeduledesign/bootstrap/js/bootstrap-popover.js'
+    %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block body %}
+    {% block topbar %}
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="brand" href="#">Meedule</a>
+                <div class="nav-collapse collapse">
+                    <p class="navbar-text pull-right">
+                        Logged in as <a href="#" class="navbar-link">Username</a>
+                    </p>
+                    <ul class="nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <div class="container-fluid">
+        <div class="content">
+            {% block flash %}
+                {{ flash() }}
+            {% endblock %}
+                
+            {% block content %}{% endblock%}
+        </div>
+    </div>
+{% endblock %}

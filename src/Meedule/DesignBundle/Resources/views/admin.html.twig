@@ -1,0 +1,26 @@
+{% extends 'ClownDesignBundle::layout.html.twig' %}
+{% from 'ClownDesignBundle::flash.html.twig' import flash %}
+
+{% block topbar %}
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="{{ path('admin_index') }}">Clown Diary Admin</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+                <li>
+                    <a href="{{ path('admin_clown') }}">
+                        <i class="icon-user icon-white"></i> Clowni
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_appuntamento') }}">
+                        <i class="icon-calendar icon-white"></i> Appuntamenti
+                    </a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock%}

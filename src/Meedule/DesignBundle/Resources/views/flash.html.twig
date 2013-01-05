@@ -1,0 +1,20 @@
+{% macro flash() %}
+    
+    {% if app.session.flash('warning') %}
+        <div class="alert alert-error fade in">
+            <a class="close" href="#" data-dismiss="alert">×</a>
+            {% autoescape false %}
+                <i class="icon-warning-sign"></i> {{ app.session.flash('warning') }}
+            {% endautoescape %}
+        </div>
+    {% endif %}
+    {% if app.session.flash('notice') %}
+        <div class="alert fade in">
+            <a class="close" href="#" data-dismiss="alert">×</a>
+            {% autoescape false %}
+                <i class="icon-ok"></i> {{ app.session.flash('notice') }}
+            {% endautoescape %}
+        </div>
+    {% endif %}
+    
+{% endmacro %}

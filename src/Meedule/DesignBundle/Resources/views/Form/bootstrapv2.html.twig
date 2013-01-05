@@ -1,0 +1,71 @@
+{% block field_row %}
+    {% spaceless %}
+        <div class="control-group">
+            {{ form_label(form, label|default(null)) }}
+            <div class="controls">
+                {{ form_widget(form) }}
+                {{ form_errors(form)}}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock field_row %}
+
+{% block field_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+
+        {% for error in errors %}
+        <div class="_alert">
+        <a class="_close" data-dismiss="alert" href="#">&times;</a>
+        {{ error.messageTemplate(error.messageParameters, 'validators') }}
+        </div>
+        {% endfor %}
+
+        {% endif %}
+    {% endspaceless %}
+{% endblock field_errors %}
+
+{% block generic_label %}
+    {% set attr = attr|merge({'class': 'control-label'}) %}
+    {% spaceless %}
+        {% if required %}
+            {% set attr = attr|merge({'class': 'required control-label'}) %}
+        {% endif %}
+        <label{% for attrname,attrvalue in attr %} {{attrname}}="{{attrvalue}}"{% endfor %}>{{ label }}</label>
+    {% endspaceless %}
+{% endblock %}
+        
+{% block choice_widget %}
+{% spaceless %}
+    {% if expanded %}
+        {% for child in form %}
+            <label class="checkbox">
+                {{ form_widget(child) }}
+                {{ form_label(child) }}
+            </label>
+            <div class="clearfix"></div>
+        {% endfor %}
+    {% else %}
+    <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+        {% if empty_value is not none %}
+            <option value="">{{ empty_value|trans }}</option>
+        {% endif %}
+        {% if preferred_choices|length > 0 %}
+            {% set options = preferred_choices %}
+            {{ block('widget_choice_options') }}
+            {% if choices|length > 0 and separator is not none %}
+                <option disabled="disabled">{{ separator }}</option>
+            {% endif %}
+        {% endif %}
+        {% set options = choices %}
+        {{ block('widget_choice_options') }}
+    </select>
+    {% endif %}
+{% endspaceless %}
+{% endblock choice_widget %}
+
+{% block checkbox_widget %}
+{% spaceless %}
+    <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+{% endspaceless %}
+{% endblock checkbox_widget %}
