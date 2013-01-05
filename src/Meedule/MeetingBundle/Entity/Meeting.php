@@ -84,7 +84,7 @@ class Meeting
     /**
      * @var string $topic1
      * 
-     * @ORM\Column(name="topic1", type="string", length=255, nullable="true")
+     * @ORM\Column(name="topic1", type="string", length=255)
      */
     private $topic1;
     

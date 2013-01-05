@@ -135,6 +135,8 @@ class MeetingController extends Controller
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();
+            
+            $this->get('session')->setFlash('notice', 'Il tuo meeting è stato creato con successo.');
 
             return $this->redirect($this->generateUrl('meeting_summary', array('id' => $entity->getId())));
             

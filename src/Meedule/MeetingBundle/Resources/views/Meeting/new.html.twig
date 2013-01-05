@@ -1,8 +1,16 @@
 {% extends 'MeeduleDesignBundle::layout.html.twig' %}
 
 {% block content %}
-    <h1>Crea in tuo meeting</h1>
+    <ul class="breadcrumb">
+        <li class="active">Crea il meeting <span class="divider">&gt;</span></li>
+        <li>Inserisci gli argomenti <span class="divider">&gt;</span></li>
+        <li>Condividi</li>
+    </ul>
 
+    <h1>Crea il tuo evento</h1>
+    <p>Riunioni, eventi, assemblee o appuntamenti sono momenti importanti ma soprattutto devono essere efficaci.</p>
+    <hr />
+    
     <form action="{{ path('meeting_create') }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
         {{ form_widget(form) }}
         

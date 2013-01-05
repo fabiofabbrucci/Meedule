@@ -1,14 +1,22 @@
 {% extends 'MeeduleDesignBundle::layout.html.twig' %}
 
 {% block content %}
-    <h1>Crea in tuo meeting</h1>
+    <ul class="breadcrumb">
+        <li>Crea il meeting <span class="divider">&gt;</span></li>
+        <li class="active">Inserisci gli argomenti <span class="divider">&gt;</span></li>
+        <li>Condividi</li>
+    </ul>
+
+    <h1>Riempi l'agenda con i punti della riunione</h1>
+    <p>Bla bla bla</p>
+    <hr />
 
     <form action="{{ path('meeting_finalize', {'id': entity.id }) }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
         {{ form_widget(form) }}
         
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary btn-large">Avanti</button>
-            o <a href="{{ path('index') }}">
+            <button type="submit" class="btn btn-success btn-large">Fine</button>
+            o <a href="javascript:history.back();">
                 indietro
             </a>
          </div>

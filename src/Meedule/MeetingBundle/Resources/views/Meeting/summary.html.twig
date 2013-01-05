@@ -1,7 +1,28 @@
 {% extends 'MeeduleDesignBundle::layout.html.twig' %}
 
 {% block content %}
-    <h1>Condividi coi tuoi amici o colleghi</h1>
-    <i class="icon-share"></i> Bla bla bla
-    <a href="{{ path('meeting_show',{'id': entity.id}) }}">{{ url('meeting_show',{'id': entity.id}) }}</a>
+
+    <ul class="breadcrumb">
+        <li>Crea il meeting <span class="divider">&gt;</span></li>
+        <li>Inserisci gli argomenti <span class="divider">&gt;</span></li>
+        <li class="active">Condividi</li>
+    </ul>
+
+    <h1>Condividi coi tuoi colleghi o amici</h1>
+    
+    <p>
+        I seguenti due links verranno inviati tramite una e-mail a <b>{{ entity.email }}</b>.<br />
+        Se non dovessero arrivare dei links ...
+    </p>
+    <h5>Link per la partecipazione</h5>
+    <p>
+        <i class="icon-share"></i> <a href="{{ path('meeting_show',{'id': entity.id}) }}" target="_blank">{{ url('meeting_show',{'id': entity.id}) }}</a><br />
+        <a href="#"><i class="icon-envelope"></i> Invia per email</a> 
+    </p>
+    
+    <h5>Link per la amministrazione</h5>
+    <p>
+        <i class="icon-wrench"></i> <a href="{{ path('meeting_show',{'id': entity.id}) }}" target="_blank">{{ url('meeting_show',{'id': entity.id}) }}</a><br />
+    </p>
+    
 {% endblock %}
