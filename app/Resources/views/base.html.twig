@@ -2,9 +2,17 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        
+        <title>{% block title %}Meedule - Agenda per meeting{% endblock %}</title>
+        
         {% block stylesheets %}{% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        
+        {% javascripts
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
+        %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
     </head>
     <body>
         {% block body %}{% endblock %}
