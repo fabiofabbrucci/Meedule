@@ -27,6 +27,7 @@ twig:
         date_format: "D d/m/Y H:i:s"
         date_xml_format: "Y-m-d"
         date_simple_format: "D d/m/Y"
+        time: "H:i"
 
 # Assetic Configuration
 assetic:

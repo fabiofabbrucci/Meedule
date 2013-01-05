@@ -1,0 +1,7 @@
+{% extends 'MeeduleDesignBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>Condividi coi tuoi amici o colleghi</h1>
+    <i class="icon-share"></i> Bla bla bla
+    <a href="{{ path('meeting_show',{'id': entity.id}) }}">{{ url('meeting_show',{'id': entity.id}) }}</a>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'MeeduleDesignBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>Crea in tuo meeting</h1>
+
+    <form action="{{ path('meeting_finalize', {'id': entity.id }) }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
+        {{ form_widget(form) }}
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">Avanti</button>
+            o <a href="{{ path('index') }}">
+                indietro
+            </a>
+         </div>
+    </form>
+
+{% endblock %}
