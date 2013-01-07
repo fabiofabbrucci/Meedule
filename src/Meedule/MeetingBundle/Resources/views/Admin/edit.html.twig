@@ -1,0 +1,20 @@
+{% extends 'MeeduleDesignBundle::layout.html.twig' %}
+
+{% block content %}
+    
+
+    <h1>Modifica il tuo evento</h1>
+    <hr />
+    
+    <form action="{{ path('meeting_admin_update', {'id': entity.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
+        {{ form_widget(form) }}
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success btn-large">Salva</button>
+            o <a href="{{ path('meeting_admin', {'id': entity.id}) }}">
+                indietro
+            </a>
+         </div>
+    </form>
+
+{% endblock %}

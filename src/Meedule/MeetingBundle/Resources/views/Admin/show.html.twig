@@ -2,7 +2,6 @@
 
 {% block content %}
     <div class="pull-right">
-        {% block commands %}{% endblock %}
         <a href="javascript:window.print();">Stampa <i class="icon-print"></i></a>
     </div>
     <h1>{{ entity.title }}</h1>
@@ -16,7 +15,6 @@
     <p>{{ entity.description }}</p>
     <hr />
     
-    {% block commands_topics %}{% endblock %}
     <h5>Argomenti:</h5>
     <table class="table table-striped table-bordered">
         {% if entity.topic1|length %}<tr><th width="3%">1</th><td>{{ entity.topic1 }}</td></tr>{% endif %}
