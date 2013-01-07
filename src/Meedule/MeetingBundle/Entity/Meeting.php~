@@ -77,14 +77,14 @@ class Meeting
     /**
      * @var string $slugpublic
      *
-     * @ORM\Column(name="slugpublic", type="string", length=20)
+     * @ORM\Column(name="slugpublic", type="string", length=32, unique=true)
      */
     private $slugpublic;
     
     /**
      * @var string $slugprivate
      *
-     * @ORM\Column(name="slugprivate", type="string", length=20)
+     * @ORM\Column(name="slugprivate", type="string", length=32, unique=true)
      */
     private $slugprivate;
     
@@ -105,7 +105,7 @@ class Meeting
     /**
      * @var string $topic1
      * 
-     * @ORM\Column(name="topic1", type="string", length=255)
+     * @ORM\Column(name="topic1", type="string", length=255, nullable="true")
      */
     private $topic1;
     
@@ -172,7 +172,11 @@ class Meeting
      */
     private $topic10;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\User", mappedBy="meeting", cascade={"persist", "remove"})
+     */
+    private $attendees;
+    
     /**
      * Get id
      *
@@ -541,5 +545,73 @@ class Meeting
     public function getTopic10()
     {
         return $this->topic10;
+    }
+
+    /**
+     * Set slugpublic
+     *
+     * @param string $slugpublic
+     */
+    public function setSlugpublic($slugpublic)
+    {
+        $this->slugpublic = $slugpublic;
+    }
+
+    /**
+     * Get slugpublic
+     *
+     * @return string 
+     */
+    public function getSlugpublic()
+    {
+        return $this->slugpublic;
+    }
+
+    /**
+     * Set slugprivate
+     *
+     * @param string $slugprivate
+     */
+    public function setSlugprivate($slugprivate)
+    {
+        $this->slugprivate = $slugprivate;
+    }
+
+    /**
+     * Get slugprivate
+     *
+     * @return string 
+     */
+    public function getSlugprivate()
+    {
+        return $this->slugprivate;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+    
+    public function generateSlugs()
+    {
+        $data = new \DateTime();
+        $string = $this->getTitle() . $this->getEmail() . $data->format('YmsHis') . rand(1,1000000);
+        $this->setSlugpublic(md5($string));
+        $this->setSlugprivate(md5(strrev($string)));
     }
 }

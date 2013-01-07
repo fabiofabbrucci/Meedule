@@ -1,4 +1,5 @@
 @import '../bootstrap/mixins.less';
+@import '../bootstrap/variables.less';
 
 body {
     padding-top: 60px;
@@ -10,14 +11,50 @@ body {
     }
 }
 
-#clown_diarybundle_partecipantitype{
-    .controls{
-        .content-columns(4, 10px);
+#meedule_meetingbundle_meetingtype select{
+    width: 10%;
+    min-width: 80px;
+    &#meedule_meetingbundle_meetingtype_duration{
+        width: 15%;
+        min-width: 150px;
     }
 }
+#meedule_meetingbundle_meetingtype_title,
+#meedule_meetingbundle_meetingtype_address,
+#meedule_meetingbundle_meetingtype_description
+{
+    width: 50%;
+    min-width: 500px;
+}
 
-#index{
-    #clowns{
-        .content-columns(4, 20px);
+#attendees{
+    form{
+        margin: 0px;
+    }
+    input{
+        width: 95%;
+        margin-bottom: 0px;
+    }
+    hr{
+        margin: 8px 0px 12px 0px;
+    }
+    ol{
+        margin: 0px;
+        list-style-position:inside;
+    }
+    li{
+        form{
+            visibility: hidden;
+        }
+        &:hover{
+            background-color: @btnPrimaryBackground;
+            color: white;
+            form{
+                visibility: visible;
+            }
+        }
+    }
+    #meedule_meetingbundle_attendeetype label{
+        display: none;
     }
 }

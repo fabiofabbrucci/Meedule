@@ -172,7 +172,11 @@ class Meeting
      */
     private $topic10;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\User", mappedBy="meeting", cascade={"persist", "remove"})
+     */
+    private $attendees;
+    
     /**
      * Get id
      *
@@ -609,5 +613,25 @@ class Meeting
         $string = $this->getTitle() . $this->getEmail() . $data->format('YmsHis') . rand(1,1000000);
         $this->setSlugpublic(md5($string));
         $this->setSlugprivate(md5(strrev($string)));
+    }
+
+    /**
+     * Add attendees
+     *
+     * @param Meedule\MeetingBundle\Entity\User $attendees
+     */
+    public function addUser(User $attendees)
+    {
+        $this->attendees[] = $attendees;
+    }
+
+    /**
+     * Get attendees
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getAttendees()
+    {
+        return $this->attendees;
     }
 }

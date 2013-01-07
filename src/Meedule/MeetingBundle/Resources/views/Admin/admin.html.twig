@@ -9,3 +9,7 @@
         <a href="{{ path('meeting_admin_agenda', {'slug': entity.slugprivate}) }}" class="btn">Cambia argomenti <i class="icon-wrench"></i></a>
     </div>
 {% endblock %}
+    
+{% block attendees %}
+    {% include 'MeeduleMeetingBundle:Admin:_attendees.html.twig' %}
+{% endblock %}

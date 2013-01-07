@@ -11,8 +11,6 @@ class MeetingType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('email', 'email')
-            ->add('name')
             ->add('date', 'date', array(
                 'format' => 'dd/MM/yyyy',
             ))
@@ -25,10 +23,13 @@ class MeetingType extends AbstractType
                     '60' => '1 ora', 
                     '90' => '1 ora e mezza', 
                     '120' => '2 ore',
+                    '180' => '3 ore',
                     )
             ))
             ->add('address')
             ->add('description')
+            ->add('email', 'email')
+            ->add('name')
         ;
     }
 

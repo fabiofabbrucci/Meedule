@@ -7,8 +7,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Meedule\MeetingBundle\Entity\Meeting;
+use Meedule\MeetingBundle\Entity\User;
 use Meedule\MeetingBundle\Form\MeetingType;
 use Meedule\MeetingBundle\Form\AgendaType;
+use Meedule\MeetingBundle\Form\AttendeeType;
 
 /**
  * Meeting controller.
@@ -30,11 +32,21 @@ class AdminController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Meeting entity.');
         }
+        
+        $user = new User;
+        $create_form   = $this->createForm(new AttendeeType(), $user);
+        $attendees = array();
+        
+        foreach($entity->getAttendees() as $i=>$attendee){
+            $attendees[] = $attendee;
+            $form = $this->createDeleteForm($attendee->getId());
+            $attendees[$i]->setDeleteForm($form->createView());
+        }
 
-        $form   = $this->createForm(new AgendaType(), $entity);
         return array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form'        => $create_form->createView(),
+            'attendees' => $attendees,
         );
     }
     
@@ -153,5 +165,11 @@ class AdminController extends Controller
         );
     }
     
-    
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder(array('id' => $id))
+            ->add('id', 'hidden')
+            ->getForm()
+        ;
+    }
 }

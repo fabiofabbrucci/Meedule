@@ -10,21 +10,25 @@
         {% include 'MeeduleMeetingBundle:Meeting:_detail.html.twig' %}
     </div>
     
-    {% block commands_topics %}{% endblock %}
-    <h5>Argomenti:</h5>
-    <table class="table table-striped table-bordered">
-        {% if entity.topic1|length %}<tr><th width="3%">1</th><td>{{ entity.topic1 }}</td></tr>{% endif %}
-        {% if entity.topic2|length %}<tr><th>2</th><td>{{ entity.topic2 }}</td></tr>{% endif %}
-        {% if entity.topic3|length %}<tr><th>3</th><td>{{ entity.topic3 }}</td></tr>{% endif %}
-        {% if entity.topic4|length %}<tr><th>4</th><td>{{ entity.topic4 }}</td></tr>{% endif %}
-        {% if entity.topic5|length %}<tr><th>5</th><td>{{ entity.topic5 }}</td></tr>{% endif %}
-        {% if entity.topic6|length %}<tr><th>6</th><td>{{ entity.topic6 }}</td></tr>{% endif %}
-        {% if entity.topic7|length %}<tr><th>7</th><td>{{ entity.topic7 }}</td></tr>{% endif %}
-        {% if entity.topic8|length %}<tr><th>8</th><td>{{ entity.topic8 }}</td></tr>{% endif %}
-        {% if entity.topic9|length %}<tr><th>9</th><td>{{ entity.topic9 }}</td></tr>{% endif %}
-        {% if entity.topic10|length %}<tr><th>10</th><td>{{ entity.topic10 }}</td></tr>{% endif %}
-    </table>
-    <div class="pull-right">
-        <a href="javascript:window.print();">Stampa <i class="icon-print"></i></a>
+    <div class="row-fluid">
+        <div class="span9">
+            {% block commands_topics %}{% endblock %}
+            <h4>Argomenti:</h4>
+            <table class="table table-striped table-bordered">
+                {% if entity.topic1|length %}<tr><th width="3%">1</th><td>{{ entity.topic1 }}</td></tr>{% endif %}
+                {% if entity.topic2|length %}<tr><th>2</th><td>{{ entity.topic2 }}</td></tr>{% endif %}
+                {% if entity.topic3|length %}<tr><th>3</th><td>{{ entity.topic3 }}</td></tr>{% endif %}
+                {% if entity.topic4|length %}<tr><th>4</th><td>{{ entity.topic4 }}</td></tr>{% endif %}
+                {% if entity.topic5|length %}<tr><th>5</th><td>{{ entity.topic5 }}</td></tr>{% endif %}
+                {% if entity.topic6|length %}<tr><th>6</th><td>{{ entity.topic6 }}</td></tr>{% endif %}
+                {% if entity.topic7|length %}<tr><th>7</th><td>{{ entity.topic7 }}</td></tr>{% endif %}
+                {% if entity.topic8|length %}<tr><th>8</th><td>{{ entity.topic8 }}</td></tr>{% endif %}
+                {% if entity.topic9|length %}<tr><th>9</th><td>{{ entity.topic9 }}</td></tr>{% endif %}
+                {% if entity.topic10|length %}<tr><th>10</th><td>{{ entity.topic10 }}</td></tr>{% endif %}
+            </table>
+        </div>
+        {% block attendees %}
+            {% include 'MeeduleMeetingBundle:Meeting:_attendees.html.twig' %}
+        {% endblock %}
     </div>
 {% endblock %}
