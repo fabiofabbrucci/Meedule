@@ -606,7 +606,7 @@ class Meeting
     public function generateSlugs()
     {
         $data = new \DateTime();
-        $string = $this->getTitle() . $this->getEmail() . $data->format('YmsHis');
+        $string = $this->getTitle() . $this->getEmail() . $data->format('YmsHis') . rand(1,1000000);
         $this->setSlugpublic(md5($string));
         $this->setSlugprivate(md5(strrev($string)));
     }

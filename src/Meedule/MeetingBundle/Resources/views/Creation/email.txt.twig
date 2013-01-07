@@ -1,0 +1,15 @@
+<b>MEEDULE</b>
+<hr />
+
+Ciao <em>{{ entity.name }}</em>,<br />
+hai appena creato un meeting dal titolo
+<h1>{{ entity.title }}</h1>
+
+<h5>Link per la partecipazione</h5>
+<a href="{{ url('meeting_show',{'slug': entity.slugpublic}) }}" target="_blank">{{ url('meeting_show', {'slug': entity.slugpublic}) }}</a><br />
+
+<h5>Link per la amministrazione</h5>
+<a href="{{ url('meeting_admin',{'slug': entity.slugprivate}) }}" target="_blank">{{ url('meeting_admin', {'slug': entity.slugprivate}) }}</a><br />
+
+<hr />
+Meedule - Easy way to plan social meetings

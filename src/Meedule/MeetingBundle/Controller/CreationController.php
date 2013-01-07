@@ -105,6 +105,20 @@ class CreationController extends Controller
             $em->persist($entity);
             $em->flush();
             
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Meedule: '  . $entity->getTitle())
+                ->setFrom(array('fabio.fabbrucci@gmail.com' => 'Meedule'))
+                ->setTo($entity->getEmail())
+                ->setBody(
+                    $this->renderView(
+                        'MeeduleMeetingBundle:Creation:email.txt.twig',
+                        array('entity' => $entity)
+                    )
+                    , 'text/html'
+                )
+            ;
+            $this->get('mailer')->send($message);
+            
             $this->get('session')->setFlash('notice', 'Il tuo meeting è stato creato con successo.');
 
             return $this->redirect($this->generateUrl('meeting_summary', array('slug' => $entity->getSlugprivate())));
@@ -126,7 +140,7 @@ class CreationController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->findOneBySlugprivate($slug);
-
+        
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Meeting entity.');
         }

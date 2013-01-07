@@ -29,4 +29,10 @@
         <i class="icon-wrench"></i> <a href="{{ path('meeting_admin',{'slug': entity.slugprivate}) }}" target="_blank">{{ url('meeting_admin', {'slug': entity.slugprivate}) }}</a><br />
     </p>
     
+    <a 
+        href="{{ path('meeting_show',{'slug': entity.slugpublic}) }}" 
+        class="btn btn-primary"
+        >
+        Fine</a>
+    
 {% endblock %}
