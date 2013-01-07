@@ -1,20 +1,14 @@
 {% extends 'MeeduleDesignBundle::layout.html.twig' %}
 
 {% block content %}
-    <div class="pull-right">
-        {% block commands %}{% endblock %}
-        <a href="javascript:window.print();">Stampa <i class="icon-print"></i></a>
+
+    <div class="well">
+        <div class="pull-right">
+            {% block commands %}{% endblock %}
+            <a href="javascript:window.print();">Stampa <i class="icon-print"></i></a>
+        </div>
+        {% include 'MeeduleMeetingBundle:Meeting:_detail.html.twig' %}
     </div>
-    <h1>{{ entity.title }}</h1>
-    <i class="icon-calendar"></i> {{ entity.date|date(date_simple_format)}}
-    {% if entity.time %}
-        - {{ entity.time|date(time)}}
-    {% endif %}
-    {% if entity.address %}
-        <i class="icon-home"></i> {{ entity.address}}
-    {% endif %}
-    <p>{{ entity.description }}</p>
-    <hr />
     
     {% block commands_topics %}{% endblock %}
     <h5>Argomenti:</h5>

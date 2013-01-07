@@ -46,10 +46,11 @@ class CreationController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
+            $entity->generateSlugs();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('meeting_agenda', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('meeting_agenda', array('slug' => $entity->getSlugprivate())));
             
         }
 
@@ -60,14 +61,14 @@ class CreationController extends Controller
     }
 
     /**
-     * @Route("/{id}/agenda", name="meeting_agenda")
+     * @Route("/{slug}/agenda", name="meeting_agenda")
      * @Template()
      */
-    public function agendaAction($id)
+    public function agendaAction($slug)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->find($id);
+        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->findOneBySlugprivate($slug);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Meeting entity.');
@@ -81,15 +82,15 @@ class CreationController extends Controller
     }
     
     /**
-     * @Route("/{id}/finalize", name="meeting_finalize")
+     * @Route("/{slug}/finalize", name="meeting_finalize")
      * @Method("post")
      * @Template("MeeduleMeetingBundle:Creation:agenda.html.twig")
      */
-    public function finalizeAction($id)
+    public function finalizeAction($slug)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->find($id);
+        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->findOneBySlugprivate($slug);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Meeting entity.');
@@ -106,7 +107,7 @@ class CreationController extends Controller
             
             $this->get('session')->setFlash('notice', 'Il tuo meeting è stato creato con successo.');
 
-            return $this->redirect($this->generateUrl('meeting_summary', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('meeting_summary', array('slug' => $entity->getSlugprivate())));
             
         }
 
@@ -117,14 +118,14 @@ class CreationController extends Controller
     }
     
     /**
-     * @Route("/{id}/summary", name="meeting_summary")
+     * @Route("/{slug}/summary", name="meeting_summary")
      * @Template()
      */
-    public function summaryAction($id)
+    public function summaryAction($slug)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->find($id);
+        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->findOneBySlugprivate($slug);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Meeting entity.');
@@ -135,3 +136,4 @@ class CreationController extends Controller
         );
     }
 }
+

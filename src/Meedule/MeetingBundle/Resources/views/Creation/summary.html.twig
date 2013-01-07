@@ -8,6 +8,10 @@
         <li class="active">Condividi</li>
     </ul>
 
+    <div class="well">
+        {% include 'MeeduleMeetingBundle:Meeting:_detail.html.twig' %}
+    </div>
+
     <h1>Condividi coi tuoi colleghi o amici</h1>
     
     <p>
@@ -16,13 +20,13 @@
     </p>
     <h5>Link per la partecipazione</h5>
     <p>
-        <i class="icon-share"></i> <a href="{{ path('meeting_show',{'id': entity.id}) }}" target="_blank">{{ url('meeting_show',{'id': entity.id}) }}</a><br />
+        <i class="icon-share"></i> <a href="{{ path('meeting_show',{'slug': entity.slugpublic}) }}" target="_blank">{{ url('meeting_show', {'slug': entity.slugpublic}) }}</a><br />
         <a href="#"><i class="icon-envelope"></i> Invia per email</a> 
     </p>
     
     <h5>Link per la amministrazione</h5>
     <p>
-        <i class="icon-wrench"></i> <a href="{{ path('meeting_show',{'id': entity.id}) }}" target="_blank">{{ url('meeting_show',{'id': entity.id}) }}</a><br />
+        <i class="icon-wrench"></i> <a href="{{ path('meeting_admin',{'slug': entity.slugprivate}) }}" target="_blank">{{ url('meeting_admin', {'slug': entity.slugprivate}) }}</a><br />
     </p>
     
 {% endblock %}

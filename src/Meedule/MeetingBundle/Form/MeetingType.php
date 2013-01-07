@@ -12,6 +12,7 @@ class MeetingType extends AbstractType
         $builder
             ->add('title')
             ->add('email', 'email')
+            ->add('name')
             ->add('date', 'date', array(
                 'format' => 'dd/MM/yyyy',
             ))

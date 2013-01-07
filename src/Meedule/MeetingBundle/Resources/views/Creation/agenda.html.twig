@@ -11,7 +11,7 @@
     <p>Bla bla bla</p>
     <hr />
 
-    <form action="{{ path('meeting_finalize', {'id': entity.id }) }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
+    <form action="{{ path('meeting_finalize', {'slug': entity.slugprivate }) }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
         {{ form_widget(form) }}
         
         <div class="form-actions">

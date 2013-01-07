@@ -13,19 +13,19 @@ use Meedule\MeetingBundle\Form\AgendaType;
 /**
  * Meeting controller.
  *
- * @Route("/meeting/admin")
+ * @Route("/meeting/{slug}/admin")
  */
 class AdminController extends Controller
 {
     /**
-     * @Route("/{id}", name="meeting_admin")
+     * @Route("/", name="meeting_admin")
      * @Template()
      */
-    public function adminAction($id)
+    public function adminAction($slug)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->find($id);
+        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->findOneBySlugprivate($slug);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Meeting entity.');
@@ -39,14 +39,14 @@ class AdminController extends Controller
     }
     
     /**
-     * @Route("/{id}/edit", name="meeting_admin_edit")
+     * @Route("/edit", name="meeting_admin_edit")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction($slug)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->find($id);
+        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->findOneBySlugprivate($slug);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Meeting entity.');
@@ -61,15 +61,15 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/{id}/update", name="meeting_admin_update")
+     * @Route("/update", name="meeting_admin_update")
      * @Method("post")
      * @Template("MeeduleMeetingBundle:Admin:edit.html.twig")
      */
-    public function updateAction($id)
+    public function updateAction($slug)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->find($id);
+        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->findOneBySlugprivate($slug);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Meeting entity.');
@@ -86,7 +86,7 @@ class AdminController extends Controller
             
             $this->get('session')->setFlash('notice', 'Il tuo meeting è stato modificato.');
 
-            return $this->redirect($this->generateUrl('meeting_admin', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('meeting_admin', array('slug' => $entity->getSlugprivate())));
             
         }
 
@@ -97,14 +97,14 @@ class AdminController extends Controller
     }
     
     /**
-     * @Route("/{id}/agenda", name="meeting_admin_agenda")
+     * @Route("/agenda", name="meeting_admin_agenda")
      * @Template()
      */
-    public function agendaAction($id)
+    public function agendaAction($slug)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->find($id);
+        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->findOneBySlugprivate($slug);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Meeting entity.');
@@ -118,15 +118,15 @@ class AdminController extends Controller
     }
     
     /**
-     * @Route("/{id}/finalize", name="meeting_admin_finalize")
+     * @Route("/finalize", name="meeting_admin_finalize")
      * @Method("post")
      * @Template("MeeduleMeetingBundle:Admin:agenda.html.twig")
      */
-    public function finalizeAction($id)
+    public function finalizeAction($slug)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->find($id);
+        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->findOneBySlugprivate($slug);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Meeting entity.');
@@ -143,7 +143,7 @@ class AdminController extends Controller
             
             $this->get('session')->setFlash('notice', 'La tua agenda è stata modificata.');
 
-            return $this->redirect($this->generateUrl('meeting_admin', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('meeting_admin', array('slug' => $entity->getSlugprivate())));
             
         }
 

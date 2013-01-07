@@ -1,0 +1,9 @@
+<h1>{{ entity.title }}</h1>
+<i class="icon-calendar"></i> {{ entity.date|date(date_simple_format)}}
+{% if entity.time %}
+    - {{ entity.time|date(time)}}
+{% endif %}
+{% if entity.address %}
+    <i class="icon-home"></i> {{ entity.address}}
+{% endif %}
+<p>{{ entity.description }}</p>

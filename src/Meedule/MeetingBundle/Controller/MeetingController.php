@@ -31,14 +31,14 @@ class MeetingController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="meeting_show")
+     * @Route("/{slug}", name="meeting_show")
      * @Template()
      */
-    public function showAction($id)
+    public function showAction($slug)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->find($id);
+        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->findOneBySlugpublic($slug);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Meeting entity.');
