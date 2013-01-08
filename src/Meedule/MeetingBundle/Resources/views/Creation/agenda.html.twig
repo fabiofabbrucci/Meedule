@@ -35,6 +35,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
+        $('#meedule_meetingbundle_topictype_name').focus();
         $("#topics_agenda").addClass('sortable');
         $("#topics_agenda").sortable({
             stop: function( event, ui ) {
