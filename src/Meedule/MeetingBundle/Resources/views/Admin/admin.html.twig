@@ -4,12 +4,33 @@
     <a href="{{ path('meeting_admin_edit', {'slug': entity.slugprivate}) }}" class="btn">Modifica <i class="icon-wrench"></i></a>
 {% endblock %}
     
-{% block commands_topics %}
-    <div class="pull-right">
-        <a href="{{ path('meeting_admin_agenda', {'slug': entity.slugprivate}) }}" class="btn">Cambia argomenti <i class="icon-wrench"></i></a>
-    </div>
+{% block agenda_topics %}
+    {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_agenda, 'url_topic_delete': url_delete_topic_agenda, 'topics_id': 'topics_agenda'} %}
 {% endblock %}
     
-{% block attendees %}
-    {% include 'MeeduleMeetingBundle:Admin:_attendees.html.twig' %}
+{% block crew_topics %}
+    {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_crew, 'url_topic_delete': url_delete_topic_crew, 'topics_id': 'topics_crew'} %}
+{% endblock %}
+    
+{% block form_create_topic_agenda %}
+    <form action="{{ path(url_create_topic_agenda, {'slug': slug }) }}" method="post" {{ form_enctype(form_create_topic_agenda) }} class="form-horizontal">
+        {{ form_widget(form_create_topic_agenda) }}
+        <button type="submit" class="btn btn-primary btn-small">Aggiungi</button>
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $("#topics_agenda").addClass('sortable');
+        $("#topics_agenda").sortable({
+            stop: function( event, ui ) {
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path('meeting_topic_order', {'slug': slug}) }}',
+                    data: $(this).sortable("serialize")
+                });
+            }
+        });
+    </script>
 {% endblock %}

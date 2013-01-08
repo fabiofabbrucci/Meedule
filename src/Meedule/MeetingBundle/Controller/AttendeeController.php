@@ -109,6 +109,10 @@ class AttendeeController extends Controller
         if (!$user) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
+        
+        if(!$meeting->hasAttendee($user)) {
+            throw $this->createNotFoundException('This user is not part of this meeting');
+        }
 
         $form = $this->createDeleteForm($user->getId());
         $request = $this->getRequest();

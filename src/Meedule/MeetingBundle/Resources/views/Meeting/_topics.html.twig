@@ -1,0 +1,25 @@
+{% if topics %}
+    <ol id="{{ topics_id }}">
+    {% for topic in topics %}
+        <li id="topic_{{ topic.id }}">
+            {% if topic.deleteForm %}
+                <form 
+                    action="{{ path(url_topic_delete, {'slug': slug, 'id': topic.id }) }}"
+                    method="post"
+                    class="delete_form pull-right"
+                    >
+                    {{ form_widget(topic.deleteForm) }}
+                    <button type="submit"><i class="icon-trash"></i></button> 
+                </form>
+            {% endif %}
+            {{ topic.name }}
+            {% if topic.owner %}
+                 [<em>{{ topic.owner }} <i class="icon-user"></i></em>] 
+            {% endif %}
+            {% if topic.deleteForm %}
+                <div class="clearfix"></div>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ol>
+{% endif %}

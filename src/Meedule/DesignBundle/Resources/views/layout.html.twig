@@ -4,7 +4,9 @@
 {% block stylesheets %}
     {% stylesheets
         'bundles/meeduledesign/bootstrap/bootstrap.less'
+        'bundles/meeduledesign/css/zocial.less'
         'bundles/meeduledesign/css/application.less'
+        'bundles/meeduledesign/css/ui-lightness/jquery-ui-1.8.17.custom.css'
     %}
 <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -17,9 +19,15 @@
         'bundles/meeduledesign/bootstrap/js/bootstrap-dropdown.js'
         'bundles/meeduledesign/bootstrap/js/bootstrap-tooltip.js'
         'bundles/meeduledesign/bootstrap/js/bootstrap-popover.js'
+        'bundles/meeduledesign/js/jquery-ui-1.8.17.custom.min.js'
     %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
+<script>
+    $(document).ready(function(){
+        $("a[rel=popover]").popover();
+    });
+</script>
 {% endblock %}
 
 {% block body %}
@@ -46,7 +54,25 @@
     <div class="navbar navbar-fixed-bottom" id="footer">
         <div class="navbar-inner">
             <div class="container-fluid">
-                &copy; Meedule - Easy scheduler for your "funny" meetings
+                <b>&copy; Meedule</b> 
+                - Prepare easily your meetings
+                <a 
+                    href="#" 
+                    class="btn" 
+                    rel="popover" 
+                    data-placement="top" 
+                    data-content="
+                    <a href='#'>Symfony</a>, <a href='#'>Bootstrap</a>, <a href='#'>Zocials</a>, <a href='#'>Abmundi</a> and <a href='#'>Doodle</a> for their useful inspirations
+                    " 
+                    data-original-title="Thanks to a lot of tools"
+                    id="thanks">
+                        <i class="icon-heart"></i></a>
+                <!--
+                <div class="pull-right">
+                    <button class='zocial twitter'>Seguici</button>
+                    <button class='zocial facebook'>Seguici</button>
+                </div>
+                -->
             </div>
         </div>
     </div>

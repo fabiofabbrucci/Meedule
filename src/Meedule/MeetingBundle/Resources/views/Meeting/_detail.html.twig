@@ -4,6 +4,13 @@
     - {{ entity.time|date(time)}}
 {% endif %}
 {% if entity.address %}
-    <i class="icon-home"></i> {{ entity.address}}
+    <a 
+        class="btn btn-small"
+        target="_blank"
+        href="https://maps.google.it/?t=m&amp;q={{ entity.address}}">
+        <i class="icon-globe"></i> 
+    </a>
+    {{ entity.address}} 
 {% endif %}
+<i class="icon-user"></i> {{ entity.name }}
 <p>{{ entity.description }}</p>

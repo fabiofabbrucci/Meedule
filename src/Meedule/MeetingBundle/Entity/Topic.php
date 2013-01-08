@@ -5,12 +5,12 @@ namespace Meedule\MeetingBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Meedule\MeetingBundle\Entity\User
+ * Meedule\MeetingBundle\Entity\Topic
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class User
+class Topic
 {
     /**
      * @var integer $id
@@ -29,11 +29,25 @@ class User
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Meedule\MeetingBundle\Entity\Meeting", inversedBy="attendees")
+     * @var integer $position
+     *
+     * @ORM\Column(name="position", type="integer")
+     */
+    private $position;
+
+    /**
+     * @var string $owner
+     *
+     * @ORM\Column(name="owner", type="string", length=255, nullable="true")
+     */
+    private $owner;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Meedule\MeetingBundle\Entity\Meeting", inversedBy="topics")
      * @ORM\JoinColumn(name="meeting_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $meeting;
-    
+
     private $delete_form;
     
     /**
@@ -64,6 +78,46 @@ class User
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param string $owner
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return string 
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 
     /**

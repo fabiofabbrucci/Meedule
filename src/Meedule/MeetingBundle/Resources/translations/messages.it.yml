@@ -1,7 +1,16 @@
-Title: Titolo
-Date: Giorno
-Time: Ora
-Duration: Durata
-Address: Indirizzo
-Description: Descrizione
-Name: Nome
+meedule:
+  meetingbundle:
+    meetingtype:
+      title: Titolo
+      date: Giorno
+      time: Ora
+      duration: Durata
+      address: Indirizzo
+      description: Descrizione
+      name: Tuo nome
+      email: Email
+    topictype:
+      name: Argomento
+    topicpublictype:
+      name: Argomento
+      owner: Tuo nome

@@ -12,3 +12,10 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+doctrine:
+    dbal:
+        dbname: meedule_test
+        options:
+            # 1002 == PDO::MYSQL_ATTR_INIT_COMMAND
+            1002: 'SET SESSION wait_timeout=30;'

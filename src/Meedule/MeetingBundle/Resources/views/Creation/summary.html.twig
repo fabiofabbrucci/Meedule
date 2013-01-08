@@ -3,15 +3,26 @@
 {% block content %}
 
     <ul class="breadcrumb">
-        <li>Crea il meeting <span class="divider">&gt;</span></li>
+        <li>Crea la riunione <span class="divider">&gt;</span></li>
         <li>Inserisci gli argomenti <span class="divider">&gt;</span></li>
         <li class="active">Condividi</li>
     </ul>
 
-    <div class="well">
-        {% include 'MeeduleMeetingBundle:Meeting:_detail.html.twig' %}
+    <div class="row-fluid">
+        <div class="span4">
+            <div class="well">
+                {% include 'MeeduleMeetingBundle:Meeting:_detail.html.twig' %}
+            </div>
+        </div>
+        <div class="span8">
+            <div class="well">
+                <h4>Argomenti:</h4>
+                {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' %}
+            </div> 
+        </div>
     </div>
 
+    <hr /> 
     <h1>Condividi coi tuoi colleghi o amici</h1>
     
     <p>
@@ -21,7 +32,6 @@
     <h5>Link per la partecipazione</h5>
     <p>
         <i class="icon-share"></i> <a href="{{ path('meeting_show',{'slug': entity.slugpublic}) }}" target="_blank">{{ url('meeting_show', {'slug': entity.slugpublic}) }}</a><br />
-        <a href="#"><i class="icon-envelope"></i> Invia per email</a> 
     </p>
     
     <h5>Link per la amministrazione</h5>

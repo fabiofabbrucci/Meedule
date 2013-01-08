@@ -13,9 +13,14 @@ class MeetingType extends AbstractType
             ->add('title')
             ->add('date', 'date', array(
                 'format' => 'dd/MM/yyyy',
+                'years' => array(date('Y'), date('Y')+1, date('Y')+2, date('Y')+3, date('Y')+4),
             ))
-            ->add('time')
+            ->add('time','time',array(
+                'hours' => array(8,9,10,11,12,13,14,15,16,17,18,19,20,21),
+                'minutes' => array(0,15,30,45),
+            ))
             ->add('duration', 'choice', array(
+                'required' => false,
                 'choices' => array(
                     '10' => '10 minuti',
                     '20' => '20 minuti',
@@ -26,10 +31,12 @@ class MeetingType extends AbstractType
                     '180' => '3 ore',
                     )
             ))
-            ->add('address')
-            ->add('description')
+            ->add('address', 'text', array(
+                'required' => false
+            ))
             ->add('email', 'email')
             ->add('name')
+            ->add('description')
         ;
     }
 

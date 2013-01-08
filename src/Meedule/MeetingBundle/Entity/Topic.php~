@@ -5,12 +5,12 @@ namespace Meedule\MeetingBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Meedule\MeetingBundle\Entity\User
+ * Meedule\MeetingBundle\Entity\Topic
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class User
+class Topic
 {
     /**
      * @var integer $id
@@ -29,13 +29,26 @@ class User
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Meedule\MeetingBundle\Entity\Meeting", inversedBy="attendees")
+     * @var integer $position
+     *
+     * @ORM\Column(name="position", type="integer")
+     */
+    private $position;
+
+    /**
+     * @var string $owner
+     *
+     * @ORM\Column(name="owner", type="string", length=255)
+     */
+    private $owner;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Meedule\MeetingBundle\Entity\Meeting", inversedBy="topics")
      * @ORM\JoinColumn(name="meeting_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $meeting;
-    
-    private $delete_form;
-    
+
+
     /**
      * Get id
      *
@@ -67,30 +80,42 @@ class User
     }
 
     /**
-     * Set meeting
+     * Set position
      *
-     * @param Meedule\MeetingBundle\Entity\Meeting $meeting
+     * @param integer $position
      */
-    public function setMeeting(\Meedule\MeetingBundle\Entity\Meeting $meeting)
+    public function setPosition($position)
     {
-        $this->meeting = $meeting;
+        $this->position = $position;
     }
 
     /**
-     * Get meeting
+     * Get position
      *
-     * @return Meedule\MeetingBundle\Entity\Meeting 
+     * @return integer 
      */
-    public function getMeeting()
+    public function getPosition()
     {
-        return $this->meeting;
+        return $this->position;
     }
-    
-    public function setDeleteForm($form){
-        $this->delete_form = $form;
+
+    /**
+     * Set owner
+     *
+     * @param string $owner
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
     }
-    
-    public function getDeleteForm(){
-        return $this->delete_form;
+
+    /**
+     * Get owner
+     *
+     * @return string 
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 }

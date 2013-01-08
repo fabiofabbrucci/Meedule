@@ -2,13 +2,13 @@
 
 {% block content %}
     <ul class="breadcrumb">
-        <li class="active">Crea il meeting <span class="divider">&gt;</span></li>
+        <li class="active">Crea la riunione <span class="divider">&gt;</span></li>
         <li>Inserisci gli argomenti <span class="divider">&gt;</span></li>
         <li>Condividi</li>
     </ul>
 
-    <h1>Crea il tuo evento</h1>
-    <p>Riunioni, eventi, assemblee o appuntamenti sono momenti importanti ma soprattutto devono essere efficaci.</p>
+    <h1>Crea la tua riunione</h1>
+    <p>Eventi, assemblee o appuntamenti sono momenti importanti ma soprattutto devono essere <b>efficaci</b>.</p>
     <hr />
     
     <form action="{{ path('meeting_create') }}" method="post" {{ form_enctype(form) }} class="form-horizontal">

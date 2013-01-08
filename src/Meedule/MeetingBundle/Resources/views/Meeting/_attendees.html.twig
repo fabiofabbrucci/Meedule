@@ -1,15 +1,11 @@
-<div class="span3" id="attendees">
+<div class="well well-small">
     <h5>{{ attendees|length }} Partecipanti:</h5>
-    <div class="well well-small">
+    {% if attendees %}
         <ol>
         {% for attendee in attendees %}
             <li>
                 <form 
-                    action="{% if url_delete|default(false) %}
-                        {{ path(url_delete, {'slug': entity.slugprivate, 'id': attendee.id }) }}
-                    {% else %}
-                        {{ path('meeting_attendee_delete', {'slug': entity.slugpublic, 'id': attendee.id }) }}
-                    {% endif %}" 
+                    action="{{ path(url_delete_attendee, {'slug': slug, 'id': attendee.id }) }}" 
                     method="post"
                     class="delete_form pull-right"
                     >
@@ -21,15 +17,13 @@
             </li>
         {% endfor %}
         </ol>
-        <hr />
-        <form action="{% if url_create|default(false) %}
-                        {{ path(url_create, {'slug': entity.slugprivate}) }}
-                    {% else %}
-                        {{ path('meeting_attendee_create', {'slug': entity.slugpublic}) }}
-                    {% endif %}" method="post" {{ form_enctype(form) }} class="form-vertical">
-            {{ form_widget(form) }}
+    {% endif %}
 
-            <button type="submit" class="btn btn-primary btn-small">Aggiungi</button>
-        </form>
-    </div>
+    <hr />
+
+    <form action="{{ path(url_create_attendee, {'slug': slug }) }}" method="post" {{ form_enctype(form) }} class="form-vertical">
+        {{ form_widget(form) }}
+
+        <button type="submit" class="btn btn-primary btn-small">Partecipa</button>
+    </form>
 </div>
