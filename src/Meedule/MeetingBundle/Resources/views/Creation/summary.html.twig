@@ -17,7 +17,7 @@
         <div class="span8">
             <div class="well">
                 <h4>Argomenti:</h4>
-                {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' %}
+                {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics_id': 'topics_agenda'} %}
             </div> 
         </div>
     </div>

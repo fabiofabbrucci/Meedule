@@ -15,14 +15,14 @@
             <div class="well">
                 <h4>Argomenti:</h4>
                 {% block agenda_topics %}
-                    {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_agenda} %}
+                    {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_agenda, 'topics_id': 'topics_agenda'} %}
                 {% endblock %}
                 {% block form_create_topic_agenda %}{% endblock %}
                 
                 <hr />
                 <h4>Argomenti proposti:</h4>
                 {% block crew_topics %}
-                    {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_crew, 'url_topic_delete': url_delete_topic_crew} %}
+                    {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_crew, 'url_topic_delete': url_delete_topic_crew, 'topics_id': 'topics_crew'} %}
                 {% endblock %}
                 
                 <form action="{{ path(url_create_topic_crew, {'slug': slug }) }}" method="post" {{ form_enctype(form_create_topic_crew) }} class="form-horizontal">
