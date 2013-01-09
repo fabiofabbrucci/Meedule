@@ -11,13 +11,15 @@
     <p>Specifica gli argomenti che andrete a trattare. Riduci lo spreco di concentrazione. Dai gas alle tue riunioni.</p>
     <hr />
     
-    <form action="{{ path('meeting_topic_create', {'slug': entity.slugprivate }) }}" method="post" {{ form_enctype(form_creation) }} class="form-horizontal">
-        {{ form_widget(form_creation) }}
-        <button class="hide">Aggiungi</button>
-    </form>
+    <div class="well well-small">
+        <form action="{{ path('meeting_topic_create', {'slug': entity.slugprivate }) }}" method="post" {{ form_enctype(form_creation) }} class="form-horizontal">
+            {{ form_widget(form_creation) }}
+            <div class="form-actions">
+                <button class="btn btn-small btn-primary">Aggiungi</button>
+            </div>
+        </form>
+    </div>
     
-    <hr />
-
     {% if topics %}
     <div class="well">
         <h3>Argomenti:</h3>

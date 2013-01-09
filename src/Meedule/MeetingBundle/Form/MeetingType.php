@@ -12,7 +12,7 @@ class MeetingType extends AbstractType
         $builder
             ->add('title')
             ->add('date', 'date', array(
-                'format' => 'dd/MM/yyyy',
+                'format' => 'dd/MMM/yyyy',
                 'years' => array(date('Y'), date('Y')+1, date('Y')+2, date('Y')+3, date('Y')+4),
             ))
             ->add('time','time',array(
