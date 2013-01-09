@@ -112,6 +112,11 @@ class CreationController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Meeting entity.');
         }
+        
+        if($entity->getAgendaTopics()->count() == 0){
+            $this->get('session')->setFlash('warning', 'Specifica almeno un argomento per la tua riunione');
+            return $this->redirect($this->generateUrl('meeting_agenda', array('slug' => $entity->getSlugprivate())));
+        }
 
         $form   = $this->createForm(new AgendaType(), $entity);
         $request = $this->getRequest();
