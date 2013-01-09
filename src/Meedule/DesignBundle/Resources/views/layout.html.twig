@@ -31,8 +31,17 @@
 <script>
     $(document).ready(function(){
         $("a[rel=popover]").popover();
+        $("*[rel=tooltip]").tooltip();
     });
 </script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/it_IT/all.js#xfbml=1&appId=364269810337276";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 {% endblock %}
 
 {% block body %}
@@ -41,6 +50,31 @@
         <div class="navbar-inner">
             <div class="container-fluid">
                 <a class="brand" href="{{ path('index') }}">Meedule</a>
+                <div class="pull-right">
+                    <a 
+                        href="#" 
+                        class="btn" 
+                        rel="popover" 
+                        data-placement="bottom" 
+                        data-content="
+                        <a href='#'>Symfony</a>, <a href='#'>Bootstrap</a>, <a href='#'>Zocials</a>, <a href='#'>Abmundi</a> and <a href='#'>Doodle</a> for their useful inspirations
+                        " 
+                        data-original-title="Thanks to a lot of tools"
+                        id="thanks">
+                            <i class="icon-heart"></i></a>
+                    <a 
+                        class='zocial twitter' 
+                        rel="tooltip" 
+                        title="Se ti interessa" 
+                        data-placement="bottom"
+                        href="https://www.facebook.com/Meedule">Followa</a>
+                    <a 
+                        class='zocial facebook' 
+                        rel="tooltip" 
+                        title="Se ti piace"
+                        data-placement="bottom"
+                        href="https://www.facebook.com/Meedule">Segui</a>
+                </div>
             </div>
         </div>
     </div>
@@ -56,29 +90,24 @@
         </div>
     </div>
     
+    <hr />
+    <div class="container-fluid">
+        &copy; 2013 Meedule - 
+        <a class="zocial twitter" href="https://github.com/fabiofabbrucci/Meedule">Fabbrucci</a> 
+        <a class="zocial github" href="https://github.com/fabiofabbrucci/Meedule">Contribute</a>
+    </div>
+                
+    <!--
     <div class="navbar navbar-fixed-bottom" id="footer">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <b>&copy; Meedule</b> 
-                - Prepare easily your meetings
-                <a 
-                    href="#" 
-                    class="btn" 
-                    rel="popover" 
-                    data-placement="top" 
-                    data-content="
-                    <a href='#'>Symfony</a>, <a href='#'>Bootstrap</a>, <a href='#'>Zocials</a>, <a href='#'>Abmundi</a> and <a href='#'>Doodle</a> for their useful inspirations
-                    " 
-                    data-original-title="Thanks to a lot of tools"
-                    id="thanks">
-                        <i class="icon-heart"></i></a>
-                <!--
-                <div class="pull-right">
-                    <button class='zocial twitter'>Seguici</button>
-                    <button class='zocial facebook'>Seguici</button>
-                </div>
-                -->
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <b>&copy; Meedule</b> 
+            <div class="pull-right">
+                <button class='zocial twitter'>Seguici</button>
+                <button class='zocial facebook'>Seguici</button>
             </div>
         </div>
     </div>
+    </div>
+    -->
 {% endblock %}
