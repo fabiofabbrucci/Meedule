@@ -124,7 +124,7 @@ class CreationController extends Controller
             
             $message = \Swift_Message::newInstance()
                 ->setSubject('Meedule: '  . $entity->getTitle())
-                ->setFrom(array('fabio.fabbrucci@gmail.com' => 'Meedule'))
+                ->setFrom(array('meedule@gmail.com' => 'Meedule'))
                 ->setTo($entity->getEmail())
                 ->setBody(
                     $this->renderView(

@@ -32,6 +32,7 @@
     <h5>Link per la partecipazione</h5>
     <p>
         <i class="icon-share"></i> <a href="{{ path('meeting_show',{'slug': entity.slugpublic}) }}" target="_blank">{{ url('meeting_show', {'slug': entity.slugpublic}) }}</a><br />
+        <div class="fb-send" data-href="{{ url('meeting_show', {'slug': entity.slugpublic}) }}" data-font="arial"></div>
     </p>
     
     <h5>Link per la amministrazione</h5>

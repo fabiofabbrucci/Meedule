@@ -13,6 +13,14 @@
         %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
+            
+        {% block meta %}
+            <meta property="og:title" content="Meedule" />
+            <meta property="og:description" content="Free fun tool for your meetings" />
+        {% endblock %}
+        <meta 
+            property="og:image"            
+            content="{{ 'http://' ~ app.request.host ~ asset('bundles/meeduledesign/img/meedule.picture.png') }}" /> 
     </head>
     <body>
         {% block body %}{% endblock %}

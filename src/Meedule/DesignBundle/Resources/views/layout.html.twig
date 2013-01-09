@@ -30,7 +30,7 @@
     {% endjavascripts %}
 <script>
     $(document).ready(function(){
-        $("a[rel=popover]").popover();
+        $("*[rel=popover]").popover();
         $("*[rel=tooltip]").tooltip();
     });
 </script>
@@ -42,6 +42,22 @@
   js.src = "//connect.facebook.net/it_IT/all.js#xfbml=1&appId=364269810337276";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+    
+{% if app.environment == "prod" %}
+    <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28629605-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    </script>
+{% endif %}
 {% endblock %}
 
 {% block body %}
@@ -49,19 +65,10 @@
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container-fluid">
-                <a class="brand" href="{{ path('index') }}">Meedule</a>
+                <a id="brand" href="{{ path('index') }}">
+                    <img src={{ asset('bundles/meeduledesign/img/meedule.logo.png') }} />
+                </a>
                 <div class="pull-right">
-                    <a 
-                        href="#" 
-                        class="btn" 
-                        rel="popover" 
-                        data-placement="bottom" 
-                        data-content="
-                        <a href='#'>Symfony</a>, <a href='#'>Bootstrap</a>, <a href='#'>Zocials</a>, <a href='#'>Abmundi</a> and <a href='#'>Doodle</a> for their useful inspirations
-                        " 
-                        data-original-title="Thanks to a lot of tools"
-                        id="thanks">
-                            <i class="icon-heart"></i></a>
                     <a 
                         class='zocial twitter' 
                         rel="tooltip" 
@@ -93,8 +100,10 @@
     <hr />
     <div class="container-fluid">
         &copy; 2013 Meedule - 
-        <a class="zocial twitter" href="https://github.com/fabiofabbrucci/Meedule">Fabbrucci</a> 
+        <a class="zocial twitter" href="https://twitter.com/fabbrucci">Fabbrucci</a> 
         <a class="zocial github" href="https://github.com/fabiofabbrucci/Meedule">Contribute</a>
+        <br />
+        <i class="icon-heart"></i> <a href='#'>Symfony</a>, <a href='#'>Bootstrap</a>, <a href='#'>Zocials</a>, <a href='#'>Abmundi</a> and <a href='#'>Doodle</a> for their useful inspirations
     </div>
                 
     <!--
