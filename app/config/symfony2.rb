@@ -502,7 +502,6 @@ after "deploy:finalize_update" do
   end
 
   run "chmod -R 777 #{latest_release}/#{cache_path}"
-  run "chmod 777 #{latest_release}/cd/content/compiled"
   run "chmod 777 #{shared_path}/app/spool"
   run "chmod 777 #{shared_path}/web/uploads"
   run "chmod 777 #{shared_path}/web/media"
