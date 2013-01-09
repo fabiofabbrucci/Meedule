@@ -1,17 +1,4 @@
 security:
-    encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
-
-    role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
-
-    providers:
-        in_memory:
-            users:
-                fabio:  { password: superfabio, roles: [ 'ROLE_USER' ] }
-                test: { password: iubn87h3dnh9hcd39nc3c3, roles: [ 'ROLE_USERS' ] }
-
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
@@ -22,6 +9,3 @@ security:
             anonymous: ~
             http_basic:
                 realm: "Secured Demo Area"
-
-    access_control:
-        #- { path: ^/admin, roles: ROLE_USER }
