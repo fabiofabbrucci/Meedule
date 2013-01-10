@@ -42,7 +42,7 @@ class CreationControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
         $this->assertEquals($crawler->filter('ol li')->count(), 2);
         
-        $form = $crawler->selectButton('Fine')->form();
+        $form = $crawler->selectButton('Clicca qui')->form();
         $client->submit($form);
         $crawler = $client->followRedirect();
         $this->assertEquals($crawler->filter('h1:contains("Titolo meeting")')->count(), 1);

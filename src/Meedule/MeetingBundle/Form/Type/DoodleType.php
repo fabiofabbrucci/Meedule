@@ -1,4 +1,4 @@
-<?
+<?php
 namespace Meedule\MeetingBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
