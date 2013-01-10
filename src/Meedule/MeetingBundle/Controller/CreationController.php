@@ -117,7 +117,7 @@ class CreationController extends Controller
             $this->get('session')->setFlash('warning', 'Specifica almeno un argomento per la tua riunione');
             return $this->redirect($this->generateUrl('meeting_agenda', array('slug' => $entity->getSlugprivate())));
         }
-
+        
         $form   = $this->createForm(new AgendaType(), $entity);
         $request = $this->getRequest();
         $form->bindRequest($request);
@@ -125,7 +125,6 @@ class CreationController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
-            $em->flush();
             
             $message = \Swift_Message::newInstance()
                 ->setSubject('Meedule: '  . $entity->getTitle())
@@ -140,6 +139,12 @@ class CreationController extends Controller
                 )
             ;
             $this->get('mailer')->send($message);
+            
+            $user  = new User();
+            $user->setName($entity->getName());
+            $user->setMeeting($entity);
+            $em->persist($user);
+            $em->flush();
             
             $this->get('session')->setFlash('notice', 'Il tuo meeting è stato creato con successo.');
 
