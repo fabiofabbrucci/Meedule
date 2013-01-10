@@ -5,10 +5,11 @@ meedule:
       date: Giorno
       time: Ora
       duration: Durata
-      address: Indirizzo
+      address: Luogo
       description: Descrizione
       name: Tuo nome
-      email: Email
+      mail: Email
+      doodle: Doodle
     topictype:
       name: Argomento
     topicpublictype:

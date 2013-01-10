@@ -19,7 +19,7 @@ class CreationControllerTest extends WebTestCase
         // Fill in the form and submit it
         $form = $crawler->selectButton('Avanti')->form(array(
             'meedule_meetingbundle_meetingtype[title]'  => 'Titolo meeting',
-            'meedule_meetingbundle_meetingtype[email]'  => 'mail@drclown.it',
+            'meedule_meetingbundle_meetingtype[mail]'  => 'mail@drclown.it',
             'meedule_meetingbundle_meetingtype[name]'  => 'Fabio',
         ));
         

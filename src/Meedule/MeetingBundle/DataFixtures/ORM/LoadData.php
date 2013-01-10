@@ -15,7 +15,7 @@ class LoadData implements FixtureInterface
         $meeting->setTitle('Meeting title');
         $meeting->setDate(new DateTime);
         $meeting->setTime(new DateTime);
-        $meeting->setEmail('mail@drclown.it');
+        $meeting->setMail('mail@drclown.it');
         $meeting->setDuration(10);
         $meeting->setName('Nome');
         $manager->persist($meeting);

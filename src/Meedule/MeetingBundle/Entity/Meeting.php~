@@ -2,6 +2,7 @@
 
 namespace Meedule\MeetingBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Meedule\MeetingBundle\Entity\MeetingRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Meeting
 {
@@ -103,84 +105,22 @@ class Meeting
     private $name;
     
     /**
-     * @var string $topic1
-     * 
-     * @ORM\Column(name="topic1", type="string", length=255, nullable="true")
-     */
-    private $topic1;
-    
-    /**
-     * @var string $topic2
-     * 
-     * @ORM\Column(name="topic2", type="string", length=255, nullable="true")
-     */
-    private $topic2;
-    
-    /**
-     * @var string $topic3
-     * 
-     * @ORM\Column(name="topic3", type="string", length=255, nullable="true")
-     */
-    private $topic3;
-    
-    /**
-     * @var string $topic4
-     * 
-     * @ORM\Column(name="topic4", type="string", length=255, nullable="true")
-     */
-    private $topic4;
-    
-    /**
-     * @var string $topic5
-     * 
-     * @ORM\Column(name="topic5", type="string", length=255, nullable="true")
-     */
-    private $topic5;
-    
-    /**
-     * @var string $topic6
-     * 
-     * @ORM\Column(name="topic6", type="string", length=255, nullable="true")
-     */
-    private $topic6;
-    
-    /**
-     * @var string $topic7
-     * 
-     * @ORM\Column(name="topic7", type="string", length=255, nullable="true")
-     */
-    private $topic7;
-    
-    /**
-     * @var string $topic8
-     * 
-     * @ORM\Column(name="topic8", type="string", length=255, nullable="true")
-     */
-    private $topic8;
-    
-    /**
-     * @var string $topic9
-     * 
-     * @ORM\Column(name="topic9", type="string", length=255, nullable="true")
-     */
-    private $topic9;
-    
-    /**
-     * @var string $topic10
-     * 
-     * @ORM\Column(name="topic10", type="string", length=255, nullable="true")
-     */
-    private $topic10;
-
-    /**
      * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\User", mappedBy="meeting", cascade={"persist", "remove"})
      */
     private $attendees;
     
     /**
      * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\Topic", mappedBy="meeting", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"position" = "ASC", "id" = "ASC"})
      */
     private $topics;
+    
+    /**
+     * @var string $doodle
+     *
+     * @ORM\Column(name="doodle", type="string", length=255, nullable="true")
+     */
+    private $doodle;
     
     /**
      * Get id
@@ -353,206 +293,6 @@ class Meeting
     }
 
     /**
-     * Set topic1
-     *
-     * @param string $topic1
-     */
-    public function setTopic1($topic1)
-    {
-        $this->topic1 = $topic1;
-    }
-
-    /**
-     * Get topic1
-     *
-     * @return string 
-     */
-    public function getTopic1()
-    {
-        return $this->topic1;
-    }
-
-    /**
-     * Set topic2
-     *
-     * @param string $topic2
-     */
-    public function setTopic2($topic2)
-    {
-        $this->topic2 = $topic2;
-    }
-
-    /**
-     * Get topic2
-     *
-     * @return string 
-     */
-    public function getTopic2()
-    {
-        return $this->topic2;
-    }
-
-    /**
-     * Set topic3
-     *
-     * @param string $topic3
-     */
-    public function setTopic3($topic3)
-    {
-        $this->topic3 = $topic3;
-    }
-
-    /**
-     * Get topic3
-     *
-     * @return string 
-     */
-    public function getTopic3()
-    {
-        return $this->topic3;
-    }
-
-    /**
-     * Set topic4
-     *
-     * @param string $topic4
-     */
-    public function setTopic4($topic4)
-    {
-        $this->topic4 = $topic4;
-    }
-
-    /**
-     * Get topic4
-     *
-     * @return string 
-     */
-    public function getTopic4()
-    {
-        return $this->topic4;
-    }
-
-    /**
-     * Set topic5
-     *
-     * @param string $topic5
-     */
-    public function setTopic5($topic5)
-    {
-        $this->topic5 = $topic5;
-    }
-
-    /**
-     * Get topic5
-     *
-     * @return string 
-     */
-    public function getTopic5()
-    {
-        return $this->topic5;
-    }
-
-    /**
-     * Set topic6
-     *
-     * @param string $topic6
-     */
-    public function setTopic6($topic6)
-    {
-        $this->topic6 = $topic6;
-    }
-
-    /**
-     * Get topic6
-     *
-     * @return string 
-     */
-    public function getTopic6()
-    {
-        return $this->topic6;
-    }
-
-    /**
-     * Set topic7
-     *
-     * @param string $topic7
-     */
-    public function setTopic7($topic7)
-    {
-        $this->topic7 = $topic7;
-    }
-
-    /**
-     * Get topic7
-     *
-     * @return string 
-     */
-    public function getTopic7()
-    {
-        return $this->topic7;
-    }
-
-    /**
-     * Set topic8
-     *
-     * @param string $topic8
-     */
-    public function setTopic8($topic8)
-    {
-        $this->topic8 = $topic8;
-    }
-
-    /**
-     * Get topic8
-     *
-     * @return string 
-     */
-    public function getTopic8()
-    {
-        return $this->topic8;
-    }
-
-    /**
-     * Set topic9
-     *
-     * @param string $topic9
-     */
-    public function setTopic9($topic9)
-    {
-        $this->topic9 = $topic9;
-    }
-
-    /**
-     * Get topic9
-     *
-     * @return string 
-     */
-    public function getTopic9()
-    {
-        return $this->topic9;
-    }
-
-    /**
-     * Set topic10
-     *
-     * @param string $topic10
-     */
-    public function setTopic10($topic10)
-    {
-        $this->topic10 = $topic10;
-    }
-
-    /**
-     * Get topic10
-     *
-     * @return string 
-     */
-    public function getTopic10()
-    {
-        return $this->topic10;
-    }
-
-    /**
      * Set slugpublic
      *
      * @param string $slugpublic
@@ -612,12 +352,17 @@ class Meeting
         return $this->name;
     }
     
-    public function generateSlugs()
+    /**
+    * @ORM\PrePersist
+    */
+    public function setSlugs()
     {
-        $data = new \DateTime();
-        $string = $this->getTitle() . $this->getEmail() . $data->format('YmsHis') . rand(1,1000000);
-        $this->setSlugpublic(md5($string));
-        $this->setSlugprivate(md5(strrev($string)));
+        if(!$this->getSlugpublic()){
+            $data = new \DateTime();
+            $string = $this->getTitle() . $this->getEmail() . $data->format('YmsHis') . rand(1,1000000);
+            $this->setSlugpublic(md5($string));
+            $this->setSlugprivate(md5(strrev($string)));
+        }
     }
 
     /**
@@ -647,5 +392,55 @@ class Meeting
             return false;
         }
         return true;
+    }
+
+    /**
+     * Add topics
+     *
+     * @param Meedule\MeetingBundle\Entity\Topic $topics
+     */
+    public function addTopic(\Meedule\MeetingBundle\Entity\Topic $topics)
+    {
+        $this->topics[] = $topics;
+    }
+
+    /**
+     * Get topics
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTopics()
+    {
+        return $this->topics;
+    }
+    
+    /**
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getAgendaTopics()
+    {
+        $topics = new ArrayCollection;
+        foreach ($this->getTopics() as $topic) {
+            if (!$topic->getOwner()) {
+                $topics->add($topic);
+            }
+        }
+
+        return $topics;
+    }
+    
+    /**
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getCrewTopics()
+    {
+        $topics = new ArrayCollection;
+        foreach ($this->getTopics() as $topic) {
+            if ($topic->getOwner()) {
+                $topics->add($topic);
+            }
+        }
+
+        return $topics;
     }
 }

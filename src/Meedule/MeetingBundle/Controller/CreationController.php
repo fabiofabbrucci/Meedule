@@ -129,7 +129,7 @@ class CreationController extends Controller
             $message = \Swift_Message::newInstance()
                 ->setSubject('Meedule: '  . $entity->getTitle())
                 ->setFrom(array('meedule@gmail.com' => 'Meedule'))
-                ->setTo($entity->getEmail())
+                ->setTo($entity->getMail())
                 ->setBody(
                     $this->renderView(
                         'MeeduleMeetingBundle:Creation:email.txt.twig',

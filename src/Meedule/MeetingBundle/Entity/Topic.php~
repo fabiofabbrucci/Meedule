@@ -38,7 +38,7 @@ class Topic
     /**
      * @var string $owner
      *
-     * @ORM\Column(name="owner", type="string", length=255)
+     * @ORM\Column(name="owner", type="string", length=255, nullable="true")
      */
     private $owner;
     
@@ -48,7 +48,8 @@ class Topic
      */
     private $meeting;
 
-
+    private $delete_form;
+    
     /**
      * Get id
      *
@@ -117,5 +118,33 @@ class Topic
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    /**
+     * Set meeting
+     *
+     * @param Meedule\MeetingBundle\Entity\Meeting $meeting
+     */
+    public function setMeeting(\Meedule\MeetingBundle\Entity\Meeting $meeting)
+    {
+        $this->meeting = $meeting;
+    }
+
+    /**
+     * Get meeting
+     *
+     * @return Meedule\MeetingBundle\Entity\Meeting 
+     */
+    public function getMeeting()
+    {
+        return $this->meeting;
+    }
+    
+    public function setDeleteForm($form){
+        $this->delete_form = $form;
+    }
+    
+    public function getDeleteForm(){
+        return $this->delete_form;
     }
 }

@@ -37,7 +37,7 @@ class Meeting
     /**
      * @var date $date
      *
-     * @ORM\Column(name="date", type="date")
+     * @ORM\Column(name="date", type="date", nullable="true")
      */
     private $date;
     
@@ -51,7 +51,7 @@ class Meeting
     /**
      * @var int $duration
      *
-     * @ORM\Column(name="duration", type="float")
+     * @ORM\Column(name="duration", type="float", nullable="true")
      */
     private $duration;
 
@@ -91,11 +91,11 @@ class Meeting
     private $slugprivate;
     
     /**
-     * @var string $email
+     * @var string $mail
      * 
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="mail", type="string", length=255)
      */
-    private $email;
+    private $mail;
     
     /**
      * @var string $name
@@ -114,6 +114,13 @@ class Meeting
      * @ORM\OrderBy({"position" = "ASC", "id" = "ASC"})
      */
     private $topics;
+    
+    /**
+     * @var string $doodle
+     *
+     * @ORM\Column(name="doodle", type="string", length=255, nullable="true")
+     */
+    private $doodle;
     
     /**
      * Get id
@@ -206,23 +213,23 @@ class Meeting
     }
 
     /**
-     * Set email
+     * Set mail
      *
-     * @param string $email
+     * @param string $mail
      */
-    public function setEmail($email)
+    public function setMail($mail)
     {
-        $this->email = $email;
+        $this->mail = $mail;
     }
 
     /**
-     * Get email
+     * Get mail
      *
      * @return string 
      */
-    public function getEmail()
+    public function getMail()
     {
-        return $this->email;
+        return $this->mail;
     }
 
     /**
@@ -352,7 +359,7 @@ class Meeting
     {
         if(!$this->getSlugpublic()){
             $data = new \DateTime();
-            $string = $this->getTitle() . $this->getEmail() . $data->format('YmsHis') . rand(1,1000000);
+            $string = $this->getTitle() . $this->getMail() . $data->format('YmsHis') . rand(1,1000000);
             $this->setSlugpublic(md5($string));
             $this->setSlugprivate(md5(strrev($string)));
         }
@@ -435,5 +442,25 @@ class Meeting
         }
 
         return $topics;
+    }
+
+    /**
+     * Set doodle
+     *
+     * @param string $doodle
+     */
+    public function setDoodle($doodle)
+    {
+        $this->doodle = $doodle;
+    }
+
+    /**
+     * Get doodle
+     *
+     * @return string 
+     */
+    public function getDoodle()
+    {
+        return $this->doodle;
     }
 }

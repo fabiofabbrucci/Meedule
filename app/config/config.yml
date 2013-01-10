@@ -23,6 +23,7 @@ twig:
     form:
         resources: 
             - 'MeeduleDesignBundle:Form:bootstrapv2.html.twig'
+            - 'MeeduleMeetingBundle:Form:fields.html.twig'
     globals:
         date_format: "D d/m/Y H:i:s"
         date_xml_format: "Y-m-d"

@@ -4,6 +4,8 @@ namespace Meedule\MeetingBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
+use Meedule\MeetingBundle\Form\Type\DoodleType;
+use Meedule\MeetingBundle\Form\Type\MailType;
 
 class MeetingType extends AbstractType
 {
@@ -31,10 +33,13 @@ class MeetingType extends AbstractType
                     '180' => '3 ore',
                     )
             ))
+            ->add('doodle', new DoodleType(), array(
+                'required' => false,
+            ))
             ->add('address', 'text', array(
                 'required' => false
             ))
-            ->add('email', 'email')
+            ->add('mail', new MailType())
             ->add('name')
             ->add('description')
         ;
