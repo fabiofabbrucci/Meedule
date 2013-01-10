@@ -13,6 +13,7 @@
         <div class="pull-right">
             {% block commands %}{% endblock %}
             <a href="javascript:window.print();">Stampa <i class="icon-print"></i></a>
+            <div class="fb-send" data-href="{{ url('meeting_show', {'slug': entity.slugpublic}) }}" data-font="arial"></div>
         </div>
         {% include 'MeeduleMeetingBundle:Meeting:_detail.html.twig' %}
     </div>
