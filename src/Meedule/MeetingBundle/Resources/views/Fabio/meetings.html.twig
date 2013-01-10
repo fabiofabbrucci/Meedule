@@ -1,0 +1,31 @@
+{% extends 'MeeduleDesignBundle::layout.html.twig' %}
+
+{% block content %}
+<table
+    class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Titolo</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Agenda</th>
+            <th>Crew</th>
+            <th>Attendee</th>
+        </tr>
+    </thead>
+    {% for meeting in entities %}
+    <tr>
+        <td>
+            <a href="{{ path('meeting_show',{'slug': meeting.slugpublic}) }}" target="_blank">
+                {{ meeting.title }}
+            </a>
+        </td>
+        <td>{{ meeting.name }}</td>
+        <td>{{ meeting.email }}</td>
+        <td>{{ meeting.agendaTopics|length }}</td>
+        <td>{{ meeting.crewTopics|length }}</td>
+        <td>{{ meeting.attendees|length }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
