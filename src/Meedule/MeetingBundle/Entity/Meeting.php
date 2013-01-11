@@ -4,6 +4,7 @@ namespace Meedule\MeetingBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Meedule\MeetingBundle\Entity\Meeting
@@ -31,6 +32,7 @@ class Meeting
      * @var string $title
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -94,6 +96,7 @@ class Meeting
      * @var string $mail
      * 
      * @ORM\Column(name="mail", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $mail;
     
@@ -101,6 +104,7 @@ class Meeting
      * @var string $name
      * 
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
     

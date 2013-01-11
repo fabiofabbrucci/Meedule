@@ -3,6 +3,7 @@
 namespace Meedule\MeetingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Meedule\MeetingBundle\Entity\Topic
@@ -25,6 +26,7 @@ class Topic
      * @var string $name
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
