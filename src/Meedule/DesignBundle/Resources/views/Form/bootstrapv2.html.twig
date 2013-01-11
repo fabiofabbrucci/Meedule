@@ -41,7 +41,7 @@
         {% for child in form %}
             <label class="checkbox">
                 {{ form_widget(child) }}
-                {{ form_label(child) }}
+                {{ child.get('label') }}
             </label>
             <div class="clearfix"></div>
         {% endfor %}

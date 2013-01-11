@@ -45,6 +45,13 @@ class Topic
     private $owner;
     
     /**
+     * @var boolea $approved
+     *
+     * @ORM\Column(name="approved", type="boolean", nullable="true")
+     */
+    private $approved;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="Meedule\MeetingBundle\Entity\Meeting", inversedBy="topics")
      * @ORM\JoinColumn(name="meeting_id", referencedColumnName="id", onDelete="CASCADE")
      */
@@ -148,5 +155,40 @@ class Topic
     
     public function getDeleteForm(){
         return $this->delete_form;
+    }
+    
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
+    /**
+     * Set approved
+     *
+     * @param boolean $approved
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+    }
+
+    /**
+     * Get approved
+     *
+     * @return boolean 
+     */
+    public function getApproved()
+    {
+        return $this->approved;
+    }
+    
+    /**
+     * Is approved
+     *
+     * @return boolean 
+     */
+    public function isApproved()
+    {
+        return (bool)$this->approved;
     }
 }

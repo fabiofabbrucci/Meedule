@@ -11,10 +11,9 @@
 
     <div class="well">
         <div class="pull-right">
-            <div class="fb-send" data-href="{{ url('meeting_show', {'slug': entity.slugpublic}) }}" data-font="arial"></div>
-            <a href="javascript:window.print();">Stampa <i class="icon-print"></i></a>
-            <br />
             {% block commands %}{% endblock %}
+            <a href="javascript:window.print();">Stampa <i class="icon-print"></i></a><br />
+            <div class="fb-send" data-href="{{ url('meeting_show', {'slug': entity.slugpublic}) }}" data-font="arial"></div>
         </div>
         {% include 'MeeduleMeetingBundle:Meeting:_detail.html.twig' %}
     </div>

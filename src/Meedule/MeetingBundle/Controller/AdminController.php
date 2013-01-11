@@ -14,6 +14,7 @@ use Meedule\MeetingBundle\Form\AgendaType;
 use Meedule\MeetingBundle\Form\AttendeeType;
 use Meedule\MeetingBundle\Form\TopicType;
 use Meedule\MeetingBundle\Form\TopicPublicType;
+use Meedule\MeetingBundle\Form\CloseType;
 
 /**
  * Meeting controller.
@@ -148,5 +149,28 @@ class AdminController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+    
+    /**
+     * @Route("/finalize", name="meeting_admin_finalize")
+     * @Template()
+     */
+    public function finalizeAction($slug)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $meeting = $em->getRepository('MeeduleMeetingBundle:Meeting')->findOneBySlugprivate($slug);
+
+        if (!$meeting) {
+            throw $this->createNotFoundException('Unable to find Meeting entity.');
+        }
+        
+        $form = $this
+            ->get('form.factory')
+            ->create(new CloseType($meeting), $meeting);
+        
+        return array(
+            'entity' => $meeting,
+            'form' => $form->createView(),
+        );
     }
 }

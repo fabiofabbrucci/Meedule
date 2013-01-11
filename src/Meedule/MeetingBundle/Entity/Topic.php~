@@ -3,6 +3,7 @@
 namespace Meedule\MeetingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Meedule\MeetingBundle\Entity\Topic
@@ -25,6 +26,7 @@ class Topic
      * @var string $name
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -41,6 +43,13 @@ class Topic
      * @ORM\Column(name="owner", type="string", length=255, nullable="true")
      */
     private $owner;
+    
+    /**
+     * @var boolea $approved
+     *
+     * @ORM\Column(name="approved", type="boolean", nullable="true")
+     */
+    private $approved;
     
     /**
      * @ORM\ManyToOne(targetEntity="Meedule\MeetingBundle\Entity\Meeting", inversedBy="topics")
@@ -146,5 +155,10 @@ class Topic
     
     public function getDeleteForm(){
         return $this->delete_form;
+    }
+    
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

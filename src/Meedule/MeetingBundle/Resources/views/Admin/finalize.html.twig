@@ -1,0 +1,23 @@
+{% extends 'MeeduleDesignBundle::layout.html.twig' %}
+
+{% block content %}
+    
+
+    <h1>Chiudi "{{ entity.title }}"</h1>
+    <hr />
+    <p>
+        Il tuo meeting sta per essere chiuso. Non sarà dunque possibile aggiungere ulteriori registrazioni o argomenti.
+    </p>
+    
+    <form action="{{ path('meeting_admin_update', {'slug': entity.slugprivate}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
+        {{ form_widget(form) }}
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success btn-large">Salva</button>
+            o <a href="{{ path('meeting_admin', {'slug': entity.slugprivate}) }}">
+                indietro
+            </a>
+         </div>
+    </form>
+
+{% endblock %}
