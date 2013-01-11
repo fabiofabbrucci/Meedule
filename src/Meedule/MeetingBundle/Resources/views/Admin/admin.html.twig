@@ -24,6 +24,7 @@
     <script>
         $("#topics_agenda").addClass('sortable');
         $("#topics_agenda").sortable({
+            cursor: 'move',
             stop: function( event, ui ) {
                 $.ajax({
                     type: 'POST',

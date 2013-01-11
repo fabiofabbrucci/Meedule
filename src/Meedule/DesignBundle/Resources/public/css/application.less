@@ -1,14 +1,10 @@
 @import '../bootstrap/mixins.less';
 @import '../bootstrap/variables.less';
 
-body {
-    padding-top: 60px;
+@orange: #f89329;
+
+body{
     padding-bottom: 40px;
-}
-.navbar{
-    .nav-collapse.collapse{
-       overflow: visible !important;
-    }
 }
 .content{
     max-width: 1280px;
@@ -59,7 +55,7 @@ ol{
             margin: 0px;
         }
         &:hover{
-            background-color: @btnPrimaryBackground;
+            background-color: @orange;
             color: white;
             form{
                 visibility: visible;
@@ -75,7 +71,8 @@ ol{
     }
 }
 
-.navbar-fixed-top{
+.navbar-static-top{
+    margin-bottom: 20px;
     .pull-right{
         margin-top: 5px;
     }
@@ -107,6 +104,15 @@ ol{
     }
     .btn-large{
         font-size: 30px;
-        .buttonBackground(#f89329, darken(#f89329, 10%));
+        .buttonBackground(@orange, darken(@orange, 10%));
+    }
+}
+
+.sortable{
+    li:hover {
+        cursor: pointer;
+    }
+    li.ui-sortable-helper {
+        cursor: move;
     }
 }

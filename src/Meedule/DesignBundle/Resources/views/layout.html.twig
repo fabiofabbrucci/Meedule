@@ -62,26 +62,12 @@
 
 {% block body %}
     {% block topbar %}
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-static-top">
         <div class="navbar-inner">
             <div class="container-fluid">
                 <a id="brand" href="{{ path('index') }}">
                     <img src={{ asset('bundles/meeduledesign/img/meedule.logo.png') }} />
                 </a>
-                <div class="pull-right">
-                    <a 
-                        class='zocial twitter' 
-                        rel="tooltip" 
-                        title="Se ti interessa" 
-                        data-placement="bottom"
-                        href="https://www.twitter.com/Meedule">Followa</a>
-                    <a 
-                        class='zocial facebook' 
-                        rel="tooltip" 
-                        title="Se ti piace"
-                        data-placement="bottom"
-                        href="https://www.facebook.com/Meedule">Segui</a>
-                </div>
             </div>
         </div>
     </div>
@@ -100,8 +86,33 @@
     <hr />
     <div class="container-fluid">
         &copy; 2013 Meedule - 
-        <a class="zocial twitter" target="_blank" href="https://twitter.com/fabbrucci">Fabbrucci</a> 
-        <a class="zocial github" target="_blank" href="https://github.com/fabiofabbrucci/Meedule">Contribute</a>
+        <a 
+            class='zocial twitter' 
+            rel="tooltip" 
+            title="Se ti interessa" 
+            data-placement="top"
+            href="https://www.twitter.com/Meedule">Followa</a>
+        <a 
+            class='zocial facebook' 
+            rel="tooltip" 
+            title="Se ti piace"
+            data-placement="top"
+            href="https://www.facebook.com/Meedule">Segui</a>
+        -
+        <a 
+            class="zocial twitter" 
+            target="_blank" 
+            rel="tooltip" 
+            title="Created By"
+            data-placement="top"
+            href="https://twitter.com/fabbrucci">Fabbrucci</a> 
+        <a 
+            class="zocial github" 
+            target="_blank" 
+            rel="tooltip" 
+            title="Fork it on github"
+            data-placement="top"
+            href="https://github.com/fabiofabbrucci/Meedule">Contribute</a>
         <br />
         <i class="icon-heart"></i> 
         <a href='http://symfony.com' target="_blank">Symfony</a>, 

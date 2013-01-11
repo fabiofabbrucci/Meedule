@@ -30,7 +30,8 @@
     <hr />
     <form action="{{ path('meeting_finalize', {'slug': entity.slugprivate }) }}" method="post" {{ form_enctype(form_finalize) }}>
         {{ form_widget(form_finalize) }}
-        <button type="submit" class="btn btn-success btn-large">Clicca qui</button> quando hai finito l'agenda.
+        <button type="submit" class="btn btn-success btn-large">Clicca qui</button> quando hai finito l'agenda.<br />
+        <small>Non ti preoccupare se la agenda sia incompleta. Potrai tornare a cambiarla più avanti.</small>
     </form>
     
 {% endblock %}
@@ -41,6 +42,7 @@
         $('#meedule_meetingbundle_topictype_name').focus();
         $("#topics_agenda").addClass('sortable');
         $("#topics_agenda").sortable({
+            cursor: 'move',
             stop: function( event, ui ) {
                 $.ajax({
                     type: 'POST',
