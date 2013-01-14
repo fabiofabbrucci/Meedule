@@ -10,8 +10,13 @@ class TopicPublicType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('owner','text', array('required' => true))
+            ->add('name', 'text', array(
+                'attr' => array('placeholder' => 'Anailisi della pubblicità'),
+            ))
+            ->add('owner','text', array(
+                'required' => true,
+                'attr' => array('placeholder' => 'Mario Rossi'),
+            ))
         ;
     }
 

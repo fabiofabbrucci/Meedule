@@ -35,7 +35,9 @@
                 {% endblock %}
                 
                 <form action="{{ path(url_create_topic_crew, {'slug': slug }) }}" method="post" {{ form_enctype(form_create_topic_crew) }} class="form-horizontal">
-                    {{ form_widget(form_create_topic_crew) }}
+                    {{ form_widget(form_create_topic_crew.name) }}
+                    {{ form_widget(form_create_topic_crew.owner) }}
+                    {{ form_rest(form_create_topic_crew) }}
                     <button type="submit" class="btn btn-primary btn-small">Aggiungi</button>
                 </form>
             </div>
