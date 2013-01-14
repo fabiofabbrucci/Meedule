@@ -12,7 +12,15 @@ class MeetingType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('title')
+            ->add('title', 'text', array(
+                'attr' => array('placeholder' => 'Riunione di bilancio'),
+            ))
+            ->add('mail', new MailType(),array(
+                'attr' => array('placeholder' => 'mariorossi@gmail.com'),
+            ))
+            ->add('name', 'text', array(
+                'attr' => array('placeholder' => 'Mario Rossi'),
+            ))
             ->add('date', 'date', array(
                 'format' => 'dd/MMM/yyyy',
                 'years' => array(date('Y'), date('Y')+1, date('Y')+2, date('Y')+3, date('Y')+4),
@@ -37,11 +45,12 @@ class MeetingType extends AbstractType
                 'required' => false,
             ))
             ->add('address', 'text', array(
-                'required' => false
+                'required' => false,
+                'attr' => array('placeholder' => 'Roma, via del corso'),
             ))
-            ->add('mail', new MailType())
-            ->add('name')
-            ->add('description')
+            ->add('description', 'textarea', array(
+                'attr' => array('placeholder' => 'Note ulteriori del tuo meeting'),
+            ))
         ;
     }
 
