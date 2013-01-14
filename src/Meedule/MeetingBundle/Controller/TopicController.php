@@ -52,11 +52,7 @@ class TopicController extends Controller
         }
         $topic = new Topic();
         $form    = $this->createForm(new TopicPublicType(), $topic);
-        if(!$topic->getName()){
-            $this->get('session')->setFlash('warning', 'Devi specificare il tuo nome');
-        }else{
-            $this->create($meeting, $form, $topic);
-        }
+        $this->create($meeting, $form, $topic);
         return $this->redirect($this->generateUrl('meeting_show', array('slug' => $slug)));
     }
     

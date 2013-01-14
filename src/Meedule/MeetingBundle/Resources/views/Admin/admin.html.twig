@@ -15,7 +15,8 @@
     
 {% block form_create_topic_agenda %}
     <form action="{{ path(url_create_topic_agenda, {'slug': slug }) }}" method="post" {{ form_enctype(form_create_topic_agenda) }} class="form-horizontal">
-        {{ form_widget(form_create_topic_agenda) }}
+        {{ form_widget(form_create_topic_agenda.name) }}
+        {{ form_rest(form_create_topic_agenda) }}
         <button type="submit" class="btn btn-primary btn-small">Aggiungi</button>
     </form>
 {% endblock %}

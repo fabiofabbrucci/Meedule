@@ -10,7 +10,9 @@ class TopicType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', 'text', array(
+                'attr' => array('placeholder' => 'Analisi del budget'),
+            ))
         ;
     }
 

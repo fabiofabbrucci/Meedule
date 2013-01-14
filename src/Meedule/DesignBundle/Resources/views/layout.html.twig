@@ -62,29 +62,31 @@
 
 {% block body %}
     {% block topbar %}
-    <div class="navbar navbar-static-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a id="brand" href="{{ path('index') }}">
-                    <img src={{ asset('bundles/meeduledesign/img/meedule.logo.png') }} />
-                </a>
+    <div id="wrap">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a id="brand" href="{{ path('index') }}">
+                        <img src={{ asset('bundles/meeduledesign/img/meedule.logo.png') }} />
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-    {% endblock %}
+        {% endblock %}
 
-    <div class="container-fluid">
-        <div class="content">
-            {% block flash %}
-                {{ flash() }}
-            {% endblock %}
-                
-            {% block content %}{% endblock%}
+        <div class="container-fluid">
+            <div class="content">
+                {% block flash %}
+                    {{ flash() }}
+                {% endblock %}
+
+                {% block content %}{% endblock%}
+            </div>
         </div>
+        <div id="push"></div>
     </div>
     
-    <hr />
-    <div class="container-fluid">
+    <div class="container-fluid" id="footer">
         &copy; 2013 Meedule - 
         <a 
             class='zocial twitter' 

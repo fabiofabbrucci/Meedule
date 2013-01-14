@@ -1,10 +1,20 @@
 {% block doodle_widget %}
     {{ block('url_widget') }}
-    &nbsp;<a href="http://doodle.com/polls/wizard.html" target="_blank">Serve un doodle?</a>
+    &nbsp;Serve un doodle? <a 
+        rel="tooltip"
+        title="Con Doodle può trovare la data con più adesioni possibili"
+        href="http://doodle.com/polls/wizard.html" 
+        target="_blank">
+            Crealo</a>
 {% endblock %}
     
 {% block mail_widget %}
     {{ block('email_widget') }}
-    &nbsp;<i class="icon-lock"></i> Resterà segreta
+    <span
+        rel="tooltip"
+        title="Verrà utilizzata per mandarti una email di riepilogo"
+        >
+        &nbsp;<i class="icon-lock"></i> Resterà segreta
+    </span>
 {% endblock %}
     
