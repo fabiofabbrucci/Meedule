@@ -13,4 +13,15 @@
     {{ entity.address}} 
 {% endif %}
 <i class="icon-user"></i> {{ entity.name }}
-<p>{{ entity.description }}</p>
+{% if entity.description %}
+    <p>{{ entity.description }}</p>
+{% endif %}
+{% if entity.doodle %}
+    <br />
+    <img src={{ asset('bundles/meeduledesign/img/doodle.ico') }} />
+    <a 
+        target="_blank"
+        href="{{ entity.doodle }}">
+        Doodle
+    </a>
+{% endif %}

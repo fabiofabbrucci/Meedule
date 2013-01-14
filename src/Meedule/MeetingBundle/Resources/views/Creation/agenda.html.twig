@@ -10,29 +10,28 @@
     <h1>Riempi l'agenda con i punti di discussione</h1>
     <p>Specifica gli argomenti che andrete a trattare. Riduci lo spreco di concentrazione. Dai gas alle tue riunioni.</p>
     <hr />
-    
-    <div class="well well-small">
-        <form action="{{ path('meeting_topic_create', {'slug': entity.slugprivate }) }}" method="post" {{ form_enctype(form_creation) }} class="form-horizontal">
-            {{ form_widget(form_creation) }}
-            <div class="form-actions">
-                <button class="btn btn-small btn-primary">Aggiungi</button>
+
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="well">
+                <h3>Argomenti:</h3>
+                {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics, 'url_topic_delete': url_delete_topic_agenda, 'topics_id': 'topics_agenda'} %}
             </div>
-        </form>
+        </div>
+        <div class="span6">
+            <h5>Aggiungi un argomento</h5>
+            <form action="{{ path('meeting_topic_create', {'slug': entity.slugprivate }) }}" method="post" {{ form_enctype(form_creation) }} class="form-horizontal">
+                {{ form_widget(form_creation.name) }}
+                {{ form_rest(form_creation) }}
+                <button class="btn btn-small btn-primary">Aggiungi</button>
+            </form>
+            <hr />
+            <form action="{{ path('meeting_finalize', {'slug': entity.slugprivate }) }}" method="post" {{ form_enctype(form_finalize) }}>
+                {{ form_widget(form_finalize) }}
+                    oppure <button type="submit" class="btn btn-success">clicca qui</button> quando hai <em rel="tooltip" title="Non ti preoccupare se la agenda sia incompleta. Potrai tornare a cambiarla più avanti.">"finito"</em> l'agenda.
+            </form>
+        </div>
     </div>
-    
-    {% if topics %}
-    <div class="well">
-        <h3>Argomenti:</h3>
-        {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics, 'url_topic_delete': url_delete_topic_agenda, 'topics_id': 'topics_agenda'} %}
-    </div>
-    {% endif %}
-    
-    <hr />
-    <form action="{{ path('meeting_finalize', {'slug': entity.slugprivate }) }}" method="post" {{ form_enctype(form_finalize) }}>
-        {{ form_widget(form_finalize) }}
-        <button type="submit" class="btn btn-success btn-large">Clicca qui</button> quando hai finito l'agenda.<br />
-        <small>Non ti preoccupare se la agenda sia incompleta. Potrai tornare a cambiarla più avanti.</small>
-    </form>
     
 {% endblock %}
     

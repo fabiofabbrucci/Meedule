@@ -49,6 +49,7 @@ class MeetingType extends AbstractType
                 'attr' => array('placeholder' => 'Roma, via del corso'),
             ))
             ->add('description', 'textarea', array(
+                'required' => false,
                 'attr' => array('placeholder' => 'Note ulteriori del tuo meeting'),
             ))
         ;
