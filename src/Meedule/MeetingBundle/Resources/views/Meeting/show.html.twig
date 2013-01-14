@@ -9,43 +9,45 @@
 
 {% block content %}
 
-    <div class="well">
-        <div class="pull-right">
-            <div class="fb-send" data-href="{{ url('meeting_show', {'slug': entity.slugpublic}) }}" data-font="arial"></div>
-            <a href="javascript:window.print();">Stampa <i class="icon-print"></i></a>
-            <br />
-            {% block commands %}{% endblock %}
-        </div>
-        {% include 'MeeduleMeetingBundle:Meeting:_detail.html.twig' %}
-    </div>
-    
-    <div class="row-fluid">
-        <div class="span9">
-            <div class="well">
-                <h4>Argomenti:</h4>
-                {% block agenda_topics %}
-                    {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_agenda, 'topics_id': 'topics_agenda'} %}
-                {% endblock %}
-                {% block form_create_topic_agenda %}{% endblock %}
-                
-                <hr />
-                <h4>Argomenti proposti:</h4>
-                {% block crew_topics %}
-                    {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_crew, 'url_topic_delete': url_delete_topic_crew, 'topics_id': 'topics_crew'} %}
-                {% endblock %}
-                
-                <form action="{{ path(url_create_topic_crew, {'slug': slug }) }}" method="post" {{ form_enctype(form_create_topic_crew) }} class="form-horizontal">
-                    {{ form_widget(form_create_topic_crew.name) }}
-                    {{ form_widget(form_create_topic_crew.owner) }}
-                    {{ form_rest(form_create_topic_crew) }}
-                    <button type="submit" class="btn btn-primary btn-small">Aggiungi</button>
-                </form>
+    <div class="container">
+        <div class="well">
+            <div class="pull-right">
+                <div class="fb-send" data-href="{{ url('meeting_show', {'slug': entity.slugpublic}) }}" data-font="arial"></div>
+                <a href="javascript:window.print();">Stampa <i class="icon-print"></i></a>
+                <br />
+                {% block commands %}{% endblock %}
             </div>
+            {% include 'MeeduleMeetingBundle:Meeting:_detail.html.twig' %}
         </div>
-        <div class="span3" id="attendees">
-            {% block attendees %}
-                {% include 'MeeduleMeetingBundle:Meeting:_attendees.html.twig' %}
-            {% endblock %}
+
+        <div class="row">
+            <div class="span9">
+                <div class="well">
+                    <h4>Argomenti:</h4>
+                    {% block agenda_topics %}
+                        {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_agenda, 'topics_id': 'topics_agenda'} %}
+                    {% endblock %}
+                    {% block form_create_topic_agenda %}{% endblock %}
+
+                    <hr />
+                    <h4>Argomenti proposti:</h4>
+                    {% block crew_topics %}
+                        {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_crew, 'url_topic_delete': url_delete_topic_crew, 'topics_id': 'topics_crew'} %}
+                    {% endblock %}
+
+                    <form action="{{ path(url_create_topic_crew, {'slug': slug }) }}" method="post" {{ form_enctype(form_create_topic_crew) }} class="form-horizontal">
+                        {{ form_widget(form_create_topic_crew.name) }}
+                        {{ form_widget(form_create_topic_crew.owner) }}
+                        {{ form_rest(form_create_topic_crew) }}
+                        <button type="submit" class="btn btn-primary btn-small">Aggiungi</button>
+                    </form>
+                </div>
+            </div>
+            <div class="span3" id="attendees">
+                {% block attendees %}
+                    {% include 'MeeduleMeetingBundle:Meeting:_attendees.html.twig' %}
+                {% endblock %}
+            </div>
         </div>
     </div>
 {% endblock %}

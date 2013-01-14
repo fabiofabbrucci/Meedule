@@ -1,44 +1,46 @@
 {% extends 'MeeduleDesignBundle::layout.html.twig' %}
 
 {% block content %}
-    <div class="hero-unit">
-        <h1>Crea agende per riunioni</h1>
-        <h2>Gratis e senza registrazione</h2>
-        
-        <p>
-            Stanco di riunioni non efficaci. Meedule ti può aiutare.<br />
-            Prepara la tua agenda di incontro, comunicala ai tuoi colleghi, raccogli le richieste.
-        </p>
-        <center><a class="btn btn-primary btn-large" href="{{ path('meeting_new') }}">Crea il tuo primo meeting</a></center>
+    <div class="container">
+        <div class="hero-unit">
+            <h1>Crea agende per riunioni</h1>
+            <h2>Gratis e senza registrazione</h2>
+
+            <p>
+                Stanco di riunioni non efficaci. Meedule ti può aiutare.<br />
+                Prepara la tua agenda di incontro, comunicala ai tuoi colleghi, raccogli le richieste.
+            </p>
+            <center><a class="btn btn-primary btn-large" href="{{ path('meeting_new') }}">Crea il tuo primo meeting</a></center>
+        </div>
+        <div class="row">
+            <div class="span4">
+                <div class="">
+                    <h3>Crea le tue riunioni</h3>
+                    <em>Inizia un appuntamento col piede giusto.</em>
+                    <hr />
+                    <img src={{ asset('bundles/meeduledesign/img/meedule1.png') }} />
+                </div>
+            </div>
+            <div class="span4">
+                <div class="">
+                    <h3>Inserisci gli argomenti</h3>
+                    <em>Prepara gli argomenti. Raccogli richieste dalla "ciurma".</em>
+                    <hr />
+                    <img src={{ asset('bundles/meeduledesign/img/meedule3.png') }} />
+                </div>
+            </div>
+            <div class="span4">
+                <div class="">
+                    <h3>Partecipa</h3>
+                    <em>Registra le adesioni. Verifica la lettura della tua agenda.</em>
+                    <hr />
+                    <img src={{ asset('bundles/meeduledesign/img/meedule2.png') }} />
+                </div>
+            </div>
+        </div>
+        <hr />
+        <center>
+            <div class="fb-like-box" data-href="https://www.facebook.com/Meedule" data-width="600" data-show-faces="true" data-stream="false" data-header="false" style="width:600px; height: 250px;"></div>
+        </center>
     </div>
-    <div class="row-fluid">
-        <div class="span4">
-            <div class="">
-                <h3>Crea le tue riunioni</h3>
-                <em>Inizia un appuntamento col piede giusto.</em>
-                <hr />
-                <img src={{ asset('bundles/meeduledesign/img/meedule1.png') }} />
-            </div>
-        </div>
-        <div class="span4">
-            <div class="">
-                <h3>Inserisci gli argomenti</h3>
-                <em>Prepara gli argomenti. Raccogli richieste dalla "ciurma".</em>
-                <hr />
-                <img src={{ asset('bundles/meeduledesign/img/meedule3.png') }} />
-            </div>
-        </div>
-        <div class="span4">
-            <div class="">
-                <h3>Partecipa</h3>
-                <em>Registra le adesioni. Verifica la lettura della tua agenda.</em>
-                <hr />
-                <img src={{ asset('bundles/meeduledesign/img/meedule2.png') }} />
-            </div>
-        </div>
-    </div>
-    <hr />
-    <center>
-        <div class="fb-like-box" data-href="https://www.facebook.com/Meedule" data-width="600" data-show-faces="true" data-stream="false" data-header="false" style="width:600px; height: 250px;"></div>
-    </center>
 {% endblock %}
