@@ -19,11 +19,20 @@ class CloseType extends AbstractType
     
     public function buildForm(FormBuilder $builder, array $options)
     {
+        $meeting = $this->meeting;
         $builder
-            ->add('topics', 'entity', array(
+            ->add('AgendaTopics', 'entity', array(
                 'class' => 'MeeduleMeetingBundle:Topic',
                 'query_builder' => function(EntityRepository $tr) use ($meeting) {
-                         return $tr->getTopicsByMeeting($meeting);
+                         return $tr->getAgendaTopicsByMeeting($meeting);
+                       },
+                'multiple' => true,
+                'expanded' => true,
+            ))
+            ->add('CrewTopics', 'entity', array(
+                'class' => 'MeeduleMeetingBundle:Topic',
+                'query_builder' => function(EntityRepository $tr) use ($meeting) {
+                         return $tr->getCrewTopicsByMeeting($meeting);
                        },
                 'multiple' => true,
                 'expanded' => true,

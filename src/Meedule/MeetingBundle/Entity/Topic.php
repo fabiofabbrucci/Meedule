@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Meedule\MeetingBundle\Entity\Topic
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Meedule\MeetingBundle\Entity\TopicRepository")
  */
 class Topic
 {

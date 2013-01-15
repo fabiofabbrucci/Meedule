@@ -15,3 +15,6 @@ meedule:
     topicpublictype:
       name: Argomento
       owner: Tuo nome
+    closetype:
+      AgendaTopics: Argomenti
+      CrewTopics: Argomenti proposti

@@ -12,10 +12,20 @@ use Doctrine\ORM\EntityRepository;
  */
 class TopicRepository extends EntityRepository
 {
-    public function getTopicsByMeeting($meeting) {
+    public function getAgendaTopicsByMeeting($meeting) {
         $qb = $this->createQueryBuilder('t');
         return $qb
                 ->where('t.meeting = :id')
+                ->andWhere("t.owner IS NULL ")
+                ->orderBy('t.position', 'ASC')
+                ->setParameter('id', $meeting->getId());
+    }
+    
+    public function getCrewTopicsByMeeting($meeting) {
+        $qb = $this->createQueryBuilder('t');
+        return $qb
+                ->where('t.meeting = :id')
+                ->andWhere("t.owner IS NOT NULL ")
                 ->orderBy('t.position', 'ASC')
                 ->setParameter('id', $meeting->getId());
     }
