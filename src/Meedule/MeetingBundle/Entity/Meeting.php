@@ -535,4 +535,12 @@ class Meeting
     {
         return $this->closed;
     }
+    
+    public function getMailGravatar()
+    {
+        if($this->mail){
+            return md5(strtolower($this->mail));
+        }
+        return false;
+    }
 }

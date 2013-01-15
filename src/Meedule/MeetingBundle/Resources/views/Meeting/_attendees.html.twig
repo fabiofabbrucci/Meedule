@@ -1,9 +1,8 @@
 <div class="well well-small">
-    <h5><span class="badge">{{ attendees|length }}</span> Partecipanti</h5>
+    <h5>Partecipanti <span class="badge">{{ attendees|length }}</span></h5>
     {% if attendees %}
-        <ol>
         {% for attendee in attendees %}
-            <li>
+            <div class="attendee">
                 {% if attendee.deleteForm %}
                     <form 
                         action="{{ path(url_delete_attendee, {'slug': slug, 'id': attendee.id }) }}" 
@@ -14,11 +13,14 @@
                         <button type="submit"><i class="icon-trash"></i></button> 
                     </form>
                 {% endif %}
+                <img 
+                    rel="tooltip"
+                    title="Immagine fornita da Gravatar.com"
+                    src="http://www.gravatar.com/avatar/{{attendee.gravatarMail}}?s=26&d=http://meedule.abmundi.com/gravatar.png" />
                 {{ attendee.name }}
                 <div class="clearfix"></div>
-            </li>
+            </div>
         {% endfor %}
-        </ol>
     {% endif %}
 
     {% if not entity.isClosed %}

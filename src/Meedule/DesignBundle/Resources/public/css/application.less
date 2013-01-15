@@ -81,6 +81,21 @@ ol{
         }
     }
 }
+#attendees{
+    .attendee{
+        form{
+            visibility: hidden;
+            margin: 0px;
+        }
+        &:hover{
+            background-color: @orange;
+            color: white;
+            form{
+                visibility: visible;
+            }
+        }
+    }
+}
 
 #meedule_meetingbundle_agendatype{
     input{

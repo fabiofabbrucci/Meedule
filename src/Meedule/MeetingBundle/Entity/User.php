@@ -27,6 +27,13 @@ class User
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+    
+    /**
+     * @var string $mail
+     *
+     * @ORM\Column(name="mail", type="string", length=255, nullable="true")
+     */
+    private $mail;
 
     /**
      * @ORM\ManyToOne(targetEntity="Meedule\MeetingBundle\Entity\Meeting", inversedBy="attendees")
@@ -92,5 +99,38 @@ class User
     
     public function getDeleteForm(){
         return $this->delete_form;
+    }
+
+    /**
+     * Set mail
+     *
+     * @param string $mail
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+    }
+
+    /**
+     * Get mail
+     *
+     * @return string 
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
+    
+    /**
+     * Get mail
+     *
+     * @return string 
+     */
+    public function getGravatarMail()
+    {
+        if($this->mail){
+            return md5(strtolower($this->mail));
+        }
+        return false;
     }
 }

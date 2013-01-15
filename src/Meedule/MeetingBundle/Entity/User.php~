@@ -27,6 +27,13 @@ class User
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+    
+    /**
+     * @var string $mail
+     *
+     * @ORM\Column(name="mail", type="string", length=255)
+     */
+    private $mail;
 
     /**
      * @ORM\ManyToOne(targetEntity="Meedule\MeetingBundle\Entity\Meeting", inversedBy="attendees")
