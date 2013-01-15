@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Meedule\MeetingBundle\Entity\Topic
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Meedule\MeetingBundle\Entity\TopicRepository")
  */
 class Topic
 {
@@ -160,5 +160,35 @@ class Topic
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * Set approved
+     *
+     * @param boolean $approved
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+    }
+
+    /**
+     * Get approved
+     *
+     * @return boolean 
+     */
+    public function getApproved()
+    {
+        return $this->approved;
+    }
+    
+    /**
+     * Is approved
+     *
+     * @return boolean 
+     */
+    public function isApproved()
+    {
+        return (bool)$this->approved;
     }
 }

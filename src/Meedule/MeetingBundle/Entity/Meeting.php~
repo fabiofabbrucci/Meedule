@@ -70,6 +70,20 @@ class Meeting
      * @ORM\Column(name="address", type="text", nullable="true")
      */
     private $address;
+    
+    /**
+     * @var boolea $closed
+     *
+     * @ORM\Column(name="closed", type="boolean", nullable="true")
+     */
+    private $closed;
+    
+    /**
+     * @var datetime $closedAt
+     *
+     * @ORM\Column(name="closedAt", type="datetime")
+     */
+    private $closedAt;
 
     /**
      * @var datetime $createdAt
@@ -467,4 +481,8 @@ class Meeting
     {
         return $this->doodle;
     }
+    
+    public function setAgendaTopics(ArrayCollection $topics){}
+    
+    public function setCrewTopics(ArrayCollection $topics){}
 }

@@ -70,6 +70,20 @@ class Meeting
      * @ORM\Column(name="address", type="text", nullable="true")
      */
     private $address;
+    
+    /**
+     * @var boolea $closed
+     *
+     * @ORM\Column(name="closed", type="boolean", nullable="true")
+     */
+    private $closed;
+    
+    /**
+     * @var datetime $closedAt
+     *
+     * @ORM\Column(name="closedAt", type="datetime")
+     */
+    private $closedAt;
 
     /**
      * @var datetime $createdAt
@@ -471,4 +485,54 @@ class Meeting
     public function setAgendaTopics(ArrayCollection $topics){}
     
     public function setCrewTopics(ArrayCollection $topics){}
+
+    /**
+     * Set closed
+     *
+     * @param boolean $closed
+     */
+    public function setClosed($closed)
+    {
+        $this->closed = $closed;
+    }
+
+    /**
+     * Get closed
+     *
+     * @return boolean 
+     */
+    public function getClosed()
+    {
+        return $this->closed;
+    }
+
+    /**
+     * Set closedAt
+     *
+     * @param datetime $closedAt
+     */
+    public function setClosedAt($closedAt)
+    {
+        $this->closedAt = $closedAt;
+    }
+
+    /**
+     * Get closedAt
+     *
+     * @return datetime 
+     */
+    public function getClosedAt()
+    {
+        return $this->closedAt;
+    }
+    
+    /**
+     * Is Closed
+     *
+     * @return boolean 
+     */
+    public function isClosed()
+    {
+        return $this->closed;
+    }
 }

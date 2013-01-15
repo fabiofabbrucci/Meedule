@@ -10,13 +10,19 @@ use Doctrine\ORM\EntityRepository;
 
 class CloseType extends AbstractType
 {
+    public function getDefaultOptions(array $options)
+    {
+        return array(
+            'data_class' => 'Meedule\MeetingBundle\Entity\Meeting',
+        );
+    }
+    
     
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
             ->add('AgendaTopics', 'collection', array(
                 'type' => new TopicApproveType(),
-                'label' => 'paperino',
             ))
             ->add('CrewTopics', 'collection', array(
                 'type' => new TopicApproveType(),
@@ -26,6 +32,6 @@ class CloseType extends AbstractType
 
     public function getName()
     {
-        return 'meedule_meetingbundle_closetype';
+        return 'close';
     }
 }

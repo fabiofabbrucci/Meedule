@@ -23,6 +23,6 @@ class TopicApproveType extends AbstractType
 
     public function getName()
     {
-        return 'meedule_meetingbundle_topicapprovetype';
+        return 'approve';
     }
 }

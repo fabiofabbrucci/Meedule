@@ -37,6 +37,17 @@ class AdminController extends Controller
             throw $this->createNotFoundException('Unable to find Meeting entity.');
         }
         
+        if($entity->isClosed())
+        {
+            return array(
+                'entity' => $entity,
+                'slug' => $entity->getSlugprivate(),
+                'topics_agenda' => $entity->getAgendaTopics(),
+                'topics_crew'      => $entity->getCrewTopics(),
+                'attendees' => $entity->getAttendees(),
+            );  
+        }
+        
         $user = new User;
         $create_form   = $this->createForm(new AttendeeType(), $user);
         $topic = new Topic;
@@ -164,9 +175,7 @@ class AdminController extends Controller
             throw $this->createNotFoundException('Unable to find Meeting entity.');
         }
         
-        $form = $this
-            ->get('form.factory')
-            ->create(new CloseType($meeting), $meeting);
+        $form = $this->createForm(new CloseType(), $meeting);
         
         return array(
             'entity' => $meeting,
@@ -194,6 +203,8 @@ class AdminController extends Controller
         $form->bindRequest($request);
 
         if ($form->isValid()) {
+            $entity->setClosed(true);
+            $entity->setClosedAt(new \DateTime);
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();

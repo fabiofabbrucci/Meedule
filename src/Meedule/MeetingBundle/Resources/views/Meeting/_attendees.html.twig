@@ -4,14 +4,16 @@
         <ol>
         {% for attendee in attendees %}
             <li>
-                <form 
-                    action="{{ path(url_delete_attendee, {'slug': slug, 'id': attendee.id }) }}" 
-                    method="post"
-                    class="delete_form pull-right"
-                    >
-                    {{ form_widget(attendee.deleteForm) }}
-                    <button type="submit"><i class="icon-trash"></i></button> 
-                </form>
+                {% if attendee.deleteForm %}
+                    <form 
+                        action="{{ path(url_delete_attendee, {'slug': slug, 'id': attendee.id }) }}" 
+                        method="post"
+                        class="delete_form pull-right"
+                        >
+                        {{ form_widget(attendee.deleteForm) }}
+                        <button type="submit"><i class="icon-trash"></i></button> 
+                    </form>
+                {% endif %}
                 {{ attendee.name }}
                 <div class="clearfix"></div>
             </li>
@@ -19,11 +21,12 @@
         </ol>
     {% endif %}
 
-    <hr />
+    {% if not entity.isClosed %}
+        <hr />
+        <form action="{{ path(url_create_attendee, {'slug': slug }) }}" method="post" {{ form_enctype(form) }} class="form-vertical">
+            {{ form_widget(form) }}
 
-    <form action="{{ path(url_create_attendee, {'slug': slug }) }}" method="post" {{ form_enctype(form) }} class="form-vertical">
-        {{ form_widget(form) }}
-
-        <button type="submit" class="btn btn-primary btn-small">Partecipa</button>
-    </form>
+            <button type="submit" class="btn btn-primary btn-small">Partecipa</button>
+        </form>
+    {% endif %}
 </div>
