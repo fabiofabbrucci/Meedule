@@ -81,7 +81,7 @@ class Meeting
     /**
      * @var datetime $closedAt
      *
-     * @ORM\Column(name="closedAt", type="datetime")
+     * @ORM\Column(name="closedAt", type="datetime", nullable="true")
      */
     private $closedAt;
 
