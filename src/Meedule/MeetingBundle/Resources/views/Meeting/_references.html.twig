@@ -2,7 +2,7 @@
     <ol id="references">
     {% for reference in entity.references %}
         <li id="reference_{{ reference.id }}">
-            {% if not entity.isClosed %}
+            {% if reference.deleteForm %}
                 <form 
                     action="{{ path(url_reference_delete, {'slug': slug, 'id': reference.id }) }}"
                     method="post"
