@@ -1,8 +1,8 @@
 {% extends 'MeeduleMeetingBundle:Meeting:show.html.twig' %}
 
 {% block commands %}
-    <a href="{{ path('meeting_admin_edit', {'slug': entity.slugprivate}) }}" class="btn">Modifica <i class="icon-wrench"></i></a><br />
-    <a href="{{ path('meeting_admin_finalize', {'slug': entity.slugprivate}) }}" class="btn">Chiudi <i class="icon-ok"></i></a><br />
+    <a href="{{ path('meeting_admin_edit', {'slug': entity.slugprivate}) }}" class="btn btn-small">Modifica <i class="icon-wrench"></i></a><br />
+    <a href="{{ path('meeting_admin_finalize', {'slug': entity.slugprivate}) }}" class="btn btn-small">Chiudi <i class="icon-ok"></i></a><br />
 {% endblock %}
     
 {% block agenda_topics %}

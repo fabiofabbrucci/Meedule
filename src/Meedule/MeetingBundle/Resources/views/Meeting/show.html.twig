@@ -10,11 +10,11 @@
 {% block content %}
 
     <div class="container">
-        <div class="well">
+        <div class="well" id="details">
             <div class="pull-right">
                 {% block commands %}{% endblock %}
-                <a href="javascript:window.print();">Stampa <i class="icon-print"></i></a>
-                <div class="fb-send" data-href="{{ url('meeting_show', {'slug': entity.slugpublic}) }}" data-font="arial"></div>
+                <a href="javascript:window.print();">Stampa <i class="icon-print"></i></a><br />
+                <div class="fb-send" data-href="{{ url('meeting_show', {'slug': entity.slugpublic}) }}" data-font="arial"></div><br />
             </div>
             {% include 'MeeduleMeetingBundle:Meeting:_detail.html.twig' %}
         </div>
@@ -22,14 +22,14 @@
         <div class="row">
             <div class="span8">
                 <div class="well">
-                    <h4>Argomenti:</h4>
+                    <h3>Agenda</h3>
                     {% block agenda_topics %}
                         {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_agenda, 'topics_id': 'topics_agenda'} %}
                     {% endblock %}
                     {% block form_create_topic_agenda %}{% endblock %}
 
                     <hr />
-                    <h4>Argomenti proposti:</h4>
+                    <h4>Argomenti proposti <span class="badge">{{ topics_crew|length }}</span></h4>
                     {% block crew_topics %}
                         {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_crew, 'url_topic_delete': url_delete_topic_crew, 'topics_id': 'topics_crew'} %}
                     {% endblock %}

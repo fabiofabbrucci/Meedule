@@ -1,5 +1,5 @@
 <div class="well well-small">
-    <h5>{{ attendees|length }} Partecipanti:</h5>
+    <h5><span class="badge">{{ attendees|length }}</span> Partecipanti</h5>
     {% if attendees %}
         <ol>
         {% for attendee in attendees %}
