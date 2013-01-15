@@ -144,6 +144,7 @@ class CreationController extends Controller
             
             $user  = new User();
             $user->setName($entity->getName());
+            $user->setMail($entity->getMail());
             $user->setMeeting($entity);
             $em->persist($user);
             $em->flush();
