@@ -43,6 +43,21 @@
                         </form>
                     {% endif %}
                 </div>
+                <div class="well">
+                    <h4>Riferimenti <span class="badge">{{ references|length }}</span></h4>
+                    {% block references %}
+                        {% include 'MeeduleMeetingBundle:Meeting:_references.html.twig' with {'url_reference_delete': url_delete_reference} %}
+                    {% endblock %}
+
+                    {% if not entity.isClosed %}
+                        <form action="{{ path(url_create_reference, {'slug': slug }) }}" method="post" {{ form_enctype(form_reference) }} class="form-horizontal">
+                            {{ form_widget(form_reference.name) }}
+                            {{ form_widget(form_reference.url) }}
+                            {{ form_rest(form_reference) }}
+                            <button type="submit" class="btn btn-primary btn-small">Aggiungi</button>
+                        </form>
+                    {% endif %}
+                </div>
             </div>
             <div class="span4" id="attendees">
                 {% block attendees %}

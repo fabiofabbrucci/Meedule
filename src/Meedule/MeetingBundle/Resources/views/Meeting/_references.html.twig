@@ -1,0 +1,23 @@
+{% if entity.references %}
+    <ol id="references">
+    {% for reference in entity.references %}
+        <li id="reference_{{ reference.id }}">
+            {% if not entity.isClosed %}
+                <form 
+                    action="{{ path(url_reference_delete, {'slug': slug, 'id': reference.id }) }}"
+                    method="post"
+                    class="delete_form pull-right"
+                    >
+                    {{ form_widget(reference.deleteForm) }}
+                    <button type="submit"><i class="icon-trash"></i></button> 
+                </form>
+            {% endif %}
+            <a href="{{ reference.url }}" target="_blank">{{ reference.name }}</a>
+            {% if reference.owner %}
+                 [<em>{{ reference.owner }} <i class="icon-user"></i></em>] 
+            {% endif %}
+            <div class="clearfix"></div>
+        </li>
+    {% endfor %}
+    </ol>
+{% endif %}

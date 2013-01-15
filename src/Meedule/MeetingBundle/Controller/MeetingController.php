@@ -6,13 +6,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 use Meedule\MeetingBundle\Entity\Meeting;
 use Meedule\MeetingBundle\Entity\User;
 use Meedule\MeetingBundle\Entity\Topic;
+use Meedule\MeetingBundle\Entity\Reference;
+
 use Meedule\MeetingBundle\Form\MeetingType;
 use Meedule\MeetingBundle\Form\AgendaType;
 use Meedule\MeetingBundle\Form\AttendeeType;
 use Meedule\MeetingBundle\Form\TopicPublicType;
+use Meedule\MeetingBundle\Form\ReferenceType;
 
 /**
  * Meeting controller.
@@ -48,10 +52,26 @@ class MeetingController extends Controller
             throw $this->createNotFoundException('Unable to find Meeting entity.');
         }
         
+        if($entity->isClosed())
+        {
+            return array(
+                'entity' => $entity,
+                'slug' => $entity->getSlugprivate(),
+                'topics_agenda' => $entity->getAgendaTopics(),
+                'topics_crew'      => $entity->getCrewTopics(),
+                'attendees' => $entity->getAttendees(),
+                'references' => $entity->getReferences(),
+                'url_delete_reference' => '',
+                'url_delete_topic_crew' => '',
+            );  
+        }
+        
         $user = new User;
         $create_attendee_form   = $this->createForm(new AttendeeType(), $user);
         $topic = new Topic;
         $create_topic_form   = $this->createForm(new TopicPublicType(), $topic);
+        $reference = new Reference();
+        $reference_form = $this->createForm(new ReferenceType(), $reference);
 
         $attendees = array();
         foreach($entity->getAttendees() as $i=>$attendee){
@@ -66,12 +86,21 @@ class MeetingController extends Controller
             $form = $this->createDeleteForm($topic->getId());
             $topics[$i]->setDeleteForm($form->createView());
         }
+        
+        $references = array();
+        foreach($entity->getReferences() as $i=>$reference){
+            $references[] = $reference;
+            $form = $this->createDeleteForm($reference->getId());
+            $references[$i]->setDeleteForm($form->createView());
+        }
 
         return array(
             'entity'      => $entity,
             'form'        => $create_attendee_form->createView(),
             'form_create_topic_crew' => $create_topic_form->createView(),
+            'form_reference' => $reference_form->createView(),
             'attendees'   => $attendees,
+            'references' => $references,
  
             'topics_agenda' => $entity->getAgendaTopics(),
             'topics_crew'      => $topics,
@@ -83,6 +112,8 @@ class MeetingController extends Controller
             'url_delete_topic_agenda' => '',
             'url_create_topic_crew' => 'meeting_topic_show_create',
             'url_delete_topic_crew' => 'meeting_topic_show_delete',
+            'url_create_reference' => 'meeting_reference_create',
+            'url_delete_reference' => 'meeting_reference_delete',
         );
     }
     

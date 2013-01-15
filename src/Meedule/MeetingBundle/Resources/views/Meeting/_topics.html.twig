@@ -2,7 +2,7 @@
     <ol id="{{ topics_id }}">
     {% for topic in topics %}
         <li id="topic_{{ topic.id }}"{% if entity.isClosed and not topic.isApproved %} class="rejected"{% endif %}>
-            {% if topic.deleteForm %}
+            {% if not entity.isClosed %}
                 <form 
                     action="{{ path(url_topic_delete, {'slug': slug, 'id': topic.id }) }}"
                     method="post"

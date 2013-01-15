@@ -141,6 +141,11 @@ class Meeting
     private $doodle;
     
     /**
+     * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\Reference", mappedBy="meeting", cascade={"persist", "remove"})
+     */
+    private $references;
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -542,5 +547,34 @@ class Meeting
             return md5(strtolower($this->mail));
         }
         return false;
+    }
+
+    /**
+     * Add references
+     *
+     * @param Meedule\MeetingBundle\Entity\Reference $references
+     */
+    public function addReference(\Meedule\MeetingBundle\Entity\Reference $references)
+    {
+        $this->references[] = $references;
+    }
+
+    /**
+     * Get references
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getReferences()
+    {
+        return $this->references;
+    }
+    
+    public function hasReference(Reference $reference){
+        $key = $this->references->indexOf($reference);
+        if($key===FALSE) 
+        {
+            return false;
+        }
+        return true;
     }
 }

@@ -141,6 +141,11 @@ class Meeting
     private $doodle;
     
     /**
+     * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\Reference", mappedBy="meeting", cascade={"persist", "remove"})
+     */
+    private $references;
+    
+    /**
      * Get id
      *
      * @return integer 
