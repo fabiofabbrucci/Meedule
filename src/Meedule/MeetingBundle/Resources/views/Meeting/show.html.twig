@@ -43,7 +43,7 @@
                         </form>
                     {% endif %}
                 </div>
-                {% if entity.isClosed and references|length == 0 %}
+                {% if not entity.isClosed or references|length > 0 %}
                     <div class="well">
                         <h4>
                             <span
