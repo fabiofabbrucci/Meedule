@@ -467,4 +467,8 @@ class Meeting
     {
         return $this->doodle;
     }
+    
+    public function setAgendaTopics(ArrayCollection $topics){}
+    
+    public function setCrewTopics(ArrayCollection $topics){}
 }

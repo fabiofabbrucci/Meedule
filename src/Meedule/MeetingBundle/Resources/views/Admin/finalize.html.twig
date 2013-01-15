@@ -9,8 +9,18 @@
         Il tuo meeting sta per essere chiuso. Non sarà dunque possibile aggiungere ulteriori registrazioni o argomenti.
     </p>
     
-    <form action="{{ path('meeting_admin_update', {'slug': entity.slugprivate}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
-        {{ form_widget(form) }}
+    <form action="{{ path('meeting_admin_close', {'slug': entity.slugprivate}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
+        <h3>Agenda</h3>
+        {% for topic in form.AgendaTopics %}
+            {{ form_row(topic) }}
+        {% endfor %}
+        
+        <h4>Argomenti Proposti</h4>
+        {% for topic in form.CrewTopics %}
+            {{ form_row(topic) }}
+        {% endfor %}
+        
+        {{ form_rest(form) }}
         
         <div class="form-actions">
             <button type="submit" class="btn btn-success btn-large">Salva</button>

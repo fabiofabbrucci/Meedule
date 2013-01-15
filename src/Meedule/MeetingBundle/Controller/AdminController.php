@@ -173,4 +173,39 @@ class AdminController extends Controller
             'form' => $form->createView(),
         );
     }
+    
+    /**
+     * @Route("/close", name="meeting_admin_close")
+     * @Method("post")
+     * @Template("MeeduleMeetingBundle:Admin:finalize.html.twig")
+     */
+    public function closeAction($slug)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $entity = $em->getRepository('MeeduleMeetingBundle:Meeting')->findOneBySlugprivate($slug);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Meeting entity.');
+        }
+
+        $form   = $this->createForm(new CloseType(), $entity);
+        $request = $this->getRequest();
+        $form->bindRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($entity);
+            $em->flush();
+            
+            $this->get('session')->setFlash('notice', 'Il tuo meeting è stato chiuso.');
+
+            return $this->redirect($this->generateUrl('meeting_admin', array('slug' => $entity->getSlugprivate())));
+            
+        }
+
+        return array(
+            'entity' => $entity,
+        );
+    }
 }
