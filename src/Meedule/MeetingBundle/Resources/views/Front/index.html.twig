@@ -5,12 +5,12 @@
         <div class="hero-unit">
             <h1>Crea agende per riunioni</h1>
             <h2>Gratis e senza registrazione</h2>
-
-            <p>
-                Stanco di riunioni non efficaci. Meedule ti può aiutare.<br />
-                Prepara la tua agenda di incontro, comunicala ai tuoi colleghi, raccogli le richieste.
-            </p>
-            <center><a class="btn btn-primary btn-large" href="{{ path('meeting_new') }}">Crea il tuo primo meeting</a></center>
+            
+            <center>
+                <img src={{ asset('bundles/meeduledesign/img/meedule.big.png') }} />
+                <br /><br />
+                <a class="btn btn-primary btn-large" href="{{ path('meeting_new') }}">Crea il tuo primo meeting</a>
+            </center>
         </div>
         <div class="row">
             <div class="span4">
@@ -40,6 +40,13 @@
         </div>
         <hr />
         <center>
+            <div class="hero-unit">
+                <h2>Stanco di riunioni non efficaci?</h2>
+                <p>
+                    Meedule ti può aiutare.<br />
+                    Prepara la tua agenda di incontro, comunicala ai tuoi colleghi, raccogli le richieste aggiuntive.
+                </p>
+            </div>
             <div class="fb-like-box" data-href="https://www.facebook.com/Meedule" data-width="600" data-show-faces="true" data-stream="false" data-header="false" style="width:600px; height: 250px;"></div>
         </center>
     </div>
