@@ -56,8 +56,17 @@ class AdminController extends Controller
         }
         
         $attendee = new Attendee;
+        if($this->isLogged()){
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $attendee->setName($user->getUsername());
+            $attendee->setMail($user->getEmail());
+        }
         $create_form   = $this->createForm(new AttendeeType(), $attendee);
         $topic = new Topic;
+        if($this->isLogged()){
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $topic->setOwner($user->getUsername());
+        }
         $create_topic_public_form   = $this->createForm(new TopicPublicType(), $topic);
         $create_topic_form   = $this->createForm(new TopicType(), $topic);
         $reference = new Reference();
@@ -238,5 +247,10 @@ class AdminController extends Controller
         return array(
             'entity' => $entity,
         );
+    }
+    
+    public function isLogged()
+    {
+        return $this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY');
     }
 }

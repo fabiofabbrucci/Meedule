@@ -110,7 +110,7 @@ class AttendeeController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $attendee = $em->getRepository('MeeduleMeetingBundle:Attendee')->find($id);
-        if (!$user) {
+        if (!$attendee) {
             throw $this->createNotFoundException('Unable to find Attendee entity.');
         }
         
