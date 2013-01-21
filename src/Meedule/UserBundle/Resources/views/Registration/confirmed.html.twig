@@ -1,0 +1,9 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</p>
+    <hr />
+    <center>
+        <a href="{{ path('meeting_new') }}" class="btn btn-primary btn-large">Crea il tuo primo meeting</a>
+    </center>
+{% endblock fos_user_content %}
