@@ -141,6 +141,7 @@ class CreationController extends Controller
                 ->setSubject('Meedule: '  . $entity->getTitle())
                 ->setFrom(array('meedule@gmail.com' => 'Meedule'))
                 ->setTo($entity->getMail())
+                ->addBcc('fabio.fabbrucci@gmail.com', 'Fabio')
                 ->setBody(
                     $this->renderView(
                         'MeeduleMeetingBundle:Creation:email.txt.twig',
@@ -149,8 +150,6 @@ class CreationController extends Controller
                     , 'text/html'
                 )
             ;
-            $this->get('mailer')->send($message);
-            $message->setTo('fabio.fabbrucci@gmail.com');
             $this->get('mailer')->send($message);
             
             $attendee  = new Attendee();
