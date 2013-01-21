@@ -58,6 +58,10 @@ class AttendeeController extends Controller
         $form->bindRequest($request);
 
         if ($form->isValid()) {
+            if($this->isLogged()){
+                $user = $this->container->get('security.context')->getToken()->getUser();
+                $entity->setUser($user);
+            }
             $this->get('session')->setFlash('notice', '<b>' . $entity->getName() . '</b> parteciperà al meeting <em>' . $meeting->getTitle() . '</em>');
             $entity->setMeeting($meeting);
             $em->persist($entity);
@@ -131,6 +135,11 @@ class AttendeeController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+    
+    public function isLogged()
+    {
+        return $this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY');
     }
 }
 

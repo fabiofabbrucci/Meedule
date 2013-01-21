@@ -26,6 +26,11 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\Meeting", mappedBy="owner")
      */
     protected $meetings;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\Attendee", mappedBy="user")
+     */
+    protected $partecipations;
 
     public function __construct()
     {
@@ -70,5 +75,25 @@ class User extends BaseUser
     public function getMeetings()
     {
         return $this->meetings;
+    }
+
+    /**
+     * Add partecipations
+     *
+     * @param Meedule\MeetingBundle\Entity\Attendee $partecipations
+     */
+    public function addAttendee(\Meedule\MeetingBundle\Entity\Attendee $partecipation)
+    {
+        $this->partecipations[] = $partecipation;
+    }
+
+    /**
+     * Get partecipations
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getPartecipations()
+    {
+        return $this->partecipations;
     }
 }

@@ -584,4 +584,24 @@ class Meeting
     {
         return $this->attendees;
     }
+
+    /**
+     * Set owner
+     *
+     * @param Meedule\UserBundle\Entity\User $owner
+     */
+    public function setOwner(\Meedule\UserBundle\Entity\User $owner)
+    {
+        $this->owner = $owner;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return Meedule\UserBundle\Entity\User 
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
 }

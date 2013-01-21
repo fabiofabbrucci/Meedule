@@ -56,7 +56,7 @@ class Topic
      * @ORM\JoinColumn(name="meeting_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $meeting;
-
+    
     private $delete_form;
     
     /**

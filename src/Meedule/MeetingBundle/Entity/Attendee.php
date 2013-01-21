@@ -41,6 +41,12 @@ class Attendee
      */
     private $meeting;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="Meedule\UserBundle\Entity\User", inversedBy="partecipations")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+    
     private $delete_form;
     
     /**
@@ -132,5 +138,25 @@ class Attendee
             return md5(strtolower($this->mail));
         }
         return false;
+    }
+
+    /**
+     * Set user
+     *
+     * @param Meedule\UserBundle\Entity\User $user
+     */
+    public function setUser(\Meedule\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Meedule\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

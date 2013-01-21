@@ -67,8 +67,17 @@ class MeetingController extends Controller
         }
         
         $attendee = new Attendee;
+        if($this->isLogged()){
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $attendee->setName($user->getUsername());
+            $attendee->setMail($user->getEmail());
+        }
         $create_attendee_form   = $this->createForm(new AttendeeType(), $attendee);
         $topic = new Topic;
+        if($this->isLogged()){
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $topic->setOwner($user->getUsername());
+        }
         $create_topic_form   = $this->createForm(new TopicPublicType(), $topic);
         $reference = new Reference();
         $reference_form = $this->createForm(new ReferenceType(), $reference);
@@ -76,8 +85,10 @@ class MeetingController extends Controller
         $attendees = array();
         foreach($entity->getAttendees() as $i=>$attendee){
             $attendees[] = $attendee;
-            $form = $this->createDeleteForm($attendee->getId());
-            $attendees[$i]->setDeleteForm($form->createView());
+            if(!$attendee->getUser()){
+                $form = $this->createDeleteForm($attendee->getId());
+                $attendees[$i]->setDeleteForm($form->createView());
+            }
         }
         
         $topics = array();
@@ -123,5 +134,10 @@ class MeetingController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+    
+    public function isLogged()
+    {
+        return $this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY');
     }
 }
