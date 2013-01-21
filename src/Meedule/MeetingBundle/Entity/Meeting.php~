@@ -123,7 +123,7 @@ class Meeting
     private $name;
     
     /**
-     * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\User", mappedBy="meeting", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\Attendee", mappedBy="meeting", cascade={"persist", "remove"})
      */
     private $attendees;
     
@@ -388,27 +388,7 @@ class Meeting
         }
     }
 
-    /**
-     * Add attendees
-     *
-     * @param Meedule\MeetingBundle\Entity\User $attendees
-     */
-    public function addUser(User $attendees)
-    {
-        $this->attendees[] = $attendees;
-    }
-
-    /**
-     * Get attendees
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getAttendees()
-    {
-        return $this->attendees;
-    }
-    
-    public function hasAttendee(User $attendee){
+    public function hasAttendee(Attendee $attendee){
         $key = $this->attendees->indexOf($attendee);
         if($key===FALSE) 
         {
@@ -547,5 +527,34 @@ class Meeting
             return md5(strtolower($this->mail));
         }
         return false;
+    }
+
+    /**
+     * Add references
+     *
+     * @param Meedule\MeetingBundle\Entity\Reference $references
+     */
+    public function addReference(\Meedule\MeetingBundle\Entity\Reference $references)
+    {
+        $this->references[] = $references;
+    }
+
+    /**
+     * Get references
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getReferences()
+    {
+        return $this->references;
+    }
+    
+    public function hasReference(Reference $reference){
+        $key = $this->references->indexOf($reference);
+        if($key===FALSE) 
+        {
+            return false;
+        }
+        return true;
     }
 }

@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Meedule\MeetingBundle\Entity\Meeting;
-use Meedule\MeetingBundle\Entity\User;
+use Meedule\MeetingBundle\Entity\Attendee;
 use Meedule\MeetingBundle\Entity\Topic;
 use Meedule\MeetingBundle\Form\MeetingType;
 use Meedule\MeetingBundle\Form\AgendaType;
@@ -142,11 +142,11 @@ class CreationController extends Controller
             $message->setTo('fabio.fabbrucci@gmail.com');
             $this->get('mailer')->send($message);
             
-            $user  = new User();
-            $user->setName($entity->getName());
-            $user->setMail($entity->getMail());
-            $user->setMeeting($entity);
-            $em->persist($user);
+            $attendee  = new Attendee();
+            $attendee->setName($entity->getName());
+            $attendee->setMail($entity->getMail());
+            $attendee->setMeeting($entity);
+            $em->persist($attendee);
             $em->flush();
             
             $this->get('session')->setFlash('notice', 'Il tuo meeting è stato creato con successo.');

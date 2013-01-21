@@ -5,12 +5,12 @@ namespace Meedule\MeetingBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Meedule\MeetingBundle\Entity\User
+ * Meedule\MeetingBundle\Entity\Attendee
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class User
+class Attendee
 {
     /**
      * @var integer $id

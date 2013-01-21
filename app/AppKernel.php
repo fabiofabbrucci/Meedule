@@ -20,9 +20,11 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
             
             new Meedule\MeetingBundle\MeeduleMeetingBundle(),
             new Meedule\DesignBundle\MeeduleDesignBundle(),
+            new Meedule\UserBundle\MeeduleUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

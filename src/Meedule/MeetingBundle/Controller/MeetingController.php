@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Meedule\MeetingBundle\Entity\Meeting;
-use Meedule\MeetingBundle\Entity\User;
+use Meedule\MeetingBundle\Entity\Attendee;
 use Meedule\MeetingBundle\Entity\Topic;
 use Meedule\MeetingBundle\Entity\Reference;
 
@@ -66,8 +66,8 @@ class MeetingController extends Controller
             );  
         }
         
-        $user = new User;
-        $create_attendee_form   = $this->createForm(new AttendeeType(), $user);
+        $attendee = new Attendee;
+        $create_attendee_form   = $this->createForm(new AttendeeType(), $attendee);
         $topic = new Topic;
         $create_topic_form   = $this->createForm(new TopicPublicType(), $topic);
         $reference = new Reference();

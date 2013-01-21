@@ -123,7 +123,7 @@ class Meeting
     private $name;
     
     /**
-     * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\User", mappedBy="meeting", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\Attendee", mappedBy="meeting", cascade={"persist", "remove"})
      */
     private $attendees;
     
@@ -388,27 +388,7 @@ class Meeting
         }
     }
 
-    /**
-     * Add attendees
-     *
-     * @param Meedule\MeetingBundle\Entity\User $attendees
-     */
-    public function addUser(User $attendees)
-    {
-        $this->attendees[] = $attendees;
-    }
-
-    /**
-     * Get attendees
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getAttendees()
-    {
-        return $this->attendees;
-    }
-    
-    public function hasAttendee(User $attendee){
+    public function hasAttendee(Attendee $attendee){
         $key = $this->attendees->indexOf($attendee);
         if($key===FALSE) 
         {
@@ -576,5 +556,25 @@ class Meeting
             return false;
         }
         return true;
+    }
+
+    /**
+     * Add attendees
+     *
+     * @param Meedule\MeetingBundle\Entity\Attendee $attendees
+     */
+    public function addAttendee(Attendee $attendee)
+    {
+        $this->attendees[] = $attendee;
+    }
+
+    /**
+     * Get attendees
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getAttendees()
+    {
+        return $this->attendees;
     }
 }

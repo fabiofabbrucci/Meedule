@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Meedule\MeetingBundle\Entity\Meeting;
-use Meedule\MeetingBundle\Entity\User;
+use Meedule\MeetingBundle\Entity\Attendee;
 use Meedule\MeetingBundle\Form\MeetingType;
 use Meedule\MeetingBundle\Form\AgendaType;
 use Meedule\MeetingBundle\Form\AttendeeType;
@@ -52,7 +52,7 @@ class AttendeeController extends Controller
     private function create($meeting)
     {
         $em = $this->getDoctrine()->getEntityManager();
-        $entity  = new User();
+        $entity  = new Attendee();
         $request = $this->getRequest();
         $form    = $this->createForm(new AttendeeType(), $entity);
         $form->bindRequest($request);
@@ -105,22 +105,22 @@ class AttendeeController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $user = $em->getRepository('MeeduleMeetingBundle:User')->find($id);
+        $attendee = $em->getRepository('MeeduleMeetingBundle:Attendee')->find($id);
         if (!$user) {
-            throw $this->createNotFoundException('Unable to find User entity.');
+            throw $this->createNotFoundException('Unable to find Attendee entity.');
         }
         
-        if(!$meeting->hasAttendee($user)) {
-            throw $this->createNotFoundException('This user is not part of this meeting');
+        if(!$meeting->hasAttendee($attendee)) {
+            throw $this->createNotFoundException('This attendee is not part of this meeting');
         }
 
-        $form = $this->createDeleteForm($user->getId());
+        $form = $this->createDeleteForm($attendee->getId());
         $request = $this->getRequest();
         $form->bindRequest($request);
 
         if ($form->isValid()) {
-            $this->get('session')->setFlash('notice', '<b>' . $user->getName() . '</b> è stato rimosso dal meeting <em>' . $meeting->getTitle() . '</em>');
-            $em->remove($user);
+            $this->get('session')->setFlash('notice', '<b>' . $attendee->getName() . '</b> è stato rimosso dal meeting <em>' . $meeting->getTitle() . '</em>');
+            $em->remove($attendee);
             $em->flush();
         }
     }

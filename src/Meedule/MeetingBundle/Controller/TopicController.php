@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Meedule\MeetingBundle\Entity\Meeting;
-use Meedule\MeetingBundle\Entity\User;
+use Meedule\MeetingBundle\Entity\Attendee;
 use Meedule\MeetingBundle\Entity\Topic;
 use Meedule\MeetingBundle\Form\MeetingType;
 use Meedule\MeetingBundle\Form\AgendaType;

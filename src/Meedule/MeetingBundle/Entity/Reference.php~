@@ -38,7 +38,7 @@ class Reference
     /**
      * @var string $owner
      *
-     * @ORM\Column(name="owner", type="string", length=255)
+     * @ORM\Column(name="owner", type="string", length=255, nullable="true")
      */
     private $owner;
     
@@ -47,6 +47,8 @@ class Reference
      * @ORM\JoinColumn(name="meeting_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $meeting;
+    
+    private $delete_form;
 
 
     /**
@@ -117,5 +119,33 @@ class Reference
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    /**
+     * Set meeting
+     *
+     * @param Meedule\MeetingBundle\Entity\Meeting $meeting
+     */
+    public function setMeeting(\Meedule\MeetingBundle\Entity\Meeting $meeting)
+    {
+        $this->meeting = $meeting;
+    }
+
+    /**
+     * Get meeting
+     *
+     * @return Meedule\MeetingBundle\Entity\Meeting 
+     */
+    public function getMeeting()
+    {
+        return $this->meeting;
+    }
+    
+    public function setDeleteForm($form){
+        $this->delete_form = $form;
+    }
+    
+    public function getDeleteForm(){
+        return $this->delete_form;
     }
 }
