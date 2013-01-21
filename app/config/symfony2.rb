@@ -161,7 +161,7 @@ namespace :database do
       upload(file, "/tmp/#{filename}", :via => :scp)
       run "gunzip -c /tmp/#{filename} > /tmp/#{sqlfile}"
 
-      run "cat #{shared_path}/app/config/databases.yml" do |ch, st, data|
+      run "cat #{shared_path}/app/config/parameters.yml" do |ch, st, data|
         config = load_database_config data, symfony_env_prod
       end
       
