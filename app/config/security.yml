@@ -10,9 +10,6 @@ security:
     providers:
         fos_userbundle:
             id: fos_user.user_manager
-        in_memory:
-            users:
-                admin: { password: %password_admin%, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
         dev:
@@ -27,15 +24,8 @@ security:
             logout:       true
             anonymous:    true
 
-        secured_area:
-            pattern:    ^/fabio
-            anonymous: ~
-            http_basic:
-                realm: "Secured Area"
-
     access_control:
         - { path: ^/fabio/meetings, roles: ROLE_ADMIN }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
