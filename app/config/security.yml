@@ -1,3 +1,9 @@
+services:
+    meedule_user.user_manager:
+        class: Meedule\UserBundle\Model\UserManager
+        public: false
+        parent: fos_user.user_manager.default
+
 security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
