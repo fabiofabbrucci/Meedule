@@ -57,6 +57,10 @@ class CreationController extends Controller
         $form->bindRequest($request);
 
         if ($form->isValid()) {
+            if ($this->isLogged()){
+                $user = $this->container->get('security.context')->getToken()->getUser();
+                $entity->setOwner($user);
+            }
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();

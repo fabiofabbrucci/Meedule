@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Meedule\MeetingBundle\Entity\Attendee
  *
- * @ORM\Table(name="attendee")
+ * @ORM\Table()
  * @ORM\Entity
  */
 class Attendee

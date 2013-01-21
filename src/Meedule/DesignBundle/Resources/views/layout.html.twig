@@ -73,7 +73,7 @@
                         <div class="pull-right">
                             <div class="navbar-text">
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                                    Collegato come <a href="{{ path('fos_user_profile_edit') }}">{{ app.user.username }}</a> | 
                                     <a href="{{ path('fos_user_security_logout') }}">
                                         {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                                     </a>
@@ -85,10 +85,13 @@
                             
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             <ul class="nav">
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-pencil"></i> My Meedules
+                                <li class="active">
+                                    <a href="{{ path('my_meedules') }}">
+                                        My Meedules
                                     </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('meeting_new') }}"><i class="icon-plus"></i> Crea</a>
                                 </li>
                             </ul>
                         {% endif %}

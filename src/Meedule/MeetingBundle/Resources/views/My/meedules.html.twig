@@ -1,0 +1,51 @@
+{% extends 'MeeduleDesignBundle::layout.html.twig' %}
+
+{% block title %}My Meedules{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <table class="table table-bordered table-striped table-hover">
+            <legend>My Meedules</legend>
+            <thead>
+                <tr>
+                    <th width="65%">Titolo</th>
+                    <th width="15%">Data</th>
+                    <th width="5%"><i class="icon-list"></i></th>
+                    <th width="5%"><i class="icon-pencil"></i></th>
+                    <th width="5%"><i class="icon-user"></i></th>
+                    <th width="5%"><i class="icon-ok"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for meeting in meetings %}
+                <tr>
+                    <td>
+                        <a href="{{ path('meeting_admin', {'slug': meeting.slugPrivate} ) }}">
+                            <i class="icon-edit"></i>
+                        </a>
+                        <a href="{{ path('meeting_show', {'slug': meeting.slugPublic} ) }}">
+                            {{ meeting.title }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ meeting.date|date(date_simple_format) }}
+                    </td>
+                    <td>
+                        {{ meeting.agendaTopics|length }}
+                    </td>
+                    <td>
+                        {{ meeting.crewTopics|length }}
+                    </td>
+                    <td>
+                        {{ meeting.attendees|length }}
+                    </td>
+                    <td>
+                        {% if meeting.isClosed %}<i class="icon-ok"></i>{% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

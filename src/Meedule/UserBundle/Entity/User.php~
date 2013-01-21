@@ -30,7 +30,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->meetings = new ArrayCollection;
+        $this->meedules = new ArrayCollection;
     }
     
     public function getGravatarMail()
@@ -51,24 +51,4 @@ class User extends BaseUser
         return $this->id;
     }
 
-
-    /**
-     * Add meetings
-     *
-     * @param Meedule\MeetingBundle\Entity\Meeting $meetings
-     */
-    public function addMeeting(\Meedule\MeetingBundle\Entity\Meeting $meeting)
-    {
-        $this->meetings[] = $meeting;
-    }
-
-    /**
-     * Get meetings
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getMeetings()
-    {
-        return $this->meetings;
-    }
 }

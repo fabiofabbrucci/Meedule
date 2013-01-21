@@ -5,6 +5,7 @@ namespace Meedule\MeetingBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Meedule\UserBundle\Entity\User;
 
 /**
  * Meedule\MeetingBundle\Entity\Meeting
@@ -121,6 +122,12 @@ class Meeting
      * @Assert\NotBlank()
      */
     private $name;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Meedule\UserBundle\Entity\User", inversedBy="meedules")
+     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
+     */
+    private $owner;
     
     /**
      * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\Attendee", mappedBy="meeting", cascade={"persist", "remove"})
@@ -576,5 +583,25 @@ class Meeting
     public function getAttendees()
     {
         return $this->attendees;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param Meedule\UserBundle\Entity\User $owner
+     */
+    public function setOwner(\Meedule\UserBundle\Entity\User $owner)
+    {
+        $this->owner = $owner;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return Meedule\UserBundle\Entity\User 
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 }
