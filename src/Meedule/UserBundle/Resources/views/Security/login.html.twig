@@ -1,0 +1,25 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    <legend>Login Meedule</legend>
+    
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        {% if error %}
+            <div class="alert alert-error">
+                <a class="close" data-dismiss="alert" href="#">×</a>{{ error|trans({}, 'FOSUserBundle') }}
+            </div>
+        {% endif %}
+            
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Username o Email" />
+        <input type="password" id="password" name="_password" placeholder="Password" />
+
+        <label class="checkbox">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            Ricordami
+        </label>
+        
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+    <a href="{{ path('fos_user_registration_register')}}">Registrati</a> oppure <a href="{{ path('fos_user_resetting_request')}}">recupera password</a>
+{% endblock fos_user_content %}
