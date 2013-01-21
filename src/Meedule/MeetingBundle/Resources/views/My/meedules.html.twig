@@ -21,7 +21,7 @@
                 {% for meeting in meetings %}
                 <tr>
                     <td>
-                        <a href="{{ path('meeting_admin', {'slug': meeting.slugPrivate} ) }}">
+                        <a href="{{ path('meeting_admin', {'slug': meeting.slugPrivate} ) }}" class="btn btn-small">
                             <i class="icon-edit"></i>
                         </a>
                         <a href="{{ path('meeting_show', {'slug': meeting.slugPublic} ) }}">
