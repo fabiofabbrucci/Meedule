@@ -29,7 +29,14 @@ class CreationController extends Controller
         $entity = new Meeting();
         $entity->setDate(new \DateTime('+1 day'));
         $entity->setTime(new \DateTime);
+        if ($this->isLogged()){
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $entity->setName($user->getUsername());
+            $entity->setMail($user->getEmail());
+        }
         $form   = $this->createForm(new MeetingType(), $entity);
+        
+        
 
         return array(
             'entity' => $entity,
@@ -187,6 +194,11 @@ class CreationController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+    
+    public function isLogged()
+    {
+        return $this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY');
     }
 }
 
