@@ -88,6 +88,12 @@ class MeetingController extends Controller
             if(!$attendee->getUser()){
                 $form = $this->createDeleteForm($attendee->getId());
                 $attendees[$i]->setDeleteForm($form->createView());
+            }elseif($this->isLogged()){
+                $user = $this->container->get('security.context')->getToken()->getUser();
+                if($attendee->getUser() == $user) {
+                    $form = $this->createDeleteForm($attendee->getId());
+                    $attendees[$i]->setDeleteForm($form->createView());
+                }
             }
         }
         

@@ -40,4 +40,24 @@ class MyController extends Controller
             'meetings' => $meetings,
         );
     }
+    
+    /**
+     * @Route("/partecipations", name="my_partecipations")
+     * @Template()
+     */
+    public function partecipationsAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $meetings = $em->getRepository('MeeduleMeetingBundle:Meeting')->findByAttendee($user->getId(), $user->getEmail());
+
+        if (!$meetings) {
+            throw $this->createNotFoundException('Unable to find Meeting entity.');
+        }
+        
+        return array(
+            'meetings' => $meetings,
+        );
+    }
 }

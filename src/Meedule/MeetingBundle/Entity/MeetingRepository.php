@@ -12,4 +12,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class MeetingRepository extends EntityRepository
 {
+    
+    public function findByAttendee($id, $email){
+        $query = $this->getEntityManager()
+            ->createQuery('
+                SELECT m FROM MeeduleMeetingBundle:Meeting m
+                JOIN m.attendees a
+                WHERE a.user = :id
+                OR a.mail LIKE :mail
+                ORDER BY m.date ASC')
+             ->setParameters(array(
+                 'id'=> $id,
+                 'mail' => $email,
+             ));
+        return $query->getResult();
+    }
 }
