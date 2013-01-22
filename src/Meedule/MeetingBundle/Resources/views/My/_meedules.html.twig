@@ -1,0 +1,42 @@
+<table class="table table-bordered table-striped table-hover">
+    <legend>{{ meedules_title }}</legend>
+    <thead>
+        <tr>
+            <th width="65%">Titolo</th>
+            <th width="15%">Data</th>
+            <th width="5%"><i class="icon-list" rel="tooltip" title="Agenda"></i></th>
+            <th width="5%"><i class="icon-pencil" rel="tooltip" title="Argomenti proposti"></i></th>
+            <th width="5%"><i class="icon-user" rel="tooltip" title="Partecipanti"></i></th>
+            <th width="5%"><i class="icon-ok" rel="tooltip" title="Meedule chiuso?"></i></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for meeting in meetings %}
+        <tr>
+            <td>
+                <a href="{{ path('meeting_admin', {'slug': meeting.slugPrivate} ) }}" class="btn btn-small">
+                    <i class="icon-edit"></i>
+                </a>
+                <a href="{{ path('meeting_show', {'slug': meeting.slugPublic} ) }}">
+                    {{ meeting.title }}
+                </a>
+            </td>
+            <td>
+                {{ meeting.date|date(date_simple_format) }}
+            </td>
+            <td>
+                {{ meeting.agendaTopics|length }}
+            </td>
+            <td>
+                {{ meeting.crewTopics|length }}
+            </td>
+            <td>
+                {{ meeting.attendees|length }}
+            </td>
+            <td>
+                {% if meeting.isClosed %}<i class="icon-ok"></i>{% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

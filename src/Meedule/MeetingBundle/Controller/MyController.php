@@ -27,24 +27,39 @@ class MyController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
 
-        $meetings1 = $em->getRepository('MeeduleMeetingBundle:Meeting')->findByOwner($user->getId());
+        $meetings1 = $em->getRepository('MeeduleMeetingBundle:Meeting')->findByOwner($user->getId(), array('date' => 'desc'));
         $meetings2 = $em->getRepository('MeeduleMeetingBundle:Meeting')->findByMail($user->getEmail());
         
+        //duplicazioni
         $meetings = array_merge($meetings1, $meetings2);
-        foreach($meetings as $i => $meeting){
-            foreach( $meetings as $y => $mee){
-                if($mee->getId() == $meeting->getId() and $i!=$y){
-                    unset($meetings[$i]);
+        if(count($meetings2)){
+            foreach($meetings as $i => $meeting){
+                foreach( $meetings as $y => $mee){
+                    if($mee->getId() == $meeting->getId() and $i!=$y){
+                        unset($meetings[$i]);
+                    }
                 }
+            }
+
+            //sort
+            usort($meetings, function($a, $b){  
+                return $a->getDate() < $b->getDate();
+            });
+        }
+        
+        $now = new \DateTime();
+        foreach($meetings as $i => $meeting){
+            if($meeting->getDate() > $now){
+                $future_meetings[] = $meeting;
+            }else{
+                $past_meetings[] = $meeting;
             }
         }
         
-        usort($meetings, function($a, $b){  
-            return $a->getDate() < $b->getDate();
-        });
 
         return array(
-            'meetings' => $meetings,
+            'future_meetings' => $future_meetings,
+            'past_meetings' => $past_meetings,
         );
     }
     

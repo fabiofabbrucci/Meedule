@@ -18,12 +18,14 @@ class MeetingRepository extends EntityRepository
             ->createQuery('
                 SELECT m FROM MeeduleMeetingBundle:Meeting m
                 JOIN m.attendees a
-                WHERE a.user = :id
-                OR a.mail LIKE :mail
+                WHERE (a.user = :id
+                OR a.mail LIKE :mail)
+                AND m.date >= :date
                 ORDER BY m.date ASC')
              ->setParameters(array(
                  'id'=> $id,
                  'mail' => $email,
+                 'date' => new \DateTime
              ));
         return $query->getResult();
     }
