@@ -31,11 +31,18 @@ class MyController extends Controller
         $meetings2 = $em->getRepository('MeeduleMeetingBundle:Meeting')->findByMail($user->getEmail());
         
         $meetings = array_merge($meetings1, $meetings2);
-
-        if (!$meetings) {
-            throw $this->createNotFoundException('Unable to find Meeting entity.');
+        foreach($meetings as $i => $meeting){
+            foreach( $meetings as $y => $mee){
+                if($mee->getId() == $meeting->getId() and $i!=$y){
+                    unset($meetings[$i]);
+                }
+            }
         }
         
+        usort($meetings, function($a, $b){  
+            return $a->getDate() < $b->getDate();
+        });
+
         return array(
             'meetings' => $meetings,
         );
