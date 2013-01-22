@@ -57,6 +57,12 @@ class Topic
      */
     private $meeting;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="Meedule\UserBundle\Entity\User", inversedBy="topics")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+    
     private $delete_form;
     
     /**
@@ -190,5 +196,25 @@ class Topic
     public function isApproved()
     {
         return (bool)$this->approved;
+    }
+
+    /**
+     * Set user
+     *
+     * @param Meedule\UserBundle\Entity\User $user
+     */
+    public function setUser(\Meedule\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Meedule\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

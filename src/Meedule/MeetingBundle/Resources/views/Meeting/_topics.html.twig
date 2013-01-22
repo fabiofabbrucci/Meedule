@@ -12,9 +12,15 @@
                     <button type="submit"><i class="icon-trash"></i></button> 
                 </form>
             {% endif %}
+            {% if with_picture|default(false) and topic.user %}
+                <img 
+                    rel="tooltip"
+                    title="Immagine fornita da Gravatar.com"
+                    src="http://www.gravatar.com/avatar/{{topic.user.gravatarMail}}?s=26&d=http://meedule.abmundi.com/gravatar.png" />
+            {% endif %}
             {{ topic.name }}
             {% if topic.owner %}
-                 [<em>{{ topic.owner }} <i class="icon-user"></i></em>] 
+                 [<em>{{ topic.owner }}</em>] 
             {% endif %}
             {% if topic.deleteForm %}
                 <div class="clearfix"></div>

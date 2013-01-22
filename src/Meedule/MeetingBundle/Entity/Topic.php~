@@ -57,6 +57,12 @@ class Topic
      */
     private $meeting;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="Meedule\UserBundle\Entity\User", inversedBy="topics")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+    
     private $delete_form;
     
     /**

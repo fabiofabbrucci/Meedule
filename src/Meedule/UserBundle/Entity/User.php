@@ -31,11 +31,18 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\Attendee", mappedBy="user")
      */
     protected $partecipations;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\Topic", mappedBy="user")
+     */
+    protected $topics;
 
     public function __construct()
     {
         parent::__construct();
         $this->meetings = new ArrayCollection;
+        $this->partecipations = new ArrayCollection;
+        $this->topics = new ArrayCollection;
     }
     
     public function getGravatarMail()
@@ -95,5 +102,25 @@ class User extends BaseUser
     public function getPartecipations()
     {
         return $this->partecipations;
+    }
+
+    /**
+     * Add topics
+     *
+     * @param Meedule\MeetingBundle\Entity\Topic $topics
+     */
+    public function addTopic(\Meedule\MeetingBundle\Entity\Topic $topics)
+    {
+        $this->topics[] = $topics;
+    }
+
+    /**
+     * Get topics
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTopics()
+    {
+        return $this->topics;
     }
 }

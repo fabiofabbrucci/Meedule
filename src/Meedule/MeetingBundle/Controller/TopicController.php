@@ -103,6 +103,10 @@ class TopicController extends Controller
             }else{
                 $topic->setPosition(count($meeting->getCrewTopics()) + 1);
             }
+            if($this->isLogged()){
+                $user = $this->container->get('security.context')->getToken()->getUser();
+                $topic->setUser($user);
+            }
             $topic->setMeeting($meeting);
             $meeting->addTopic($topic);
             $em->persist($topic);
@@ -223,6 +227,11 @@ class TopicController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+    
+    public function isLogged()
+    {
+        return $this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY');
     }
 }
 

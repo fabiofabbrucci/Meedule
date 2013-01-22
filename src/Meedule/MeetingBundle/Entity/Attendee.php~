@@ -139,4 +139,24 @@ class Attendee
         }
         return false;
     }
+
+    /**
+     * Set user
+     *
+     * @param Meedule\UserBundle\Entity\User $user
+     */
+    public function setUser(\Meedule\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Meedule\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

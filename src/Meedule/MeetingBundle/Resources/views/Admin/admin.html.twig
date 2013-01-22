@@ -17,9 +17,9 @@
     
 {% block crew_topics %}
     {% if not entity.isClosed %}
-        {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_crew, 'url_topic_delete': url_delete_topic_crew, 'topics_id': 'topics_crew'} %}
+        {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_crew, 'url_topic_delete': url_delete_topic_crew, 'topics_id': 'topics_crew', 'with_picture': true} %}
     {% else %}
-        {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_crew, 'topics_id': 'topics_crew'} %}
+        {% include 'MeeduleMeetingBundle:Meeting:_topics.html.twig' with {'topics': topics_crew, 'topics_id': 'topics_crew', 'with_picture': true} %}
     {% endif %}
 {% endblock %}
     

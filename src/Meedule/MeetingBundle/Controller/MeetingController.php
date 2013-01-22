@@ -100,8 +100,16 @@ class MeetingController extends Controller
         $topics = array();
         foreach($entity->getCrewTopics() as $i=>$topic){
             $topics[] = $topic;
-            $form = $this->createDeleteForm($topic->getId());
-            $topics[$i]->setDeleteForm($form->createView());
+            if(!$topic->getUser()){
+                $form = $this->createDeleteForm($topic->getId());
+                $topics[$i]->setDeleteForm($form->createView());
+            }elseif($this->isLogged()){
+                $user = $this->container->get('security.context')->getToken()->getUser();
+                if($topic->getUser() == $user) {
+                    $form = $this->createDeleteForm($topic->getId());
+                    $topics[$i]->setDeleteForm($form->createView());
+                }
+            }
         }
         
         $references = array();

@@ -82,8 +82,16 @@ class AdminController extends Controller
         $crew_topics = array();
         foreach($entity->getCrewTopics() as $i=>$topic){
             $crew_topics[] = $topic;
-            $form = $this->createDeleteForm($topic->getId());
-            $crew_topics[$i]->setDeleteForm($form->createView());
+            if(!$topic->getUser()){
+                $form = $this->createDeleteForm($topic->getId());
+                $crew_topics[$i]->setDeleteForm($form->createView());
+            }elseif($this->isLogged()){
+                $user = $this->container->get('security.context')->getToken()->getUser();
+                if($topic->getUser() == $user) {
+                    $form = $this->createDeleteForm($topic->getId());
+                    $crew_topics[$i]->setDeleteForm($form->createView());
+                }
+            }
         }
         
         $agenda_topics = array();
