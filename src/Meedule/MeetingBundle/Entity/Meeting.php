@@ -390,8 +390,8 @@ class Meeting
         if(!$this->getSlugpublic()){
             $data = new \DateTime();
             $string = $this->getTitle() . $this->getMail() . $data->format('YmsHis') . rand(1,1000000);
-            $this->setSlugpublic(md5($string));
-            $this->setSlugprivate(md5(strrev($string)));
+            $this->setSlugpublic(substr(md5($string), rand(0,1), 16));
+            $this->setSlugprivate(substr(md5(strrev($string)), rand(0,1), 16));
         }
     }
 
