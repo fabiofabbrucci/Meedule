@@ -1,9 +1,9 @@
 {% extends 'MeeduleDesignBundle::layout.html.twig' %}
 
-{% block title %}{{ entity.title }} - Meedule{% endblock %}
+{% block title %}Meedule: {{ entity.title }}{% endblock %}
 
 {% block meta %}
-    <meta property="og:title" content="Meedule - {{ entity.title }}" />
+    <meta property="og:title" content="Meedule: {{ entity.title }}" />
     <meta property="og:description" content="{{ entity.description }}" />
 {% endblock %}
 
