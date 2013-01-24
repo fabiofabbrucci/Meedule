@@ -5,6 +5,7 @@
 {% block meta %}
     <meta property="og:title" content="Meedule: {{ entity.title }}" />
     <meta property="og:description" content="{{ entity.description }}" />
+    <meta property="og:url" content="{{ url('meeting_show', {'slug': entity.slugPublic} ) }}" />
 {% endblock %}
 
 {% block content %}
