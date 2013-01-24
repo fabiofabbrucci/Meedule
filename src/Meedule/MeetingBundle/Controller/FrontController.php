@@ -16,4 +16,13 @@ class FrontController extends Controller
     {
         return array();
     }
+    
+    /**
+     * @Route("/test", name="test")
+     * @Template()
+     */
+    public function testAction()
+    {
+        return array();
+    }
 }
