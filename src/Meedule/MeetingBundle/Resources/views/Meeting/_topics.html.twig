@@ -1,5 +1,5 @@
 {% if topics %}
-    <ol id="{{ topics_id }}">
+    <ol id="{{ topics_id }}" class="topics">
     {% for topic in topics %}
         <li id="topic_{{ topic.id }}"{% if entity.isClosed and not topic.isApproved %} class="rejected"{% endif %}>
             {% if topic.deleteForm %}
@@ -20,7 +20,7 @@
             {% endif %}
             {{ topic.name }}
             {% if topic.owner %}
-                 [<em>{{ topic.owner }}</em>] 
+                 - <em>{{ topic.owner }}</em>
             {% endif %}
             {% if topic.deleteForm %}
                 <div class="clearfix"></div>
