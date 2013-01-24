@@ -47,15 +47,16 @@ class MyController extends Controller
             });
         }
         
-        $now = new \DateTime();
+        $now = new \DateTime(date('Y-m-d'));
         foreach($meetings as $i => $meeting){
-            if($meeting->getDate() > $now){
+            if($meeting->getDate() >= $now){
                 $future_meetings[] = $meeting;
             }else{
                 $past_meetings[] = $meeting;
             }
         }
         
+        $future_meetings = array_reverse($future_meetings);
 
         return array(
             'future_meetings' => $future_meetings,
