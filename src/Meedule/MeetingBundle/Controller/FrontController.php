@@ -25,4 +25,14 @@ class FrontController extends Controller
     {
         return array();
     }
+    
+    /**
+     * @Route("/cv", name="cv")
+     * @Route("/cv-fabio-fabbrucci", name="cvfabio")
+     * @Template()
+     */
+    public function cvAction()
+    {
+        return array();
+    }
 }

@@ -1,0 +1,61 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {% stylesheets
+        'bundles/meeduledesign/bootstrap/bootstrap.less'
+        'bundles/meeduledesign/bootstrap/responsive.less'
+        'bundles/meeduledesign/css/zocial.less'
+        'bundles/meeduledesign/css/application.less'
+        'bundles/meeduledesign/css/ui-lightness/jquery-ui-1.8.17.custom.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% stylesheets
+            'bundles/meeduledesign/css/print.css'
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" media="print" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+        'bundles/meeduledesign/bootstrap/js/bootstrap-alert.js'
+        'bundles/meeduledesign/bootstrap/js/bootstrap-button.js'
+        'bundles/meeduledesign/bootstrap/js/bootstrap-dropdown.js'
+        'bundles/meeduledesign/bootstrap/js/bootstrap-tooltip.js'
+        'bundles/meeduledesign/bootstrap/js/bootstrap-popover.js'
+        'bundles/meeduledesign/js/jquery-ui-1.8.17.custom.min.js'
+    %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+<script>
+    $(document).ready(function(){
+        $("*[rel=popover]").popover();
+        $("*[rel=tooltip]").tooltip();
+    });
+</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/it_IT/all.js#xfbml=1&appId=364269810337276";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    
+{% if app.environment == "prod" %}
+    <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28629605-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    </script>
+{% endif %}
+{% endblock %}

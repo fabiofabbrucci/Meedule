@@ -1,0 +1,116 @@
+{% extends 'MeeduleDesignBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {% stylesheets
+        'bundles/meeduledesign/bootstrap/bootstrap.less'
+        'bundles/meeduledesign/bootstrap/responsive.less'
+        'bundles/meeduledesign/css/zocial.less'
+        'bundles/meeduledesign/css/cv.less'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% stylesheets
+            'bundles/meeduledesign/css/print.css'
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" media="print" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block big_body %}
+<body data-spy="scroll" data-target="#navbar">
+    <div class="navbar navbar-fixed-top" id="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="{{ path('cv') }}">
+                    Fabio Fabbrucci
+                </a>
+                <ul class="nav">
+                    <li><a href="#who">Chi</a></li>
+                    <li><a href="#what">Cosa</a></li>
+                    <li><a href="#when">Quando</a></li>
+                    <li><a href="#where">Dove</a></li>
+                    <li><a href="#why">Perchè</a></li>
+                    <li><a href="#other">Altro</a></li>
+                </ul>
+                <div class="nav-collapse collapse">
+                    <div class="pull-right">
+                        <div class="navbar-text">
+                            <em>Human being, clown, organizer</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <section id="who">
+            <div class="hero-unit">
+                <div class="pull-right">
+                    <img src="http://graph.facebook.com/fabiofabbrucci/picture?type=large" class="img-circle" />
+                </div>
+                <h1>Ciao, sono Fabio</h1>
+                <h3>... e questo che vedi è il mio curriculum</h3>
+                <p>
+                    Ho un blog <a href="http://fabbrucci.tumblr.com/" class="zocial tumblr">Tumblr</a> ed uso <a href="https://github.com/fabiofabbrucci" class="zocial github">Github</a>
+                </p>
+                <p>
+                    La mia mail è <a class="zocial gmail">fabio.fabbrucci [at] gmail.com</a>, scrivo su 
+                    <a href="http://twitter.com/Fabbrucci" class="zocial twitter">Twitter</a> e sono anche su 
+                    <a href="http://facebook.com/fabiofabbrucci" class="zocial facebook">Facebook</a>
+                </p>
+            </div>
+        </section>
+        <section id="what">
+            <h2>Cosa so (e mi piace) fare</h2>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+        </section>
+        <section id="when">
+            <h2>Dove ho lavorato</h2>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+        </section>
+        <section id="where">
+            <h2>Education</h2>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+        </section>
+        <section id="why">
+            <h2>Motivations</h2>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+        </section>
+        <section id="other">
+            <h2>Other</h2>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+            <p>asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br />asdasdas<br /></p>
+        </section>
+    </div>
+        
+    <footer class="footer">
+        Prova
+    </footer>
+        
+    {% block javascripts %}
+        {{ parent() }}
+        {% javascripts
+                'bundles/meeduledesign/bootstrap/js/bootstrap-scrollspy.js'
+            %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        <script>
+            $(document).ready(function(){
+                $('#navbar').scrollspy();
+            });
+        </script>
+    {% endblock %}
+</body>
+{% endblock %}
