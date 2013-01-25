@@ -23,7 +23,9 @@
         <title>{% block title %}Meedule - Agenda per meeting{% endblock %}</title>
         
         {% block stylesheets %}{% endblock %}
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        {% block favicon %}
+            <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        {% endblock %}
         
         {% javascripts
             'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
