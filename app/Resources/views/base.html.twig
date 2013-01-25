@@ -10,15 +10,15 @@
         <meta name="copyright" content="Meedule, Italy" />
         <meta name="application-name" content="Meedule" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
+        <meta 
+            property="og:image"            
+            content="{{ 'http://' ~ app.request.host ~ asset('bundles/meeduledesign/img/meedule.picture.png') }}" /> 
         {% block meta %}
             <meta property="og:title" content="Meedule" />
             <meta property="og:description" content="Free fun tool for your meetings" />
             <meta property="og:url" content="http://meedule.abmundi.com/" />
         {% endblock %}
-        <meta 
-            property="og:image"            
-            content="{{ 'http://' ~ app.request.host ~ asset('bundles/meeduledesign/img/meedule.picture.png') }}" /> 
         
         <title>{% block title %}Meedule - Agenda per meeting{% endblock %}</title>
         
