@@ -1,5 +1,13 @@
 {% extends 'MeeduleDesignBundle::base.html.twig' %}
 
+{% block title %}Fabio Fabbrucci Curriculum - Webdeveloper Project Manager Scrum Agile XP Coach{% endblock %}
+
+{% block meta %}
+    <meta property="og:title" content="Fabio Fabbrucci Curriculum - Webdeveloper Project Manager Scrum Agile XP Coach" />
+    <meta property="og:description" content="CV" />
+    <meta property="og:url" content="{{ url('cv') }}" />
+{% endblock %}
+
 {% block stylesheets %}
     {% stylesheets
         'bundles/meeduledesign/bootstrap/bootstrap.less'
