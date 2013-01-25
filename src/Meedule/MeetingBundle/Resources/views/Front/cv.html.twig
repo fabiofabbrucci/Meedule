@@ -58,10 +58,11 @@
         <section id="who">
             <div class="hero-unit">
                 <div class="pull-right">
-                    <img src={{ asset('bundles/meeduledesign/img/fabio.fabbrucci.jpg') }} class="img-circle" width="250" />
+                    <img src={{ asset('bundles/meeduledesign/img/fabio.fabbrucci.jpg') }} class="img-circle" />
                 </div>
                 <h1>Ciao, sono Fabio</h1>
-                <h3>... e questo che vedi è il mio curriculum</h3>
+                <h3>e questo è il mio curriculum</h3>
+                <p>&nbsp;</p>
                 <p>
                     Scrivo su 
                     <a href="http://fabbrucci.tumblr.com/" class="zocial tumblr">Tumblr</a>
@@ -189,7 +190,10 @@
             </table>
             
             <table class="table table-bordered">
-                <legend>Relatore</legend>
+                <legend>
+                    Relatore
+                    <a href="http://www.slideshare.net/fabio.fabbrucci" class="zocial secondary">Guarda le mie slide</a>
+                </legend>
                 <thead>
                     <tr>
                         <th width="10%">Data</th>
@@ -237,53 +241,46 @@
             </table>
             
             <table class="table table-bordered">
-                <legend>Formazione e conferenze</legend>
-                <thead>
-                    <tr>
-                        <th width="10%">Data</th>
-                        <th width="90%">Corso</th>
-                    </tr>
-                </thead>
+                <legend>
+                    Formazione e conferenze
+                    <a href="http://www.linkedin.com/profile/view?id=113340644" class="zocial linkedin">Scopri la mia formazione</a>
+                </legend>
                 <tbody>
                     <tr>
-                        <td>2012</td>
-                        <td>PHPDay</td>   
+                        <td>
+                            <a href="http://www.phpday.it/">PhpDay</a>: 
+                            2012, 2011, 2010, 2009
+                        </td>   
                     </tr>
                     <tr>
-                        <td>2011</td>
-                        <td>AgileDay</td>   
+                        <td>
+                            <a href="http://www.agileday.it/">AgileDay</a>: 
+                            2011, 2010
+                        </td>
                     </tr>
                     <tr>
-                        <td>2011</td>
-                        <td>PHPDay</td>   
+                        <td>
+                            <a href="http://www.iasummit.it/">IASummit</a>:
+                            2010
+                        </td>
                     </tr>
                     <tr>
-                        <td>2010</td>
-                        <td>IASummit</td>   
+                        <td>
+                            <a href="http://www.bettersoftware.it/">BetterSoftware</a>:
+                            2011, 2010
+                        </td>
                     </tr>
                     <tr>
-                        <td>2010</td>
-                        <td>BetterSoftware</td>   
+                        <td>
+                            Laurea Ingegneria Informatica (triennale) presso UNIBO sede di Cesena:
+                            Dal 2002 al 2007
+                        </td>
                     </tr>
                     <tr>
-                        <td>2010</td>
-                        <td>AgileDay</td>   
-                    </tr>
-                    <tr>
-                        <td>2010</td>
-                        <td>PHPDay</td>   
-                    </tr>
-                    <tr>
-                        <td>2009</td>
-                        <td>PHPDay</td>   
-                    </tr>
-                    <tr>
-                        <td>2002 - 2007</td>
-                        <td>Laurea Ingegneria Informatica (triennale) presso UNIBO sede di Cesena</td>   
-                    </tr>
-                    <tr>
-                        <td>1998 - 2002</td>
-                        <td>Perito tecnico Informatico presso ITIS Blaise Pascal Cesena</td>
+                        <td>
+                            Perito tecnico Informatico presso ITIS Blaise Pascal Cesena:
+                            Dal 1998 al 2002
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -329,6 +326,7 @@
                             <li>leggere (fumetti e libri tecnici)</li>
                             <li>i pirati</li>
                             <li>i giochi di società</li>
+                            <li>le lego (anche te, vero?)</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -356,14 +354,25 @@
         </section>
         <section>
             <div class="hero-unit">
-                <h1>Grazie per aver letto il mio curriculum</h1>
+                <div class="pull-right">
+                    <img src={{ asset('bundles/meeduledesign/img/professionist.jpg') }} class="img-circle" />
+                </div>
+                <h2>Qui finisce il mio curriculum ...</h2>
+                <h1>ma non dove mi fermo io.</h1>
+                <p>&nbsp;</p>
                 <p>
-                    Se per caso ti servissero i miei riferimenti puoi <a href="#who" class="btn btn-small btn-info">tornare su</a> e cercare di contattarmi.<br />
-                    Altimenti grazie lo stesso e <u>buona fortuna</u> per tutto.<i class="icon-heart"></i><br />
-                    Fabio.
+                    Se cerchi un <b>serio professionista</b> per la tua azienda scegli l'uomo giusto.<br />
+                    Se puoi quell'uomo giusto sono io, bene!<br />
+                    Contattami su <a class="zocial gmail" href="mailto:fabio.fabbrucci@gmail.com">Gmail</a> o in qualche altro modo che trovi <a href="#who" class="zocial secondary">qui</a>.
                 </p>
             </div>
         </section>
+        <hr />
+        <p>
+            <center>
+                "<i class="icon-heart"></i> <i>Grazie per avermi letto</i>" By un CV.
+            </center>
+        </p>
     </div>
         
     {% block javascripts %}
