@@ -385,6 +385,13 @@
         <script>
             $(document).ready(function(){
                 $('#navbar').scrollspy();
+                $('#navbar a').click(function(e){
+                    e.preventDefault();
+                    target = $(this).attr('href');
+                    $('html,body').animate({
+                        scrollTop: $(target).offset().top
+                    }, 1000);
+                });
             });
         </script>
     {% endblock %}
