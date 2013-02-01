@@ -58,10 +58,11 @@
         <section id="who">
             <div class="hero-unit">
                 <div class="pull-right">
-                    <img src={{ asset('bundles/meeduledesign/img/fabio.fabbrucci.jpg') }} class="img-circle" />
+                    <img src="{{ asset('bundles/meeduledesign/img/fabio.fabbrucci.jpg') }}" class="img-circle" />
                 </div>
                 <h1>Ciao, sono Fabio</h1>
-                <h3>e questo è il mio curriculum</h3>
+                <h3>e questo è il mio <a href="{{ asset('bundles/meeduledesign/pdf/fabio.fabbrucci.pdf') }}" class="zocial acrobat" target="_blank">curriculum</a></h3>
+                
                 <p>&nbsp;</p>
                 <p>
                     Scrivo su 
@@ -289,7 +290,7 @@
         <section id="why">
             <h1>Perchè faccio quello che faccio?</h1>
             <div class="pull-right">
-                <img src="http://graph.facebook.com/fabiofabbrucci/picture?type=large" class="img-circle" />
+                <img src={{ asset('bundles/meeduledesign/img/fabio.fabbrucci.avatar.jpg') }} class="img-circle" />
             </div>
             <blockquote>
                 <p>
@@ -376,14 +377,22 @@
     </div>
         
     {% block javascripts %}
-        {{ parent() }}
         {% javascripts
-                'bundles/meeduledesign/bootstrap/js/bootstrap-scrollspy.js'
-            %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-            {% endjavascripts %}
+            'bundles/meeduledesign/bootstrap/js/bootstrap-alert.js'
+            'bundles/meeduledesign/bootstrap/js/bootstrap-button.js'
+            'bundles/meeduledesign/bootstrap/js/bootstrap-dropdown.js'
+            'bundles/meeduledesign/bootstrap/js/bootstrap-tooltip.js'
+            'bundles/meeduledesign/bootstrap/js/bootstrap-popover.js'
+            'bundles/meeduledesign/bootstrap/js/bootstrap-scrollspy.js'
+            'bundles/meeduledesign/js/jquery-ui-1.8.17.custom.min.js'
+        %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
         <script>
             $(document).ready(function(){
+                $("*[rel=popover]").popover();
+                $("*[rel=tooltip]").tooltip();
+                
                 $('#navbar').scrollspy();
                 $('#navbar a').click(function(e){
                     e.preventDefault();
@@ -394,6 +403,21 @@
                 });
             });
         </script>
+        {% if app.environment == "prod" %}
+            <script type="text/javascript">
+
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-28629605-2']);
+                _gaq.push(['_trackPageview']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+
+            </script>
+        {% endif %}
     {% endblock %}
 </body>
 {% endblock %}
