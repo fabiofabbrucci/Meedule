@@ -18,6 +18,9 @@
                     title="Immagine fornita da Gravatar.com"
                     src="http://www.gravatar.com/avatar/{{topic.user.gravatarMail}}?s=26&d=http://meedule.abmundi.com/gravatar.png" />
             {% endif %}
+            {% if with_icon_vertical|default(false) %}
+                <i class="icon-resize-vertical"></i> 
+            {% endif %}
             {{ topic.name }}
             {% if topic.owner %}
                  - <em>{{ topic.owner }}</em>
