@@ -21,3 +21,4 @@ gedmo-doctrine-extensions 7a4bd0a7ef51058fcb5d5609988c1f530e200d1b
 DoctrineExtensionsBundle 1.0.2
 LiipFunctionalTestBundle 7c9062bf3a5fb69c2c892fe61f517a596ea24d5d
 FOSUserBundle 1.2.0
+FOSGoogleBundle 0.1

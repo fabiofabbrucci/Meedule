@@ -23,6 +23,11 @@ class User extends BaseUser
     protected $id;
     
     /**
+    * @ORM\Column(type="string", length=40, nullable=true)
+    */
+    protected $googleID;
+    
+    /**
      * @ORM\OneToMany(targetEntity="Meedule\MeetingBundle\Entity\Meeting", mappedBy="owner")
      */
     protected $meetings;
@@ -122,5 +127,43 @@ class User extends BaseUser
     public function getTopics()
     {
         return $this->topics;
+    }
+    
+    public function setGoogleID( $googleID )
+    {
+        $this->googleID = $googleID;
+    }
+
+    public function getGoogleID( )
+    {
+        return $this->googleID;
+    }
+    
+    /**
+     * GetGData
+     * 
+     * @param type $gdata 
+     */
+    public function setGData($gData)
+    {
+        if (isset($gData['id'])) {
+            $this->setGoogleID($gData['id']);
+            $this->addRole('ROLE_GOOGLE');
+        }
+
+        if (isset($gData['email'])) {
+            $this->setEmail($gData['email']);
+            if (!$this->getUsername()) {
+                if (isset($gData['username'])) {
+                    $username = $gData['username'];
+                } else {
+                    $email = $gData['email'];
+                    $username = substr($email, 0, strpos($email, '@')) . rand(1, 1000);
+                }
+                $this->setUsername($username);
+                $this->salt = '';
+            }
+        }
+        
     }
 }
