@@ -3,14 +3,34 @@ app/bootstrap*
 
 # Symfony directories
 vendor/*
-*/logs/*
-*/cache/*
+vendor/*
+app/Resources/doc/*.pdf
+web/bundles/
+web/css/*
+web/js/*
+web/images/*
 web/uploads/*
-web/bundles/*
+web/media/cache/*
+app/cache/*
+app/logs/*
+app/spool/*
+app/tmp/*
+deps.lock
 
 # Configuration files
 app/config/parameters.ini
 app/config/parameters.yml
 /nbproject/private/
 backups/*
+
+# build directories
+build/reports/*
+
+# capifony
+.rsync_cache
+
+!*.gitkeep
+/node_modules/.bin/
+
+node_modules/
 

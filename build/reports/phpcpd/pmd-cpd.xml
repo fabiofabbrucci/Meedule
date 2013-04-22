@@ -1,2 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd-cpd version="phpcpd 1.3.5"/>
+<pmd-cpd>
+  <duplication lines="11" tokens="30">
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/AttendeeController.php" line="132"/>
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/CreationController.php" line="194"/>
+    <codefragment>    private function createDeleteForm($id)
+    {
+        return $this-&gt;createFormBuilder(array('id' =&gt; $id))
+            -&gt;add('id', 'hidden')
+            -&gt;getForm()
+        ;
+    }
+    
+    public function isLogged()
+    {
+        return $this-&gt;get('security.context')-&gt;isGranted('IS_AUTHENTICATED_FULLY');
+</codefragment>
+  </duplication>
+  <duplication lines="6" tokens="41">
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/AdminController.php" line="3"/>
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/MeetingController.php" line="3"/>
+    <codefragment>namespace Meedule\MeetingBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+</codefragment>
+  </duplication>
+  <duplication lines="7" tokens="10">
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/AdminController.php" line="38"/>
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/MeetingController.php" line="49"/>
+    <codefragment>        $entity = $em-&gt;getRepository('MeeduleMeetingBundle:Meeting')-&gt;findOneBySlugprivate($slug);
+
+        if (!$entity) {
+            throw $this-&gt;createNotFoundException('Unable to find Meeting entity.');
+        }
+        
+        if($entity-&gt;isClosed())
+</codefragment>
+  </duplication>
+  <duplication lines="11" tokens="30">
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/AttendeeController.php" line="132"/>
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/MeetingController.php" line="145"/>
+    <codefragment>    private function createDeleteForm($id)
+    {
+        return $this-&gt;createFormBuilder(array('id' =&gt; $id))
+            -&gt;add('id', 'hidden')
+            -&gt;getForm()
+        ;
+    }
+    
+    public function isLogged()
+    {
+        return $this-&gt;get('security.context')-&gt;isGranted('IS_AUTHENTICATED_FULLY');
+</codefragment>
+  </duplication>
+  <duplication lines="15" tokens="32">
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/AttendeeController.php" line="20"/>
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/ReferenceController.php" line="21"/>
+    <codefragment>class AttendeeController extends Controller
+{
+    /**
+     * @Route("/create", name="meeting_attendee_create")
+     * @Method("post")
+     */
+    public function createAction($slug)
+    {
+        $em = $this-&gt;getDoctrine()-&gt;getEntityManager();
+        $meeting = $em-&gt;getRepository('MeeduleMeetingBundle:Meeting')-&gt;findOneBySlugpublic($slug);
+        if (!$meeting) {
+            throw $this-&gt;createNotFoundException('Unable to find Meeting entity.');
+        }
+        $this-&gt;create($meeting);
+        return $this-&gt;redirect($this-&gt;generateUrl('meeting_show', array('slug' =&gt; $meeting-&gt;getSlugpublic())));
+</codefragment>
+  </duplication>
+  <duplication lines="21" tokens="40">
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/AttendeeController.php" line="66"/>
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/ReferenceController.php" line="62"/>
+    <codefragment>            $entity-&gt;setMeeting($meeting);
+            $em-&gt;persist($entity);
+            $em-&gt;flush();
+        }
+    }
+    
+    /**
+     * @return view
+     * @throws no exists
+     * 
+     * @Route("/{id}/delete", name="meeting_attendee_delete")
+     * @Method({"POST"})
+     */
+    public function deleteAction($slug, $id)
+    {
+        $em = $this-&gt;getDoctrine()-&gt;getEntityManager();
+        $meeting = $em-&gt;getRepository('MeeduleMeetingBundle:Meeting')-&gt;findOneBySlugpublic($slug);
+        if (!$meeting) {
+            throw $this-&gt;createNotFoundException('Unable to find Meeting entity.');
+        }
+        $this-&gt;delete($meeting, $id);
+</codefragment>
+  </duplication>
+  <duplication lines="8" tokens="26">
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/AttendeeController.php" line="79"/>
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/TopicController.php" line="142"/>
+    <codefragment>    public function deleteAction($slug, $id)
+    {
+        $em = $this-&gt;getDoctrine()-&gt;getEntityManager();
+        $meeting = $em-&gt;getRepository('MeeduleMeetingBundle:Meeting')-&gt;findOneBySlugpublic($slug);
+        if (!$meeting) {
+            throw $this-&gt;createNotFoundException('Unable to find Meeting entity.');
+        }
+        $this-&gt;delete($meeting, $id);
+</codefragment>
+  </duplication>
+  <duplication lines="11" tokens="30">
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/AttendeeController.php" line="132"/>
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Controller/TopicController.php" line="224"/>
+    <codefragment>    private function createDeleteForm($id)
+    {
+        return $this-&gt;createFormBuilder(array('id' =&gt; $id))
+            -&gt;add('id', 'hidden')
+            -&gt;getForm()
+        ;
+    }
+    
+    public function isLogged()
+    {
+        return $this-&gt;get('security.context')-&gt;isGranted('IS_AUTHENTICATED_FULLY');
+</codefragment>
+  </duplication>
+  <duplication lines="13" tokens="24">
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Entity/Attendee.php" line="148"/>
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/Entity/Topic.php" line="206"/>
+    <codefragment>    public function setUser(\Meedule\UserBundle\Entity\User $user)
+    {
+        $this-&gt;user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Meedule\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this-&gt;user;
+</codefragment>
+  </duplication>
+  <duplication lines="12" tokens="33">
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/MeetingBundle/DependencyInjection/MeeduleMeetingExtension.php" line="15"/>
+    <file path="/Users/fabio/Sites/Meedule/./src/Meedule/UserBundle/DependencyInjection/MeeduleUserExtension.php" line="15"/>
+    <codefragment>class MeeduleMeetingExtension extends Extension
+{
+    /**
+     * {@inheritDoc}
+     */
+    public function load(array $configs, ContainerBuilder $container)
+    {
+        $configuration = new Configuration();
+        $config = $this-&gt;processConfiguration($configuration, $configs);
+
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader-&gt;load('services.xml');
+</codefragment>
+  </duplication>
+</pmd-cpd>
