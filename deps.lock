@@ -6,7 +6,7 @@ doctrine-dbal 2.1.6
 doctrine 2.1.6
 swiftmailer v4.1.7
 assetic v1.0.3
-twig-extensions 5c2d515d4624bdd588226d688173cf0399a4d8cf
+twig-extensions v1.0.0
 metadata 1.0.0
 SensioFrameworkExtraBundle v2.0.22
 JMSSecurityExtraBundle e752f888c51425f71382c056961f10f2be642102
@@ -15,10 +15,10 @@ SensioGeneratorBundle v2.0.22
 AsseticBundle v1.0.1
 doctrine-migrations e1f6efcd94993b493de5c6a413cbc327ea9c0caa
 DoctrineMigrationsBundle bd69825665bf3cb4c36b608fa79f364cece371c5
-doctrine-fixtures 50e7e644984f17038224f6fcd02c2b7c20147980
+doctrine-fixtures 6924952026b77ff492da559b04ad166d25c611cb
 DoctrineFixturesBundle 479f10d068bd0b01e055aa2f555946893322b79c
-gedmo-doctrine-extensions 7a4bd0a7ef51058fcb5d5609988c1f530e200d1b
+gedmo-doctrine-extensions 8dbab96dc9a81f0644aa8518b7a14c251ca64800
 DoctrineExtensionsBundle 1.0.2
-LiipFunctionalTestBundle 7c9062bf3a5fb69c2c892fe61f517a596ea24d5d
+LiipFunctionalTestBundle 1596abb8410ca0a47647e2ea56def40e15200e34
 FOSUserBundle 1.2.0
 FOSGoogleBundle 0.1

@@ -1,10 +1,10 @@
 
 <project name="abmundi">
     <target name="build"
-            depends="clean,prepare,vendors,lint,phpcs-ci,phpcpd,phpunit,dbreset-test,behat-without-dbreset,phpunit-cov,phpunit-cov-ci" />
+            depends="clean,prepare,vendors,lint,phpcpd,phpunit,dbreset-test,behat-without-dbreset,phpunit-cov,phpunit-cov-ci" />
 
     <target name="build-local"
-            depends="clean,prepare,lint,phpcpd,phpcs,dbreset-test,behat-without-dbreset,phpunit,dbreset" />
+            depends="clean,prepare,lint,phpcpd,dbreset-test,behat-without-dbreset,phpunit,dbreset" />
             
     <target name="build-metrics"
             depends="clean,prepare,lint,phpcpd,phploc,pdepend,phpunit-cov" />
