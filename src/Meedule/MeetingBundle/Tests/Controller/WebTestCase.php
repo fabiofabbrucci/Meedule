@@ -36,6 +36,6 @@ abstract class WebTestCase extends LiipWebTestCase
     {
         $kernel = $client->getKernel();
         file_put_contents($kernel->getRootDir().'/cache/output.html', $client->getResponse()->getContent());
-        exec('chromium-browser '.$kernel->getRootDir().'/cache/output.html');
+        exec('open -a Google\ Chrome '.$kernel->getRootDir().'/cache/output.html');
     }
 }

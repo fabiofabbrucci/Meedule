@@ -21,11 +21,12 @@ class CreationControllerTest extends WebTestCase
             'meedule_meetingbundle_meetingtype[title]'  => 'Titolo meeting',
             'meedule_meetingbundle_meetingtype[mail]'  => 'mail@drclown.it',
             'meedule_meetingbundle_meetingtype[name]'  => 'Fabio',
+            'meedule_meetingbundle_meetingtype[duration]'  => '60',
         ));
         
         $client->submit($form);
         $crawler = $client->followRedirect();
-        $this->assertEquals($crawler->filter('div#meedule_meetingbundle_topictype')->count(), 1);
+        $this->assertEquals($crawler->filter('input#meedule_meetingbundle_topictype_name')->count(), 1);
         $this->assertEquals($crawler->filter('ol li')->count(), 0);
         
         $form = $crawler->selectButton('Aggiungi')->form(array(
@@ -42,7 +43,7 @@ class CreationControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
         $this->assertEquals($crawler->filter('ol li')->count(), 2);
         
-        $form = $crawler->selectButton('Clicca qui')->form();
+        $form = $crawler->selectButton('clicca qui')->form();
         $client->submit($form);
         $crawler = $client->followRedirect();
         $this->assertEquals($crawler->filter('h1:contains("Titolo meeting")')->count(), 1);
