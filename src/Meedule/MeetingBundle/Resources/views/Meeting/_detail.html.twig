@@ -1,9 +1,9 @@
-<h1>{{ entity.title }}</h1>
 Creato da <img 
     rel="tooltip"
     title="Immagine fornita da Gravatar.com"
     src="http://www.gravatar.com/avatar/{{entity.mailGravatar}}?s=24" /> {{ entity.name }}
 {% if entity.date %}
+    <br />
     <i class="icon-calendar"></i> {{ entity.date|date(date_simple_format)}}
     {% if entity.time %}
         - {{ entity.time|date(time)}}

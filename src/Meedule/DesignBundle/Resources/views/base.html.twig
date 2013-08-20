@@ -25,6 +25,7 @@
         'bundles/meeduledesign/bootstrap/js/bootstrap-tooltip.js'
         'bundles/meeduledesign/bootstrap/js/bootstrap-popover.js'
         'bundles/meeduledesign/js/jquery-ui-1.8.17.custom.min.js'
+        'bundles/meeduledesign/js/toggle.js'
     %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -34,6 +35,8 @@
         $("*[rel=tooltip]").tooltip();
     });
 </script>
+
+<!--
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -42,7 +45,8 @@
   js.src = "//connect.facebook.net/it_IT/all.js#xfbml=1&appId=364269810337276";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-    
+-->
+
 {% if app.environment == "prod" %}
     <script type="text/javascript">
 

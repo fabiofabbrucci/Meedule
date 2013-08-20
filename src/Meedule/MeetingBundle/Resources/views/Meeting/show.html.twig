@@ -11,14 +11,8 @@
 {% block content %}
 
     <div class="container">
-        <div class="well" id="details">
-            <div class="pull-right">
-                {% block commands %}{% endblock %}
-                <a href="javascript:window.print();">Stampa <i class="icon-print"></i></a><br />
-                <div class="fb-send" data-href="{{ url('meeting_show', {'slug': entity.slugpublic}) }}" data-font="arial"></div><br />
-            </div>
-            {% include 'MeeduleMeetingBundle:Meeting:_detail.html.twig' %}
-        </div>
+
+        <h1>{{ entity.title }}</h1>
 
         <div class="row">
             <div class="span8">
@@ -36,7 +30,9 @@
                     {% endblock %}
 
                     {% if not entity.isClosed %}
-                        <form action="{{ path(url_create_topic_crew, {'slug': slug }) }}" method="post" {{ form_enctype(form_create_topic_crew) }} class="form-horizontal">
+                        <a class="btn btn-success btn-small" data-toggle="#add_topic">Voglio aggiungere un argomento</a>
+
+                        <form action="{{ path(url_create_topic_crew, {'slug': slug }) }}" method="post" {{ form_enctype(form_create_topic_crew) }} class="form-horizontal" id="add_topic">
                             {{ form_widget(form_create_topic_crew.name) }}
                             {{ form_widget(form_create_topic_crew.owner) }}
                             {{ form_rest(form_create_topic_crew) }}
@@ -61,25 +57,37 @@
                     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                 </div>
             </div>
-            <div class="span4" id="attendees">
-                {% block attendees %}
-                    {% include 'MeeduleMeetingBundle:Meeting:_attendees.html.twig' %}
-                {% endblock %}
+
+            <div class="span4" id="sidebar">
+                <div id="details">
+                    <div class="pull-right">
+                        {% block commands %}{% endblock %}
+                        <a href="javascript:window.print();">Stampa <i class="icon-print"></i></a><br />
+                    </div>
+                    {% include 'MeeduleMeetingBundle:Meeting:_detail.html.twig' %}
+                </div>
+
+                <div id="attendees">
+                    {% block attendees %}
+                        {% include 'MeeduleMeetingBundle:Meeting:_attendees.html.twig' %}
+                    {% endblock %}
+                </div>
                 {% if not entity.isClosed or references|length > 0 %}
-                    <div class="well">
-                        <h4>
+                    <hr />
+                    <div id="references">
+                        <h5>
                             <span
                                 rel="tooltip"
-                                title="Aggugi risorse. Google Drive, Youtube o Slideshare sono ottime piattaforme.">Riferimenti</span> <span class="badge">{{ references|length }}</span></h4>
+                                title="Aggugi risorse. Google Drive, Youtube o Slideshare sono ottime piattaforme.">Riferimenti</span> <span class="badge">{{ references|length }}</span></h5>
                         {% block references %}
                             {% include 'MeeduleMeetingBundle:Meeting:_references.html.twig' with {'url_reference_delete': url_delete_reference} %}
                         {% endblock %}
 
                         {% if not entity.isClosed %}
-                            <form action="{{ path(url_create_reference, {'slug': slug }) }}" method="post" {{ form_enctype(form_reference) }} class="form-horizontal">
-                                {{ form_widget(form_reference.name) }}
-                                {{ form_widget(form_reference.url) }}
-                                {{ form_rest(form_reference) }}
+                            <a class="btn btn-success btn-small" data-toggle="#add_reference">Voglio aggiungere un riferimento</a>
+                        
+                            <form action="{{ path(url_create_reference, {'slug': slug }) }}" method="post" {{ form_enctype(form_reference) }} class="form-vertical" id="add_reference">
+                                {{ form_widget(form_reference) }}
                                 <button type="submit" class="btn btn-primary btn-small">Aggiungi</button>
                             </form>
                         {% endif %}

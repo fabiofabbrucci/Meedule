@@ -1,34 +1,34 @@
-<div class="well well-small">
-    <h5>Partecipanti <span class="badge">{{ attendees|length }}</span></h5>
-    {% if attendees %}
-        {% for attendee in attendees %}
-            <div class="attendee">
-                {% if attendee.deleteForm %}
-                    <form 
-                        action="{{ path(url_delete_attendee, {'slug': slug, 'id': attendee.id }) }}" 
-                        method="post"
-                        class="delete_form pull-right"
-                        >
-                        {{ form_widget(attendee.deleteForm) }}
-                        <button type="submit"><i class="icon-trash"></i></button> 
-                    </form>
-                {% endif %}
-                <img 
-                    rel="tooltip"
-                    title="Immagine fornita da Gravatar.com"
-                    src="http://www.gravatar.com/avatar/{{attendee.gravatarMail}}?s=26&d=http://meedule.abmundi.com/gravatar.png" />
-                {{ attendee.name }}
-                <div class="clearfix"></div>
-            </div>
-        {% endfor %}
-    {% endif %}
+<h5>Partecipanti <span class="badge">{{ attendees|length }}</span></h5>
+{% if attendees %}
+    {% for attendee in attendees %}
+        <div class="attendee">
+            {% if attendee.deleteForm %}
+                <form 
+                    action="{{ path(url_delete_attendee, {'slug': slug, 'id': attendee.id }) }}" 
+                    method="post"
+                    class="delete_form pull-right"
+                    >
+                    {{ form_widget(attendee.deleteForm) }}
+                    <button type="submit"><i class="icon-trash"></i></button> 
+                </form>
+            {% endif %}
+            <img 
+                rel="tooltip"
+                title="Immagine fornita da Gravatar.com"
+                src="http://www.gravatar.com/avatar/{{attendee.gravatarMail}}?s=26&d=http://meedule.abmundi.com/gravatar.png" />
+            {{ attendee.name }}
+            <div class="clearfix"></div>
+        </div>
+    {% endfor %}
+{% endif %}
 
-    {% if not entity.isClosed %}
-        <hr />
-        <form action="{{ path(url_create_attendee, {'slug': slug }) }}" method="post" {{ form_enctype(form) }} class="form-vertical">
-            {{ form_widget(form) }}
+{% if not entity.isClosed %}
+    <a class="btn btn-success btn-small" data-toggle="#add_attendee">Voglio partecipare anche io</a>
+    
+    <form action="{{ path(url_create_attendee, {'slug': slug }) }}" method="post" {{ form_enctype(form) }} class="form-vertical" id="add_attendee">
 
-            <button type="submit" class="btn btn-primary btn-small">Partecipa</button>
-        </form>
-    {% endif %}
-</div>
+        {{ form_widget(form) }}
+
+        <button type="submit" class="btn btn-primary btn-small">Partecipa</button>
+    </form>
+{% endif %}

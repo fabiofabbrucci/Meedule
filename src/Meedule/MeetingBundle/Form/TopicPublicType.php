@@ -11,7 +11,7 @@ class TopicPublicType extends AbstractType
     {
         $builder
             ->add('name', 'text', array(
-                'attr' => array('placeholder' => 'Anailisi della pubblicità'),
+                'attr' => array('placeholder' => 'Anailisi della ...'),
             ))
             ->add('owner','text', array(
                 'required' => true,
