@@ -24,7 +24,7 @@ role :db,         domain, :primary => true       # This is where Rails migration
 set  :use_sudo,      false
 
 # Update vendors during the deploy
-set :update_vendors,  false
+set :update_vendors,  true
 set :vendors_mode, "upgrade"
 
 # Set some paths to be shared between versions

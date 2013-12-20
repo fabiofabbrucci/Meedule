@@ -293,7 +293,7 @@ namespace :symfony do
 
     desc "Runs the bin/vendors script to upgrade the vendors"
     task :upgrade do
-      run "cd #{latest_release} && #{php_bin} #{symfony_vendors} update"
+      #run "cd #{latest_release} && #{php_bin} #{symfony_vendors} update"
     end
   end
     
