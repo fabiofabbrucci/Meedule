@@ -25,7 +25,8 @@ set  :use_sudo,      false
 
 # Update vendors during the deploy
 set :update_vendors,  true
-set :vendors_mode, "upgrade"
+set :vendors_mode, "install"
+set :deploy_via, :remote_cache
 
 # Set some paths to be shared between versions
 set :shared_files,    ["app/config/parameters.ini", "app/config/parameters.yml"]
@@ -34,3 +35,4 @@ set :shared_children, [app_path + "/logs", web_path + "/uploads", "vendor", web_
 set :dump_assetic_assets, true
 set :assets_install, true
 
+after "deploy", "deploy:cleanup"

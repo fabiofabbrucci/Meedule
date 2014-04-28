@@ -19,8 +19,8 @@ monolog:
             path:  %kernel.logs_dir%/%kernel.environment%.log
             level: debug
 
-fos_google:
-    client_id: 217588854210-2p5fnc9epnkqeiusvtr6q6illgsho6e6.apps.googleusercontent.com
-    client_secret: Os9np78mE1kZnzju_QeXjBNF
-    scopes: [userinfo.email, userinfo.profile]
-    redirect_uri: http://meedule.abmundi.com/login_check
+# fos_google:
+#     client_id: 217588854210-2p5fnc9epnkqeiusvtr6q6illgsho6e6.apps.googleusercontent.com
+#     client_secret: Os9np78mE1kZnzju_QeXjBNF
+#     scopes: [userinfo.email, userinfo.profile]
+#     redirect_uri: http://meedule.abmundi.com/login_check
