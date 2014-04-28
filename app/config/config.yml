@@ -92,13 +92,3 @@ fos_user:
     service:
         user_manager: meedule_user.user_manager
         
-fos_google:
-    app_name:  Meedule
-    client_id: 217588854210.apps.googleusercontent.com
-    client_secret: yHqsIFuita8n3sNqP6khDrdG
-    state: auth
-    access_type: online
-    scopes: [userinfo.email, userinfo.profile, drive.file]
-    approval_prompt: auto
-    redirect_uri: http://meedule.local.com/app_dev.php/login_check
-    

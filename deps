@@ -95,8 +95,3 @@
     git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
     target=bundles/FOS/UserBundle
     version=1.2.0
-
-[FOSGoogleBundle]
-    git=git://github.com/bitgandtter/FOSGoogleBundle.git
-    target=bundles/FOS/GoogleBundle
-    version=0.1

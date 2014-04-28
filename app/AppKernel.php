@@ -22,7 +22,6 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
-            new FOS\GoogleBundle\FOSGoogleBundle(),
             
             new Meedule\MeetingBundle\MeeduleMeetingBundle(),
             new Meedule\DesignBundle\MeeduleDesignBundle(),

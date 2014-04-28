@@ -3,23 +3,12 @@ services:
         class: Meedule\UserBundle\Model\UserManager
         public: false
         parent: fos_user.user_manager.default
-    google.user:
-        class: Meedule\UserBundle\Security\User\Provider\GoogleProvider
-        arguments:
-            google: "@fos_google.api"
-            userManager: "@fos_user.user_manager"
-            validator: "@validator"
-            em: "@doctrine.orm.entity_manager"
-            container: "@service_container"
 
 security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
         FOS\UserBundle\Model\UserInterface: sha512
         
-    factories:
-        - "%kernel.root_dir%/../vendor/bundles/FOS/GoogleBundle/Resources/config/security_factories.xml"
-
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
@@ -27,8 +16,6 @@ security:
     providers:
         fos_user_bundle:
             id: fos_user.user_manager
-        google:
-            id: google.user
 
     firewalls:
         dev:
@@ -50,9 +37,6 @@ security:
             http_basic:
                 realm: "Secured Demo Area"
                 provider: fos_user_bundle
-            fos_google:
-                provider: google
-                login_path: /login
             logout: true
             anonymous: true
 
